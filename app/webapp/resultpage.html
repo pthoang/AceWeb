@@ -1,0 +1,47 @@
+
+<div ng-app="mainApp.webapp" ng-controller="resultCtrl">
+    <div class="container-fluid" align="center">
+        <h1>Resultat:</h1>
+        <h1>{{score}} av {{number}}</h1>
+        <br>
+        <div class="container-fluid" style="width: 300px;">
+            <a href="#/webapp">
+                <button class="btn btn-round" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                    <span class="glyphicon glyphicon-home" style="color: white; font-size: 30px"></span>
+                </button>
+            </a>
+            <a href="#/webapp/{{subject._id}}">
+                <button class="btn btn-round" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                    <span class="glyphicon glyphicon-book" style="color: white; font-size: 30px"></span>
+                </button>
+            </a>
+            <button ng-show="number < exercises.length" class="btn btn-round" ng-click="increaseThreshold()" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                <span class="glyphicon glyphicon-arrow-right" style="color: white; font-size: 30px"></span>
+            </button>
+            <button ng-hide="number < exercises.length" class="btn btn-round" ng-click="startQuiz()" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                <span class="glyphicon glyphicon-repeat" style="color: white; font-size: 30px;"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="width: 60%">
+        <h3>Til neste gang:</h3>
+        <uib-tabset>
+            <uib-tab ng-repeat="i in tabsArray" heading="{{i+1}}." active="true">
+                <div ng-repeat="wrong in getWrongs(i) track by $index">
+                    <br>
+                    <h4>{{wrongIndexes[i]+$index+1}}. {{exercises[wrong].question}}</h4>
+                    <h5>- &nbsp;&nbsp; {{getCorrectAnswer(wrong)}}</h5>
+                </div>
+            </uib-tab>
+
+            <uib-tab heading="Alle">
+                <div ng-repeat="wrong in wrongList track by $index">
+                    <br>
+                    <h4>{{$index+1}}. {{exercises[wrong].question}}</h4>
+                    <h5>- &nbsp;&nbsp; {{getCorrectAnswer(wrong)}}</h5>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>

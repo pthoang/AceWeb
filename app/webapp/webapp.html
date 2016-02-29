@@ -1,0 +1,24 @@
+
+
+<div ng-include="'navbar/navbar_main.html'"></div>
+<div class="form-group" align="center">
+    <input class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter fag..." style="width: 400px; height: 50px;">
+    <br>
+</div>
+
+<div class="container-fluid" align="center">
+    <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectFilter">
+        <a ng-href="#/webapp/{{targetId}}">
+            <button class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
+                <h1 style="color: white; margin-top: 0;">{{i.name}}</h1>
+                <h4 style="color: white; margin-bottom: 0;">{{i.code}}</h4>
+            </button>
+        </a>
+    </div>
+</div>
+
+<div class="cssload-container" ng-show="loading">
+    <div class="cssload-item cssload-moon"></div>
+</div>
+
+

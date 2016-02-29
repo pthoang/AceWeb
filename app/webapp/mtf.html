@@ -1,0 +1,55 @@
+
+<div ng-app="mainApp.webapp" ng-controller="mtfCtrl">
+    <div class="container-fluid" style="width: 85%">
+        <h3 align="left" style="height: 50px;">{{exercises[number].question}}</h3>
+
+        <div ng-repeat="alternative in alternatives track by $index" ng-hide="nextBtn" align="center">
+            <label class="btn btn-default btn-mtfalternatives" ng-model="checkModel[$index]" uib-btn-checkbox>
+                {{alternative.statement}}
+            </label>
+        </div>
+        <div class="container-fluid" ng-click="bottom()" ng-hide="nextBtn" align="center">
+            <button class="btn btn-default" ng-click="checkAnswer()" style="background-color: #43A047; margin-top: 20px;">
+                <span class="glyphicon glyphicon-check" style="color: white; font-size: 20px">   Sjekk</span>
+            </button>
+        </div>
+
+        <div class="container-fluid" ng-show="nextBtn">
+            <div ng-repeat="alternative in alternatives track by $index" align="center">
+                <label ng-if="tabModel=='answer'" class="btn btn-default btn-mtfalternatives" ng-style="setColor(checkModel[$index])">
+                    {{alternative.statement}}
+                </label>
+                <label ng-if="tabModel=='solution'" class="btn btn-default btn-mtfalternatives" ng-style="setColor(alternative.correctAnswer)">
+                    {{alternative.statement}}
+                </label>
+            </div>
+            <hr style="width: 50%">
+            <div class="container-fluid" style="margin-top: -20px" align="center">
+                <div class="btn-group">
+                    <label class="btn btn-default" uib-btn-radio="'answer'" ng-model="tabModel">Mitt svar</label>
+                    <label class="btn btn-default" uib-btn-radio="'solution'" ng-model="tabModel">Riktig svar</label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="container-fluid" ng-show="nextBtn" align="center" style="margin-top: 20px">
+            <button class="btn btn-round" uib-popover="Rapporter feil i oppgaven" popover-trigger="mouseenter" ng-click="openReport()" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                <span class="glyphicon glyphicon-flag" style="color: white; font-size: 20px"></span>
+            </button>
+            <button class="btn btn-round" uib-popover-template="'exerciseInfo.html'" popover-title="Forklaring:" type="button" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                <img src="img/info.png" style="width: 40px">
+            </button>
+            <button class="btn btn-round" ng-click="nextExercise()" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+                <span class="glyphicon glyphicon-chevron-right" style="color: white; font-size: 20px"></span>
+            </button>
+        </div>
+    </div>
+
+</div>
+

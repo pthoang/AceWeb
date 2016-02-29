@@ -1,0 +1,30 @@
+
+<div ng-include="'navbar/navbar_quiz.html'"></div>
+<div ng-if="number < threshold" class="container-fluid" style="width: 85%; margin-top: -20px;">
+    <uib-progressbar max="threshold" value="number + 1" type="custom" ng-style="{'background-color': '#'+'{{subject.color}}'}">
+        <span style="color: black; white-space: nowrap; "></span>
+    </uib-progressbar>
+</div>
+
+
+<script type="text/ng-template" id="exerciseInfo.html">
+    <div ng-if="exercises[number].explanation == undefined">Ingen forklaring til oppgaven...</div>
+    <div>{{exercises[number].explanation}}</div>
+</script>
+
+<script type="text/ng-template" id="reportModal.html">
+    <div class="modal-header">
+        <h3>Feilrapportering</h3>
+    </div>
+    <div class="modal-body">
+        <textarea style="resize: none;" rows="4" cols="33" placeholder="Kommentar..."></textarea>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-default" ng-click="cancel()">Avbryt</button>
+    </div>
+</script>
+
+
+<div ng-include="showByType(number)"></div>
+

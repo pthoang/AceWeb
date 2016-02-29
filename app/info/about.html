@@ -1,0 +1,29 @@
+<div ng-include="'navbar/navbar_main.html'"></div>
+<div class="container" align="center">
+    <p>For å gjøre det lettere å arbeide, er Ace også tilgjengelig på både Google Play Store og Apple App Store.</p>
+    <br>
+    <br>
+</div>
+
+<div class="container" style="width: 650px">
+    <div class="panel panel-default" style="width: 300px; float: left;">
+        <div class="panel-heading">Play Store</div>
+        <a href="https://play.google.com/store/apps/details?id=theaceteam.ace" target="_blank">
+            <div class="panel-body" align="center">
+                <img src="img/google.png" style="width: 150px;">
+            </div>
+        </a>
+    </div>
+    <div class="panel panel-default" style="width: 300px; float: right;">
+        <div class="panel-heading">App Store</div>
+        <a href="https://itunes.apple.com/no/app/ace-education/id1055205858?l=no&mt=8" target="_blank">
+            <div class="panel-body" align="center">
+                <img src="img/apple.png" style="width: 150px;">
+            </div>
+        </a>
+    </div>
+</div>
+<button ng-click="showFB = !showFB">trykk</button>
+
+<div ng-if="showFB" ng-include="'info/facebook.html'"></div>
+
