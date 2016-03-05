@@ -12,19 +12,10 @@
     <div>{{exercises[number].explanation}}</div>
 </script>
 
-<script type="text/ng-template" id="reportModal.html">
-    <div class="modal-header">
-        <h3>Feilrapportering</h3>
-    </div>
-    <div class="modal-body">
-        <textarea style="resize: none;" rows="4" cols="33" placeholder="Kommentar..."></textarea>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary">Send</button>
-        <button class="btn btn-default" ng-click="cancel()">Avbryt</button>
-    </div>
-</script>
+<div ng-include="'modal/reportModal.html'"></div>
 
 
 <div ng-include="showByType(number)"></div>
+
+
 

@@ -1,0 +1,43 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<script type="text/ng-template" id="reportModal.html">
+    <div ng-hide="sendPressed" class="container-fluid">
+        <div class="modal-header">
+            <h3>Feilrapportering</h3>
+        </div>
+        <div class="modal-body">
+            <textarea style="resize: none; left: 0" ng-model="message" rows="4" cols="30" placeholder="Melding"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="isSending" ng-click="send()">Send</button>
+            <button class="btn btn-default" ng-disabled="isSending" ng-click="cancel()">Avbryt</button>
+        </div>
+    </div>
+    <div ng-if="sendPressed && isSuccess" class="container-fluid">
+        <div class="modal-header">
+            <h3>Feilrapportering sendt</h3>
+        </div>
+        <div class="modal-body">
+            <p>Vi takker for din hjelp :)</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" ng-click="cancel()">Lukk</button>
+        </div>
+    </div>
+    <div ng-if="sendPressed && !isSuccess" class="container-fluid">
+        <div class="modal-header">
+            <h3>Feilrapportering ikke sendt</h3>
+        </div>
+        <div class="modal-body">
+            <p>En feil oppstod:</p>
+            <p>{{errorMessage}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="tryAgain()">Prøv igjen</button>
+            <button class="btn btn-default" ng-click="cancel()">Avbryt</button>
+        </div>
+    </div>
+
+</script>

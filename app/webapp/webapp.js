@@ -5,8 +5,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
     .controller('subjectsCtrl', function($scope, $http, $cookies) {
         $scope.loading = true;
-        $http.get($scope.url +'/subjects/')
-            .success(function(response) {
+        $http({
+            method: 'GET',
+            url: $scope.url + '/subjects/'
+        })
+            .success(function (response) {
                 $scope.subjects = response;
                 $scope.setColor = function (color) {
                     return {"background-color": '#'+color};
@@ -16,8 +19,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     $cookies.putObject('targetSubject', target);
                 };
                 $scope.loading = false;
-
-            })
+            });
 
     })
 
@@ -30,9 +32,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
         $scope.modeModel = 10;
         $scope.loading = true;
-        $http.get($scope.url + '/subjects/' + subjectId)
+        $http({
+            method: 'GET',
+            url: $scope.url + '/subjects/' + subjectId
+        })
             .success(function(response) {
-                if (! $cookies.getObject('targetSubject')){
+                if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId){
                     $scope.subject = {
                         _id: response._id,
                         code: response.code,
@@ -61,11 +66,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     quizService.setThreshold(length ? length:info[target].length);
                 };
 
-
                 $scope.loading = false;
-
-
-            })
+            });
     })
 
     .controller('quizCtrl', function ($scope, $cookies, $location,$uibModal, quizService) {
@@ -113,7 +115,15 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 animation: true,
                 templateUrl: 'reportModal.html',
                 controller: 'reportModalCtrl',
-                size: 'sm'
+                size: 'sm',
+                resolve: {
+                    exercise_id: function(){
+                        return $scope.exercises[$scope.number]._id;
+                    },
+                    url: function() {
+                        return $scope.url
+                    }
+                }
             })
         };
         $scope.setColor = function (color) {
@@ -349,9 +359,37 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
     })
 
 
-    .controller('reportModalCtrl', function($scope, $uibModalInstance) {
+    .controller('reportModalCtrl', function($scope, $http, $uibModalInstance, exercise_id, url) {
+        $scope.exercise_id = exercise_id;
+        $scope.url = url;
         $scope.cancel = function() {
             $uibModalInstance.dismiss('cancel')
+        };
+        $scope.send = function() {
+            $scope.isSending = true;
+            var message = {
+                message: $scope.message
+            };
+
+            $http.post($scope.url + '/reports/' + $scope.exercise_id, message)
+                .success(function(response) {
+                    $scope.sendPressed = true;
+                    $scope.isSuccess = true;
+                })
+                .error(function (response, errorCode) {
+                    $scope.sendPressed = true;
+                    $scope.isSuccess = false;
+                    if(errorCode == 400) {
+                        $scope.errorMessage = "Tom melding ble sendt"
+                    }
+                    else {
+                        $scope.errorMessage = "Feil på serverside"
+                    }
+                });
+        };
+        $scope.tryAgain = function() {
+            $scope.isSending = false;
+            $scope.sendPressed = false;
         }
     })
 
