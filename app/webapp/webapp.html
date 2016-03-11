@@ -9,7 +9,7 @@
 <div class="container-fluid" align="center">
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectFilter">
         <a ng-href="#/webapp/{{targetId}}">
-            <button class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
+            <button class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
                 <h1 style="color: white; margin-top: 0;">{{i.name}}</h1>
                 <h4 style="color: white; margin-bottom: 0;">{{i.code}}</h4>
             </button>

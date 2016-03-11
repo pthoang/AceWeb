@@ -7,7 +7,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.loading = true;
         $http({
             method: 'GET',
-            url: $scope.url + '/subjects/'
+            url: $scope.url + '/subjects/',
+            headers: {
+                environment: "production"
+            }
         })
             .success(function (response) {
                 $scope.subjects = response;
@@ -19,6 +22,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     $cookies.putObject('targetSubject', target);
                 };
                 $scope.loading = false;
+            })
+            .error(function(response) {
+                alert("En feil oppstod, prøv igjen om 1 minutt")
             });
 
     })
@@ -30,11 +36,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.setColor = function (color) {
             return {"background-color": '#'+color};
         };
-        $scope.modeModel = 10;
+        $scope.modeModel = quizService.getModeModel() != undefined ? quizService.getModeModel() : 10;
         $scope.loading = true;
         $http({
             method: 'GET',
-            url: $scope.url + '/subjects/' + subjectId
+            url: $scope.url + '/subjects/' + subjectId,
+            headers: {
+                environment: "production"
+            }
         })
             .success(function(response) {
                 if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId){
@@ -64,19 +73,20 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                         quizService.addExercises(JSON.parse(stringExercise))
                     }
                     quizService.setThreshold(length ? length:info[target].length);
+                    quizService.setModeModel($scope.modeModel)
                 };
 
                 $scope.loading = false;
             });
     })
 
-    .controller('quizCtrl', function ($scope, $cookies, $location,$uibModal, quizService) {
+    .controller('quizCtrl', function ($scope, $cookies, $location,$uibModal, $routeParams, quizService) {
 
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
         $scope.exercises = quizService.getExercises();
         if($scope.exercises.length == 0) {
-            $location.path('/webapp/' + $scope.subject._id)
+            $location.path('/webapp/' + $routeParams.subjectId)
         }
 
         //-------------- Shuffles the exercises---------------
@@ -320,7 +330,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
         $scope.setColor = function(value) {
             if(value) {
-                return $scope.tabModel=='solution' ? quizService.getCorrectStyle():{'background-color': 'blue', 'color': 'white'}
+                return $scope.tabModel=='solution' ? quizService.getCorrectStyle():{'background-color': '#E6E6E6', 'border-color': '#ADADAD'}
             }
         }
 
@@ -344,17 +354,31 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.getCorrectAnswer = function(i) {
             var type = $scope.exercises[i].type;
             if(type == "mtf") {
-                var correctInfo = "";
+                var correctInfo = [];
                 for(var j=0; j<$scope.exercises[i].alternatives.length; j++) {
-                    correctInfo += $scope.exercises[i].alternatives[j].statement + ": " + $scope.exercises[i].alternatives[j].correctAnswer + ", ";
+                    if($scope.exercises[i].alternatives[j].correctAnswer){
+                        correctInfo.push($scope.exercises[i].alternatives[j].statement)
+                    }
                 }
                 return correctInfo;
             }
             else {
-                return $scope.exercises[i].correctAnswer;
+                return [$scope.exercises[i].correctAnswer];
+            }
+        };
+
+        $scope.getWrongAnswer = function(i) {
+            var type = $scope.exercises[i].type;
+            if(type == "mtf") {
+                var wrongInfo = [];
+                for(var j=0; j<$scope.exercises[i].alternatives.length; j++) {
+                    if(!$scope.exercises[i].alternatives[j].correctAnswer) {
+                        wrongInfo.push( $scope.exercises[i].alternatives[j].statement)
+                    }
+                }
+                return wrongInfo
             }
         }
-
 
     })
 
@@ -399,6 +423,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         var correctStyle = {'background-color': '#43A047', 'color': 'white'},
             wrongStyle = {'background-color': '#F44336', 'color': 'white'};
         var threshold;
+        var modeModel;
 
         var setCollectionName = function(name) {
             collectionName = name
@@ -430,6 +455,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             return threshold
         };
 
+        var setModeModel = function(mode) {
+            modeModel = mode;
+        };
+        var getModeModel = function() {
+            return modeModel
+        };
+
         var shuffle = function(array) {
             var m = array.length;
             var t, i;
@@ -454,6 +486,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             getWrongStyle: getWrongStyle,
             setThreshold: setThreshold,
             getThreshold: getThreshold,
+            setModeModel: setModeModel,
+            getModeModel: getModeModel,
             shuffle: shuffle
         };
     });
