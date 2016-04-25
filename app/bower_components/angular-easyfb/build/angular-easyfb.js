@@ -1,6 +1,6 @@
 /*! angular-easyfb
-version: 1.4.1
-build date: 2015-09-22
+version: 1.4.4
+build date: 2016-04-02
 author: Robin Fan
 https://github.com/pc035860/angular-easyfb.git */
 (function(module) {
@@ -65,17 +65,20 @@ https://github.com/pc035860/angular-easyfb.git */
             xfbml: true,
             version: "v2.4"
         };
-        var _defaultLoadSDKFunction = [ "$window", "$document", "ezfbAsyncInit", "ezfbLocale", function($window, $document, ezfbAsyncInit, ezfbLocale) {
+        var _defaultLoadSDKFunction = [ "$window", "$document", "$timeout", "ezfbAsyncInit", "ezfbLocale", function($window, $document, $timeout, ezfbAsyncInit, ezfbLocale) {
             (function(d) {
-                var js, id = "facebook-jssdk", ref = d.getElementsByTagName("script")[0];
-                if (d.getElementById(id)) {
-                    return;
-                }
-                js = d.createElement("script");
-                js.id = id;
-                js.async = true;
-                js.src = "//connect.facebook.net/" + ezfbLocale + "/sdk.js";
-                ref.parentNode.insertBefore(js, ref);
+                var insertScript = function() {
+                    var js, id = "facebook-jssdk", ref = d.getElementsByTagName("script")[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement("script");
+                    js.id = id;
+                    js.async = true;
+                    js.src = "//connect.facebook.net/" + ezfbLocale + "/sdk.js";
+                    ref.parentNode.insertBefore(js, ref);
+                };
+                $timeout(insertScript, 0, false);
             })($document[0]);
             $window.fbAsyncInit = ezfbAsyncInit;
         } ], _loadSDKFunction = _defaultLoadSDKFunction;
@@ -141,14 +144,20 @@ https://github.com/pc035860/angular-easyfb.git */
                 }
                 ezfbAsyncInit = function() {
                     _paramsReady.promise.then(function() {
-                        var onRender = function() {
-                            _ezfb.$$rendered = true;
+                        if (_initParams.xfbml) {
+                            var onRender = function() {
+                                _ezfb.$$xfbmlRendered = true;
+                                $timeout(function() {
+                                    _initRenderReady.resolve(true);
+                                });
+                                _ezfb.Event.unsubscribe("xfbml.render", onRender);
+                            };
+                            _ezfb.Event.subscribe("xfbml.render", onRender);
+                        } else {
                             $timeout(function() {
-                                _initRenderReady.resolve();
+                                _initRenderReady.resolve(false);
                             });
-                            _ezfb.Event.unsubscribe("xfbml.render", onRender);
-                        };
-                        _ezfb.Event.subscribe("xfbml.render", onRender);
+                        }
                         $injector.invoke(_initFunction, null, {
                             ezfbInitParams: _initParams
                         });
@@ -162,7 +171,7 @@ https://github.com/pc035860/angular-easyfb.git */
                 });
                 _ezfb = {
                     $$ready: false,
-                    $$rendered: false,
+                    $$xfbmlRendered: false,
                     $ready: function(fn) {
                         if (angular.isFunction(fn)) {
                             _initReady.promise.then(fn);

@@ -7,10 +7,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.loading = true;
         $http({
             method: 'GET',
-            url: $scope.url + '/subjects/',
-            headers: {
-                environment: "production"
-            }
+            url: $scope.url + '/subjects/'
         })
             .success(function (response) {
                 $scope.subjects = response;
@@ -40,10 +37,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.loading = true;
         $http({
             method: 'GET',
-            url: $scope.url + '/subjects/' + subjectId,
-            headers: {
-                environment: "production"
-            }
+            url: $scope.url + '/subjects/' + subjectId
         })
             .success(function(response) {
                 if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId){
@@ -80,7 +74,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             });
     })
 
-    .controller('quizCtrl', function ($scope, $cookies, $location,$uibModal, $routeParams, quizService) {
+    .controller('quizCtrl', function ($scope, $cookies, $location,$uibModal, $routeParams, $window, quizService) {
 
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
@@ -91,10 +85,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
         //-------------- Shuffles the exercises---------------
         quizService.shuffle($scope.exercises);
-
+        $scope.number = 0;
+        $scope.round = 0;
+        $scope.wrongList = [];
 
         $scope.showByType = function (number) {
-            if($scope.number == $scope.threshold) {
+            if($scope.number == $scope.threshold*$scope.round) {
                 return 'webapp/resultpage.html'
             }
             return 'webapp/' + $scope.exercises[number].type + '.html'
@@ -102,23 +98,42 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.incrementNumber = function() {
             $scope.number++;
         };
-        $scope.increaseThreshold = function () {
-            $scope.round++;
-            $scope.threshold = Math.min(quizService.getThreshold()*$scope.round, $scope.exercises.length);
+        $scope.updateExercises = function () {
+            for(var k=0; k < $scope.wrongList.length; k++) {
+                var insertIndex = Math.floor(Math.random()*10);
+                $scope.exercises.splice($scope.threshold*$scope.round + insertIndex, 0, $scope.exercises[$scope.wrongList[k]])
+            }
+            var fromIndex = $scope.threshold*$scope.round;
+            if($scope.exercises.length - fromIndex == 0) {
+                return;
+            }
+            while($scope.exercises.length-fromIndex < 10) {
+                var randomExercise = Math.floor(Math.random()*(fromIndex));
+                var checkArray = $scope.exercises.slice(fromIndex);
+                if(checkArray.indexOf($scope.exercises[randomExercise]) == -1) {
+                    $scope.exercises.push($scope.exercises[randomExercise])
+                }
+            }
         };
         $scope.incrementScore = function() {
             $scope.score++;
         };
-        $scope.bottom = function () {
-            window.scrollTo(0, document.body.scrollHeight)
-        };
         $scope.startQuiz = function() {
-            $scope.number = 0;
+            $scope.threshold = Math.min(quizService.getThreshold(), $scope.exercises.length);
+            if($scope.threshold == 10) {
+                $scope.updateExercises();
+            }
+            if($scope.number >= $scope.exercises.length) {
+                $scope.number = 0;
+                $scope.round = 0;
+                $scope.exercises = quizService.getExercises();
+                quizService.shuffle($scope.exercises)
+            }
             $scope.score = 0;
             $scope.wrongList = [];
             $scope.wrongIndexes = [0];
-            $scope.round = 0;
-            $scope.increaseThreshold();
+            $scope.round++;
+
         };
         $scope.openReport = function() {
             var modalInstance = $uibModal.open({
@@ -139,18 +154,34 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.setColor = function (color) {
             return {"background-color": '#'+color};
         };
-        $scope.startQuiz()
+
+        $scope.checkScreenRatio = function() {
+
+            if(window.innerHeight > window.innerWidth) {
+                return true;
+            }
+            return false;
+        };
+
+        var w = angular.element($window);
+        w.bind('resize', function() {
+            $scope.$apply();
+
+        })
+
+        $scope.startQuiz();
+
 
     })
     .controller('pdCtrl', function ($scope, quizService) {
-
         $scope.nextExercise = function() {
             $scope.incrementNumber();
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number].type == "pd") {
-                quizService.shuffle($scope.ordering);
                 randAlternatives = [];
+                $scope.ordering = [];
                 selectRandomAlternatives();
+                quizService.shuffle($scope.ordering);
                 styles = {}
             }
         };
@@ -158,12 +189,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         var styles = {};
         $scope.checkAnswer = function(i) {
             if($scope.nextBtn){
+
                 return $scope.nextExercise();
 
             }
             $scope.nextBtn = true;
-            styles[3] = quizService.getCorrectStyle();
-            if(i == 3) {
+            styles[$scope.ordering.length-1] = quizService.getCorrectStyle();
+            if(i == $scope.ordering.length-1) {
                 $scope.incrementScore()
             }
             else {
@@ -175,23 +207,25 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             return styles[i]
 
         };
-
+        $scope.ordering = [];
         var randAlternatives = [];
         var selectRandomAlternatives = function () {
             var relatedAlternatives = angular.copy($scope.exercises[$scope.number].relatedAlternatives);
-            for(var i=0; i<3; i++) {
+            var relatedAlternativesInitLength = relatedAlternatives.length;
+            for(var i=0; i<Math.min(relatedAlternativesInitLength, 3); i++) {
                 var randNum = Math.floor(Math.random()*relatedAlternatives.length);
                 randAlternatives.push(relatedAlternatives[randNum]);
-                relatedAlternatives.splice(randNum,1)
+                relatedAlternatives.splice(randNum,1);
+                $scope.ordering.push(i);
             }
+            $scope.ordering.push($scope.ordering.length);
 
         };
         selectRandomAlternatives();
-        $scope.ordering = [0,1,2,3];
         quizService.shuffle($scope.ordering);
 
         $scope.getAlternative = function(i) {
-            if(i == 3) {
+            if(i == $scope.ordering.length-1) {
                 return $scope.exercises[$scope.number].correctAnswer
             }
             else {
@@ -256,7 +290,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number].type == "tf") {
                 correctAnswer = $scope.exercises[$scope.number].correctAnswer? 1:0;
-                styles = {}
+                styles = {};
             }
         };
 
@@ -380,6 +414,19 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             }
         }
 
+        $scope.showContinueBtn = function() {
+            if($scope.threshold == $scope.exercises.length) {
+                return false;
+            }
+            return $scope.number < $scope.exercises.length || $scope.wrongList.length > 0;
+        }
+        $scope.showAgainBtn = function() {
+            if($scope.threshold == $scope.exercises.length) {
+                return true;
+            }
+            return $scope.number >= $scope.exercises.length && $scope.wrongList.length == 0;
+        }
+
     })
 
 
@@ -404,7 +451,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     $scope.sendPressed = true;
                     $scope.isSuccess = false;
                     if(errorCode == 400) {
-                        $scope.errorMessage = "Tom melding ble sendt"
+                        $scope.errorMessage = "Vennligst fyll inn en kommentar"
                     }
                     else {
                         $scope.errorMessage = "Feil på serverside"

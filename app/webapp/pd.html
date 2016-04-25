@@ -4,25 +4,15 @@
         <h1 style="height: 160px">{{exercises[number].question}}</h1>
 
 
-        <div ng-repeat="i in ordering" ng-click="bottom()">
-            <button class="btn btn-default btn-pdalternatives" ng-click="checkAnswer(i)" ng-style="getStyle(i)">
+        <div ng-repeat="i in ordering" ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/ordering.length-1)+'%'}">
+            <button class="btn-quiz btn-pdalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
                 {{getAlternative(i)}}
             </button>
         </div>
 
 
 
-        <div class="container-fluid div-buttons" ng-show="nextBtn" align="center">
-            <button class="btn btn-round" uib-popover="Rapporter feil i oppgaven" popover-trigger="mouseenter" ng-click="openReport()" ng-style="{'background-color': '#'+'{{subject.color}}'}">
-                <span class="glyphicon glyphicon-flag" style="color: white; font-size: 20px"></span>
-            </button>
-            <button class="btn btn-round" uib-popover-template="'exerciseInfo.html'" popover-trigger="mouseenter" popover-title="Forklaring:" type="button" ng-style="{'background-color': '#'+'{{subject.color}}'}">
-                <img src="img/info.png" style="width: 40px">
-            </button>
-            <button class="btn btn-round" ng-click="nextExercise()" ng-style="{'background-color': '#'+'{{subject.color}}'}">
-                <span class="glyphicon glyphicon-chevron-right" style="color: white; font-size: 20px"></span>
-            </button>
-        </div>
+        <div ng-include="'webapp/quiz_buttons.html'"></div>
 
 
     </div>

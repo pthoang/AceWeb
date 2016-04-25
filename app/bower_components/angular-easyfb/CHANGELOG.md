@@ -1,6 +1,20 @@
+## v1.4.4
+
+* Fix intialization error when `xfbml: false` parameter is given ([#66](https://github.com/pc035860/angular-easyfb/issues/66))
+
+## v1.4.3
+
+* Fix the "childNodes error" caused by [Google Analytics Opt-out Add-on](https://chrome.google.com/webstore/detail/google-analytics-opt-out/fllaojicojecljbmefodhfapmkghcbnh) ([Ben Nadel's article](http://www.bennadel.com/blog/2892-typeerror-cannot-read-property-childnodes-of-undefined-in-angularjs.htm)) ([#65](https://github.com/pc035860/angular-easyfb/issues/65))
+
+
+## v1.4.2
+
+* Update `main` configuration of `package.json` ([#63](https://github.com/pc035860/angular-easyfb/issues/63))
+
+
 ## v1.4.1
 
-* Update `main` configuration of `bower.json`
+* Update `main` configuration of `bower.json` ([#56](https://github.com/pc035860/angular-easyfb/issues/56))
 
 ## v1.4.0
 

@@ -12,35 +12,64 @@
     font-size: 20px;
 }
 
+
+
 .btn-collection {
-    float: left;
-    width: 20%;
+    width: 100%;
     height: 150px;
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 12px;
+    margin-bottom: 12px;
     white-space: normal;
+}
+
+.btn-quiz {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    background: white;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.no-touch .btn-quiz:hover {
+    background-color: #E6E6E6;
+    border-color: #ADADAD;
+    text-decoration: none;
 }
 
 .btn-pdalternatives {
     float: left;
-    width: 24%;
-    height: 150px;
+    width: 100%;
+    height: 170px;
     margin-left: 0.5%;
     margin-right: 0.5%;
     white-space: normal;
 }
+
+
 .btn-mcalternatives {
     width: 100%;
-    height: 150px;
+    height: 170px;
     white-space: normal;
 }
 
 .btn-tfalternatives {
     float: left;
-    height: 150px;
-    width: 49%;
+    height: 170px;
+    width: 100%;
     margin-left: 0.5%;
     margin-right: 0.5%;
 }
@@ -55,7 +84,8 @@
     background-color: white;
 }
 
-.div-mcalternatives{
+
+.div-alternatives{
     float: left;
     margin-left: 0.5%;
     margin-right: 0.5%;
@@ -71,9 +101,17 @@
 
 }
 
+.div-progressbar {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 .btn-round {
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
     margin-left: 2px;
     margin-right: 2px;
     border-radius: 100px;
