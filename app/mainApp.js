@@ -31,7 +31,8 @@ angular.module('mainApp', [
     .controller('mainController', function($scope, $window, $http) {
         $http.post('/api', '')
             .success(function (response) {
-                $scope.url = response
+                $scope.url = response;
+                $scope.showAll = true;
             });
 
         $scope.loadNavbar = function() {
