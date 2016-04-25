@@ -3,7 +3,7 @@
 
 angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
-    .controller('subjectsCtrl', function($scope, $http, $cookies) {
+    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal) {
         $scope.loading = true;
         $http({
             method: 'GET',
@@ -21,8 +21,23 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 $scope.loading = false;
             })
             .error(function(response) {
-                alert("En feil oppstod, pr�v igjen om 1 minutt")
+                alert("En feil oppstod, pr�v igjen om 1 minutt")
             });
+
+        $scope.openSuggestion = function() {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'suggestionModal.html',
+                controller: 'suggestionModalCtrl',
+                size: 'sm',
+                resolve: {
+                    url: function() {
+                        return $scope.url
+                    }
+                }
+            })
+        };
+
 
     })
 
@@ -412,20 +427,45 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 }
                 return wrongInfo
             }
-        }
+        };
 
         $scope.showContinueBtn = function() {
             if($scope.threshold == $scope.exercises.length) {
                 return false;
             }
             return $scope.number < $scope.exercises.length || $scope.wrongList.length > 0;
-        }
+        };
         $scope.showAgainBtn = function() {
             if($scope.threshold == $scope.exercises.length) {
                 return true;
             }
             return $scope.number >= $scope.exercises.length && $scope.wrongList.length == 0;
-        }
+        };
+
+        $scope.getFeedback = function() {
+            var percentage = $scope.score/$scope.threshold;
+            var feedback;
+
+            if(percentage >= 0 && percentage <= 0.29) {
+                feedback = ["Godt forsøk","God innsats","Prøv igjen", "Sånn passe"]
+            }
+            else if(percentage > 0.29 && percentage <= 0.59) {
+                feedback = ["Bra", "Godt jobba", "Respektabelt"]
+            }
+            else if(percentage > 0.59 && percentage <= 0.99) {
+                feedback = ["Pent!", "Glimrende!", "Storartet!", "Ypperlig!"]
+            }
+            else if(percentage > 0.99) {
+                feedback = ["FANTASTISK!" , "IMPONERENDE!", "PERFEKT!", "OVERLEGENT!"]
+            }
+
+            var randomInt = Math.floor(Math.random()*feedback.length);
+            return feedback[randomInt];
+
+
+        };
+
+        $scope.feedbackText = $scope.getFeedback();
 
     })
 
@@ -454,7 +494,41 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                         $scope.errorMessage = "Vennligst fyll inn en kommentar"
                     }
                     else {
-                        $scope.errorMessage = "Feil p� serverside"
+                        $scope.errorMessage = "Feil på serverside"
+                    }
+                });
+        };
+        $scope.tryAgain = function() {
+            $scope.isSending = false;
+            $scope.sendPressed = false;
+        }
+    })
+
+    .controller('suggestionModalCtrl', function($scope, $http, $uibModalInstance, url){
+        $scope.url = url;
+        $scope.cancel = function() {
+            $uibModalInstance.dismiss('cancel')
+        };
+        $scope.send = function() {
+            $scope.isSending = true;
+            var message = {
+                name: $scope.subjectName,
+                code: $scope.subjectCode
+            };
+
+            $http.post($scope.url + '/reports/suggestions/', message)
+                .success(function(response) {
+                    $scope.sendPressed = true;
+                    $scope.isSuccess = true;
+                })
+                .error(function (response, errorCode) {
+                    $scope.sendPressed = true;
+                    $scope.isSuccess = false;
+                    if(errorCode == 400) {
+                        $scope.errorMessage = "Vennligst fyll inn feltene"
+                    }
+                    else {
+                        $scope.errorMessage = "Feil på serverside"
                     }
                 });
         };

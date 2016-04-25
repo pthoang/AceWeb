@@ -1,8 +1,11 @@
+<head>
+    <meta charset="utf-8">
+</head>
 
 <div ng-app="mainApp.webapp" ng-controller="resultCtrl">
     <div class="container-fluid" align="center">
-        <h1>Resultat:</h1>
-        <h1>{{score}} av {{threshold}}</h1>
+        <h1>{{feedbackText}}</h1>
+        <h2>{{score}} av {{threshold}}</h2>
         <br>
         <div class="container-fluid" style="width: 300px;">
             <a href="#/webapp">
@@ -24,7 +27,7 @@
         </div>
     </div>
 
-    <div class="container-fluid" style="width: 60%">
+    <div ng-hide="score == threshold" class="container-fluid" style="width: 60%; margin-top: 50px">
         <h3>Til neste gang:</h3>
         <div ng-repeat="wrong in wrongList track by $index">
             <br>

@@ -1,0 +1,48 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<script type="text/ng-template" id="suggestionModal.html">
+    <div ng-hide="sendPressed" class="container-fluid">
+        <div class="modal-header">
+            <h3>Etterspør fag</h3>
+        </div>
+        <div class="modal-body">
+            <p>Fagnavn:</p>
+            <input class="form-control" ng-model="subjectName">
+            <br>
+            <p>Fagkode:</p>
+            <input class="form-control" ng-model="subjectCode">
+
+        </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-disabled="isSending" ng-click="send()">Send</button>
+            <button class="btn btn-default" ng-disabled="isSending" ng-click="cancel()">Avbryt</button>
+        </div>
+    </div>
+    <div ng-if="sendPressed && isSuccess" class="container-fluid">
+        <div class="modal-header">
+            <h3>Forslag sendt</h3>
+        </div>
+        <div class="modal-body">
+            <p>Takk for hjelpen!</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" ng-click="cancel()">Lukk</button>
+        </div>
+    </div>
+    <div ng-if="sendPressed && !isSuccess" class="container-fluid">
+        <div class="modal-header">
+            <h3>Forslag ikke sendt</h3>
+        </div>
+        <div class="modal-body">
+            <p>{{errorMessage}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="tryAgain()">Prøv igjen</button>
+            <button class="btn btn-default" ng-click="cancel()">Avbryt</button>
+        </div>
+    </div>
+
+</script>

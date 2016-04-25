@@ -4,7 +4,7 @@
 
     <div class="container-fluid" style="width: 85%">
 
-        <h3 align="left" style="height: 160px;">{{exercises[number].question}}</h3>
+        <h3 align="left" style="height: 160px; width: auto">{{exercises[number].question}}</h3>
 
 
         <div ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-repeat="i in ordering" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/alternatives.length-1) +'%'}">
