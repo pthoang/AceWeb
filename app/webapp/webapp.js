@@ -21,7 +21,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 $scope.loading = false;
             })
             .error(function(response) {
-                alert("En feil oppstod, prøv igjen om 1 minutt" + response)
+                alert("En feil oppstod, prøv igjen om 1 minutt")
             });
 
         $scope.openSuggestion = function() {

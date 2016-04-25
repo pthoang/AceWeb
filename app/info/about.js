@@ -1,13 +1,7 @@
 'use strict';
 
-angular.module('mainApp.about', ['ngRoute', 'ezfb'])
+angular.module('mainApp.about', ['ngRoute'])
 
-    .config(function(ezfbProvider) {
-        ezfbProvider.setLocale('nb_NO');
-        ezfbProvider.setInitParams({
-            appId: '565637640270871'
-        })
-    })
 
 
     .controller('aboutCtrl', function($scope, $route) {
