@@ -19,9 +19,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     $cookies.putObject('targetSubject', target);
                 };
                 $scope.loading = false;
-            })
-            .error(function(response) {
-                alert("En feil oppstod, prøv igjen om 1 minutt")
             });
 
         $scope.openSuggestion = function() {
