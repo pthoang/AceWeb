@@ -15,11 +15,11 @@
             <input class="form-control" ng-model="subjectCode">
 
         </div>
-        </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-disabled="isSending" ng-click="send()">Send</button>
             <button class="btn btn-default" ng-disabled="isSending" ng-click="cancel()">Avbryt</button>
         </div>
+    </div>
     </div>
     <div ng-if="sendPressed && isSuccess" class="container-fluid">
         <div class="modal-header">

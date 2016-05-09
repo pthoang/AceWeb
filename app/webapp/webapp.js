@@ -11,6 +11,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         })
             .success(function (response) {
                 $scope.subjects = response;
+                $scope.subjectSearch = function(item) {
+                    if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
+                        return true;
+                    }
+                    return false;
+                };
                 $scope.setColor = function (color) {
                     return {"background-color": '#'+color};
                 };
@@ -21,7 +27,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 $scope.loading = false;
             })
             .error(function(response) {
-                alert("En feil oppstod, prøv igjen om 1 minutt")
+                alert("En feil oppstod, prøv igjen om 1 minutt" + resp)
             });
 
         $scope.openSuggestion = function() {
@@ -182,7 +188,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         w.bind('resize', function() {
             $scope.$apply();
 
-        })
+        });
 
         $scope.startQuiz();
 
