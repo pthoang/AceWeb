@@ -2,7 +2,7 @@
 
 <div ng-include="'navbar/navbar_main.html'"></div>
 <div class="form-group" align="center">
-    <input class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter emne..." style="width: 400px; height: 50px;">
+    <input class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter fag..." style="width: 400px; height: 50px;">
     <br>
 </div>
 
@@ -18,7 +18,7 @@
 </div>
 <div ng-include="'modal/suggestionModal.html'"></div>
 
-<div ng-if="subjectFilter.length > 0" class="container-fluid" align="center" style="margin-top: 40px">
+<div ng-hide="loading" class="container-fluid" align="center" style="margin-top: 40px; margin-bottom: 40px">
     <p>Finner ikke det du leter etter?</p>
     <button class="btn btn-default" ng-click="openSuggestion()" onclick="this.blur()">Etterspør fag</button>
 </div>
