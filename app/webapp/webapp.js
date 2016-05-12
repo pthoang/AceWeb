@@ -22,6 +22,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 subjectsService.setFilterText($scope.subjectFilter)
             };
             $scope.subjectFilter = subjectsService.getFilterText();
+            subjectsService.setFilterText("");
             $scope.loading = false;
         }
         if(subjectsService.getInfo()) {
@@ -58,7 +59,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
     })
 
-    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService) {
+    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
         quizService.emptyExercises();
