@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4b3da72-35ec-41e8-9412-9225716a1d89" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/collections.html" afterPath="$PROJECT_DIR$/app/webapp/collections.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/navbar/navbar_quiz.html" afterPath="$PROJECT_DIR$/app/navbar/navbar_quiz.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/quiz.html" afterPath="$PROJECT_DIR$/app/webapp/quiz.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/webapp.js" afterPath="$PROJECT_DIR$/app/webapp/webapp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="AceWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,27 +27,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="124" column="50" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
+            <state vertical-scroll-proportion="1.0456942">
+              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
               <folding>
-                <element signature="e#152#1686#0" expanded="false" />
-                <element signature="e#1786#3954#0" expanded="false" />
-                <element signature="e#10399#11904#0" expanded="false" />
-                <element signature="e#11962#13036#0" expanded="false" />
-                <element signature="e#13096#14695#0" expanded="false" />
-                <element signature="e#14744#17714#0" expanded="false" />
+                <element signature="e#4620#8424#0" expanded="false" />
+                <element signature="e#8483#10569#0" expanded="false" />
+                <element signature="e#10627#12132#0" expanded="false" />
+                <element signature="e#12190#13264#0" expanded="false" />
+                <element signature="e#13324#14923#0" expanded="false" />
+                <element signature="e#14972#17942#0" expanded="false" />
+                <element signature="e#18042#19173#0" expanded="false" />
+                <element signature="e#19262#20380#0" expanded="false" />
+                <element signature="e#20422#22480#0" expanded="false" />
+                <element signature="e#22528#22820#0" expanded="false" />
+                <element signature="e#22865#23146#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="navbar_quiz.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="navbar_quiz.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/navbar/navbar_quiz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53222835">
+            <state vertical-scroll-proportion="-11.115385">
               <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
               <folding />
             </state>
@@ -127,7 +131,7 @@
       <file leaf-file-name="collections.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/collections.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
+            <state vertical-scroll-proportion="1.3076923">
               <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
               <folding />
             </state>
@@ -182,8 +186,8 @@
         <option value="$PROJECT_DIR$/app/webapp/webapp.html" />
         <option value="$PROJECT_DIR$/app/webapp/quiz.html" />
         <option value="$PROJECT_DIR$/app/webapp/collections.html" />
-        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
         <option value="$PROJECT_DIR$/app/navbar/navbar_quiz.html" />
+        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
       </list>
     </option>
   </component>
@@ -194,6 +198,13 @@
   <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="NamedScopeManager">
     <order />
@@ -640,7 +651,7 @@
       <workItem from="1456752078438" duration="4505000" />
       <workItem from="1457011138108" duration="40182000" />
       <workItem from="1460112542901" duration="78994000" />
-      <workItem from="1461168542193" duration="48708000" />
+      <workItem from="1461168542193" duration="55229000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1456753084359</created>
@@ -658,7 +669,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="422237000" />
+    <option name="totallyTimeSpent" value="428758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -752,12 +763,17 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#152#1686#0" expanded="false" />
-            <element signature="e#1786#3954#0" expanded="false" />
-            <element signature="e#10399#11904#0" expanded="false" />
-            <element signature="e#11962#13036#0" expanded="false" />
-            <element signature="e#13096#14695#0" expanded="false" />
-            <element signature="e#14744#17714#0" expanded="false" />
+            <element signature="e#4620#8424#0" expanded="false" />
+            <element signature="e#8483#10569#0" expanded="false" />
+            <element signature="e#10627#12132#0" expanded="false" />
+            <element signature="e#12190#13264#0" expanded="false" />
+            <element signature="e#13324#14923#0" expanded="false" />
+            <element signature="e#14972#17942#0" expanded="false" />
+            <element signature="e#18042#19173#0" expanded="false" />
+            <element signature="e#19262#20380#0" expanded="false" />
+            <element signature="e#20422#22480#0" expanded="false" />
+            <element signature="e#22528#22820#0" expanded="false" />
+            <element signature="e#22865#23146#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -832,12 +848,17 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#152#1686#0" expanded="false" />
-            <element signature="e#1786#3954#0" expanded="false" />
-            <element signature="e#10399#11904#0" expanded="false" />
-            <element signature="e#11962#13036#0" expanded="false" />
-            <element signature="e#13096#14695#0" expanded="false" />
-            <element signature="e#14744#17714#0" expanded="false" />
+            <element signature="e#4620#8424#0" expanded="false" />
+            <element signature="e#8483#10569#0" expanded="false" />
+            <element signature="e#10627#12132#0" expanded="false" />
+            <element signature="e#12190#13264#0" expanded="false" />
+            <element signature="e#13324#14923#0" expanded="false" />
+            <element signature="e#14972#17942#0" expanded="false" />
+            <element signature="e#18042#19173#0" expanded="false" />
+            <element signature="e#19262#20380#0" expanded="false" />
+            <element signature="e#20422#22480#0" expanded="false" />
+            <element signature="e#22528#22820#0" expanded="false" />
+            <element signature="e#22865#23146#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1136,17 +1157,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/quiz.html">
+    <entry file="file://$PROJECT_DIR$/app/navbar/navbar_quiz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="3" column="134" selection-start-line="3" selection-start-column="134" selection-end-line="3" selection-end-column="134" />
+        <state vertical-scroll-proportion="-11.115385">
+          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/collections.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
+        <state vertical-scroll-proportion="1.3076923">
           <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
           <folding />
         </state>
@@ -1160,26 +1181,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
+    <entry file="file://$PROJECT_DIR$/app/webapp/quiz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="124" column="50" selection-start-line="124" selection-start-column="50" selection-end-line="124" selection-end-column="50" />
-          <folding>
-            <element signature="e#152#1686#0" expanded="false" />
-            <element signature="e#1786#3954#0" expanded="false" />
-            <element signature="e#10399#11904#0" expanded="false" />
-            <element signature="e#11962#13036#0" expanded="false" />
-            <element signature="e#13096#14695#0" expanded="false" />
-            <element signature="e#14744#17714#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-1.9615384">
+          <caret line="3" column="134" selection-start-line="3" selection-start-column="134" selection-end-line="3" selection-end-column="134" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/navbar/navbar_quiz.html">
+    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53222835">
-          <caret line="17" column="73" selection-start-line="17" selection-start-column="73" selection-end-line="17" selection-end-column="73" />
-          <folding />
+        <state vertical-scroll-proportion="1.0456942">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+          <folding>
+            <element signature="e#4620#8424#0" expanded="false" />
+            <element signature="e#8483#10569#0" expanded="false" />
+            <element signature="e#10627#12132#0" expanded="false" />
+            <element signature="e#12190#13264#0" expanded="false" />
+            <element signature="e#13324#14923#0" expanded="false" />
+            <element signature="e#14972#17942#0" expanded="false" />
+            <element signature="e#18042#19173#0" expanded="false" />
+            <element signature="e#19262#20380#0" expanded="false" />
+            <element signature="e#20422#22480#0" expanded="false" />
+            <element signature="e#22528#22820#0" expanded="false" />
+            <element signature="e#22865#23146#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

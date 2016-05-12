@@ -3,32 +3,42 @@
 
 angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
-    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal) {
+    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, subjectsService, collectionsService) {
         $scope.loading = true;
-        $http({
-            method: 'GET',
-            url: $scope.url + '/subjects/'
-        })
-            .success(function (response) {
-                $scope.subjects = response;
-                $scope.subjectSearch = function(item) {
-                    if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
-                        return true;
-                    }
-                    return false;
-                };
-                $scope.setColor = function (color) {
-                    return {"background-color": '#'+color};
-                };
-                $scope.setTarget = function(target) {
-                    $scope.targetId = target._id;
-                    $cookies.putObject('targetSubject', target);
-                };
-                $scope.loading = false;
+        collectionsService.setInfo(undefined);
+        var initSubjects = function(subjectsInfo) {
+            $scope.subjects = subjectsInfo;
+            $scope.subjectSearch = function(item) {
+                if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
+                    return true;
+                }
+                return false;
+            };
+            $scope.setColor = function (color) {
+                return {"background-color": '#'+color};
+            };
+            $scope.setTarget = function(target) {
+                $scope.targetId = target._id;
+                $cookies.putObject('targetSubject', target);
+            };
+            $scope.loading = false;
+        }
+        if(subjectsService.getInfo()) {
+            initSubjects(subjectsService.getInfo())
+        }
+        else {
+            $http({
+                method: 'GET',
+                url: $scope.url + '/subjects/'
             })
-            .error(function(response) {
-                alert("En feil oppstod, prøv igjen om 1 minutt" + resp)
-            });
+                .success(function (response) {
+                    initSubjects(response)
+                    subjectsService.setInfo(response);
+                })
+                .error(function(response) {
+                    alert("En feil oppstod, prøv igjen om 1 minutt" + resp)
+                });
+        }
 
         $scope.openSuggestion = function() {
             var modalInstance = $uibModal.open({
@@ -47,7 +57,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
     })
 
-    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService) {
+    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService) {
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
         quizService.emptyExercises();
@@ -59,48 +69,57 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId) {
             $scope.hideHeader = true;
         }
-        $http({
-            method: 'GET',
-            url: $scope.url + '/subjects/' + subjectId
-        })
-            .success(function(response) {
-                if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId){
-                    $scope.hideHeader = true;
-                    $scope.subject = {
-                        _id: response._id,
-                        code: response.code,
-                        name: response.name,
-                        color: response.color
-                    };
-                    $cookies.putObject('targetSubject', $scope.subject);
-                    $scope.hideHeader = false;
-                }
-                $scope.collections = [];
-                var info = response.collections;
-                for(var collection in info) {
-                    $scope.collections.push({
-                        name: collection,
-                        value: info[collection].length
-                    });
-                }
-
-                $scope.setCollection = function(target, length){
-
-                    $scope.targetCollection = target;
-                    quizService.setCollectionName(target);
-                    for(var i=0; i < info[target].length; i++) {
-                        var stringExercise = JSON.stringify(info[target][i]);
-                        quizService.addExercises(JSON.parse(stringExercise))
-                    }
-                    quizService.setThreshold(length ? length:info[target].length);
-                    quizService.setModeModel($scope.modeModel)
+        var initCollections = function(collectionsInfo) {
+            if ($scope.hideHeader){
+                $scope.subject = {
+                    _id: collectionsInfo._id,
+                    code: collectionsInfo.code,
+                    name: collectionsInfo.name,
+                    color: collectionsInfo.color
                 };
+                $cookies.putObject('targetSubject', $scope.subject);
+                $scope.hideHeader = false;
+            }
+            $scope.collections = [];
+            var info = collectionsInfo.collections;
+            for(var collection in info) {
+                $scope.collections.push({
+                    name: collection,
+                    value: info[collection].length
+                });
+            }
 
-                $scope.loading = false;
-            });
+            $scope.setCollection = function(target, length){
+
+                $scope.targetCollection = target;
+                quizService.setCollectionName(target);
+                for(var i=0; i < info[target].length; i++) {
+                    var stringExercise = JSON.stringify(info[target][i]);
+                    quizService.addExercises(JSON.parse(stringExercise))
+                }
+                quizService.setThreshold(length ? length:info[target].length);
+                quizService.setModeModel($scope.modeModel)
+            };
+
+            $scope.loading = false;
+        };
+        if(collectionsService.getInfo()) {
+            initCollections(collectionsService.getInfo())
+        }
+        else {
+            $http({
+                method: 'GET',
+                url: $scope.url + '/subjects/' + subjectId
+            })
+                .success(function(response) {
+                    initCollections(response)
+                    collectionsService.setInfo(response);
+                });
+
+        }
     })
 
-    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService) {
+    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService, collectionsService) {
 
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
@@ -109,21 +128,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $location.path('/webapp/' + $routeParams.subjectId)
         }
         if($scope.subject._id != $routeParams.subjectId) {
-            $scope.hideBackButton = true;
-            $http({
-                method: 'GET',
-                url: $scope.url + '/subjects/' + $routeParams.subjectId
-            })
-                .success(function(response) {
-                    $scope.subject = {
-                        _id: response._id,
-                        code: response.code,
-                        name: response.name,
-                        color: response.color
-                    };
-                    $cookies.putObject('targetSubject', $scope.subject)
-                    $scope.hideBackButton = false;
-                })
+            var info = collectionsService.getInfo();
+            $scope.subject = {
+                _id: info._id,
+                code: info.code,
+                name: info.name,
+                color: info.color
+            };
+            $cookies.putObject('targetSubject', $scope.subject)
         }
 
         //-------------- Shuffles the exercises---------------
@@ -639,4 +651,32 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             getModeModel: getModeModel,
             shuffle: shuffle
         };
+    })
+    .service('collectionsService', function() {
+        var collectionsInfo;
+
+        var setInfo = function (info) {
+            collectionsInfo = info;
+        };
+        var getInfo = function() {
+            return collectionsInfo
+        };
+
+        return {
+            setInfo: setInfo,
+            getInfo: getInfo
+        }
+    })
+    .service('subjectsService', function() {
+        var subjectsInfo;
+        var setInfo = function(info) {
+            subjectsInfo = info;
+        };
+        var getInfo = function() {
+            return subjectsInfo;
+        };
+        return {
+            setInfo: setInfo,
+            getInfo: getInfo
+        }
     });
