@@ -3,9 +3,8 @@
 
 angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
-    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, subjectsService, collectionsService) {
+    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, subjectsService) {
         $scope.loading = true;
-        collectionsService.setInfo(undefined);
         var initSubjects = function(subjectsInfo) {
             $scope.subjects = subjectsInfo;
             $scope.subjectSearch = function(item) {
@@ -20,7 +19,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.setTarget = function(target) {
                 $scope.targetId = target._id;
                 $cookies.putObject('targetSubject', target);
+                subjectsService.setFilterText($scope.subjectFilter)
             };
+            $scope.subjectFilter = subjectsService.getFilterText();
             $scope.loading = false;
         }
         if(subjectsService.getInfo()) {
@@ -32,7 +33,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 url: $scope.url + '/subjects/'
             })
                 .success(function (response) {
-                    initSubjects(response)
+                    initSubjects(response);
                     subjectsService.setInfo(response);
                 })
                 .error(function(response) {
@@ -103,7 +104,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
             $scope.loading = false;
         };
-        if(collectionsService.getInfo()) {
+        if(collectionsService.getInfo() && collectionsService.getInfo()._id == $routeParams.subjectId ) {
             initCollections(collectionsService.getInfo())
         }
         else {
@@ -112,7 +113,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 url: $scope.url + '/subjects/' + subjectId
             })
                 .success(function(response) {
-                    initCollections(response)
+                    initCollections(response);
                     collectionsService.setInfo(response);
                 });
 
@@ -669,14 +670,23 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
     })
     .service('subjectsService', function() {
         var subjectsInfo;
+        var filterText;
         var setInfo = function(info) {
             subjectsInfo = info;
         };
         var getInfo = function() {
             return subjectsInfo;
         };
+        var setFilterText = function(text) {
+            filterText = text;
+        };
+        var getFilterText = function() {
+            return filterText;
+        };
         return {
             setInfo: setInfo,
-            getInfo: getInfo
+            getInfo: getInfo,
+            setFilterText: setFilterText,
+            getFilterText: getFilterText
         }
     });
