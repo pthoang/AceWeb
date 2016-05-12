@@ -56,19 +56,24 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
         $scope.modeModel = quizService.getModeModel() != undefined ? quizService.getModeModel() : 10;
         $scope.loading = true;
+        if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId) {
+            $scope.hideHeader = true;
+        }
         $http({
             method: 'GET',
             url: $scope.url + '/subjects/' + subjectId
         })
             .success(function(response) {
                 if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId){
+                    $scope.hideHeader = true;
                     $scope.subject = {
                         _id: response._id,
                         code: response.code,
                         name: response.name,
                         color: response.color
                     };
-                    $cookies.putObject('targetSubject', $scope.subject)
+                    $cookies.putObject('targetSubject', $scope.subject);
+                    $scope.hideHeader = false;
                 }
                 $scope.collections = [];
                 var info = response.collections;
@@ -95,13 +100,30 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             });
     })
 
-    .controller('quizCtrl', function ($scope, $cookies, $location,$uibModal, $routeParams, $window, quizService) {
+    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService) {
 
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
         $scope.exercises = quizService.getExercises();
         if($scope.exercises.length == 0) {
             $location.path('/webapp/' + $routeParams.subjectId)
+        }
+        if($scope.subject._id != $routeParams.subjectId) {
+            $scope.hideBackButton = true;
+            $http({
+                method: 'GET',
+                url: $scope.url + '/subjects/' + $routeParams.subjectId
+            })
+                .success(function(response) {
+                    $scope.subject = {
+                        _id: response._id,
+                        code: response.code,
+                        name: response.name,
+                        color: response.color
+                    };
+                    $cookies.putObject('targetSubject', $scope.subject)
+                    $scope.hideBackButton = false;
+                })
         }
 
         //-------------- Shuffles the exercises---------------
