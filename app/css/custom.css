@@ -12,6 +12,13 @@
     font-size: 20px;
 }
 
+.h1-subjectName {
+    font-family: 'Arvo', serif;
+}
+.collection-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+}
 
 
 .btn-collection {

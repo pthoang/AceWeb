@@ -1,6 +1,27 @@
 
 
 <div ng-include="'navbar/navbar_main.html'"></div>
+
+<div class="container-fluid" style="width: 100%; background-color: #336E7B; margin-top: -20px" align="center">
+    <div class="container-fluid" style="width: 35%;" align="center">
+        <div class="row">
+            <div class="col-lg-8">
+                <h5 style="color: white;">Ace Education fins også til iOS og Android!</h5>
+            </div>
+            <div class="col-lg-4" align="center">
+                <a href="https://play.google.com/store/apps/details?id=theaceteam.ace" target="_blank">
+                    <img src="img/android_white.svg" style="width: 25px; margin: 5px">
+                </a>
+                <a href="https://itunes.apple.com/no/app/ace-education/id1055205858?l=no&mt=8" target="_blank">
+                    <img src="img/apple_white.svg" style="width: 25px; margin: 5px">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="width: 80px; margin-bottom: 20px" align="center">
+</div>
 <div class="form-group" align="center">
     <input class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter fag..." style="width: 400px; height: 50px;">
     <br>
@@ -10,7 +31,7 @@
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectSearch">
         <a ng-if="i.released" ng-href="#/webapp/{{targetId}}">
             <button class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
-                <h1 style="color: white; margin-top: 0;">{{i.name}}</h1>
+                <h1 class="h1-subjectName" style="color: white; margin-top: 0;">{{i.name}}</h1>
                 <h4 style="color: white; margin-bottom: 0;">{{i.code}}</h4>
             </button>
         </a>
