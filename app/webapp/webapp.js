@@ -225,9 +225,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.$apply();
 
         });
-        $scope.doBlur = function($event) {
-            var target = $event.target;
-            target.blur()
+        $scope.getButtonClass = function() {
+            return 'btn-quiz';
         };
 
         $scope.startQuiz();
