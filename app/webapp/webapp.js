@@ -174,6 +174,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
         $scope.incrementScore = function() {
             $scope.score++;
+            buttonClassNum = 0;
         };
         $scope.startQuiz = function() {
             $scope.threshold = Math.min(quizService.getThreshold(), $scope.exercises.length);
@@ -225,7 +226,15 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.$apply();
 
         });
-        $scope.getButtonClass = function() {
+        var buttonClassNum = 0;
+        $scope.getButtonClass = function(i, length) {
+            if(i+1==length){
+                buttonClassNum = 1
+            }
+
+            if(buttonClassNum) {
+                return 'btn-quizloaded'
+            }
             return 'btn-quiz';
         };
 
