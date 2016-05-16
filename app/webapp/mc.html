@@ -4,11 +4,11 @@
 
     <div class="container-fluid" style="width: 85%">
 
-        <h3 align="left" style="height: 160px; width: auto">{{exercises[number].question}}</h3>
+        <h3 align="left" style="height: 160px; width: ">{{exercises[number].question}}</h3>
 
 
-        <div ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-repeat="i in ordering" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/alternatives.length-1) +'%'}">
-            <button class="btn-quiz btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="doBlur($event)">
+        <div ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-repeat="i in ordering" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/alternatives.length-1) +'%'}" ng-click="doBlur($event)">
+            <button id="{{i}}" class="btn-quiz btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)">
                 {{alternatives[i]}}
             </button>
         </div>

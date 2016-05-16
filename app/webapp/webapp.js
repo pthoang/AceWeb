@@ -313,7 +313,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             if($scope.nextBtn) {
                 return $scope.nextExercise()
             }
-
             $scope.nextBtn = true;
             styles[$scope.alternatives.length-1] = quizService.getCorrectStyle();
             if(i == $scope.alternatives.length-1) {
