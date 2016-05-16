@@ -8,7 +8,7 @@
 
 
         <div ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-repeat="i in ordering" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/alternatives.length-1) +'%'}">
-            <button class="btn-quiz btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="this.blur()">
+            <button class="btn-quiz btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="doBlur($event)">
                 {{alternatives[i]}}
             </button>
         </div>
