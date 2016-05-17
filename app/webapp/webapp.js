@@ -154,7 +154,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
         $scope.incrementNumber = function() {
             $scope.number++;
-            buttonClassNum = 0;
+            $scope.buttonClassNum = 0;
         };
         $scope.updateExercises = function () {
             for(var k=0; k < $scope.wrongList.length; k++) {
@@ -226,15 +226,16 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.$apply();
 
         });
-        var buttonClassNum = 0;
+        $scope.buttonClassNum = 0;
         $scope.getButtonClass = function(i, length) {
-            if(i+1==length){
-                buttonClassNum = 1
-            }
-            if(buttonClassNum) {
+
+            if($scope.buttonClassNum) {
                 return 'btn-quizloaded'
             }
             return 'btn-quiz';
+        };
+        $scope.setButtonClassNum = function() {
+            $scope.buttonClassNum = 1
         };
 
         $scope.startQuiz();
