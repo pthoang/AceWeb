@@ -22,17 +22,22 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 subjectsService.setScrollPos(target._id);
                 subjectsService.setFilterText($scope.subjectFilter);
             };
-            //var w = angular.element($window);
-            //w.bind('scroll', function() {
-            //    $scope.$apply();
-            //});
+            var w = angular.element($window);
+            w.bind('scroll', function() {
+                if(window.pageYOffset > 200) {
+                    document.getElementById('1').focus();
+                    $scope.stickySearch = true;
+                } else {
+                    document.getElementById('0').focus();
+                    $scope.stickySearch = false;
+                }
+                $scope.$apply();
+            });
             //$scope.getSearchClass = function() {
             //    if(window.pageYOffset > 200) {
-            //        $scope.searchPosHolder = true;
-            //        return 'fixed-search'
+            //        $scope.stickySearch = true;
             //    } else {
-            //        $scope.searchPosHolder = false;
-            //        return 'container-fluid';
+            //        $scope.stickeSearch = false;
             //    }
             //};
             $scope.subjectFilter = subjectsService.getFilterText();
