@@ -1,7 +1,9 @@
 
 <div ng-app="mainApp.webapp" ng-controller="pdCtrl">
     <div class="container-fluid" align="center" style="width: 85%;">
-        <h1 style="height: 160px">{{exercises[number].question}}</h1>
+        <div ng-style="getQHeight() > 170 ? {'height': (getQHeight()+30)+'px'}:{'height': 190+'px'}" class="container-fluid">
+            <h1 id="question">{{exercises[number].question}}</h1>
+        </div>
 
         <div ng-repeat="i in ordering track by $index" ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/ordering.length-1)+'%'}">
             <button ng-mouseover="setButtonClassNum()" ng-class="getButtonClass($index, ordering.length)" class="btn-mcalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">

@@ -15,6 +15,11 @@
 .h1-subjectName {
     font-family: 'Arvo', serif;
 }
+.fixed-search {
+    position: fixed;
+    top: 0;
+}
+
 .collection-text {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;

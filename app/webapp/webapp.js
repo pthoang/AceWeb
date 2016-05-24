@@ -3,7 +3,7 @@
 
 angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
-    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, subjectsService) {
+    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, $location,$window, subjectsService) {
         $scope.loading = true;
         var initSubjects = function(subjectsInfo) {
             $scope.subjects = subjectsInfo;
@@ -19,14 +19,38 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.setTarget = function(target) {
                 $scope.targetId = target._id;
                 $cookies.putObject('targetSubject', target);
-                subjectsService.setFilterText($scope.subjectFilter)
+                subjectsService.setScrollPos(target._id);
+                subjectsService.setFilterText($scope.subjectFilter);
             };
+            //var w = angular.element($window);
+            //w.bind('scroll', function() {
+            //    $scope.$apply();
+            //});
+            //$scope.getSearchClass = function() {
+            //    if(window.pageYOffset > 200) {
+            //        $scope.searchPosHolder = true;
+            //        return 'fixed-search'
+            //    } else {
+            //        $scope.searchPosHolder = false;
+            //        return 'container-fluid';
+            //    }
+            //};
             $scope.subjectFilter = subjectsService.getFilterText();
-            subjectsService.setFilterText("");
             $scope.loading = false;
-        }
+            if(subjectsService.getScrollPos()) {
+                $location.replace();
+                $location.hash(subjectsService.getScrollPos());
+                if(!subjectsService.getFilterRemove()) {
+                    subjectsService.setFilterRemove();
+                } else {
+                    subjectsService.setScrollPos("subjectSearch");
+                    subjectsService.setFilterText("");
+                    subjectsService.setFilterRemove();
+                }
+            }
+        };
         if(subjectsService.getInfo()) {
-            initSubjects(subjectsService.getInfo())
+            initSubjects(subjectsService.getInfo());
         }
         else {
             $http({
@@ -58,6 +82,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
 
     })
+    .run(function($anchorScroll) {
+        $anchorScroll.yOffset = window.innerHeight/2 - 70;
+    })
 
     .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
         var subjectId = $routeParams.subjectId;
@@ -77,7 +104,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     _id: collectionsInfo._id,
                     code: collectionsInfo.code,
                     name: collectionsInfo.name,
-                    color: collectionsInfo.color
+                    color: collectionsInfo.color,
+                    description: collectionsInfo.description
                 };
                 $cookies.putObject('targetSubject', $scope.subject);
                 $scope.hideHeader = false;
@@ -135,12 +163,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 _id: info._id,
                 code: info.code,
                 name: info.name,
-                color: info.color
+                color: info.color,
+                description: info.description
             };
             $cookies.putObject('targetSubject', $scope.subject)
         }
 
-        //-------------- Shuffles the exercises---------------
         quizService.shuffle($scope.exercises);
         $scope.number = 0;
         $scope.round = 0;
@@ -240,6 +268,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
         $scope.startQuiz();
 
+        $scope.getQHeight = function() {
+            return document.getElementById('question').offsetHeight;
+        }
 
     })
     .controller('pdCtrl', function ($scope, quizService) {
@@ -349,7 +380,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
         $scope.getStyle = function(i) {
             return styles[i]
-        }
+        };
+
 
     })
     .controller('tfCtrl', function($scope, quizService) {
@@ -683,6 +715,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
     .service('subjectsService', function() {
         var subjectsInfo;
         var filterText;
+        var scrollPos;
+        var filterRemove = 0;
         var setInfo = function(info) {
             subjectsInfo = info;
         };
@@ -695,10 +729,26 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         var getFilterText = function() {
             return filterText;
         };
+        var setScrollPos = function (number) {
+            scrollPos = number;
+        };
+        var getScrollPos = function() {
+            return scrollPos;
+        };
+        var setFilterRemove = function() {
+            filterRemove = filterRemove==1? 0:1;
+        };
+        var getFilterRemove = function() {
+            return filterRemove;
+        };
         return {
             setInfo: setInfo,
             getInfo: getInfo,
             setFilterText: setFilterText,
-            getFilterText: getFilterText
+            getFilterText: getFilterText,
+            setScrollPos: setScrollPos,
+            getScrollPos: getScrollPos,
+            setFilterRemove: setFilterRemove,
+            getFilterRemove: getFilterRemove
         }
     });

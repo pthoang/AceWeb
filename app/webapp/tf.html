@@ -3,7 +3,9 @@
 <div ng-app="mainApp.webapp" ng-controller="tfCtrl">
 
     <div class="container-fluid" style="width: 85%">
-        <h3 align="left" style="height: 160px;">{{exercises[number].question}}</h3>
+        <div ng-style="getQHeight() > 170 ? {'height': (getQHeight()+30)+'px'}:{'height': 190+'px'}" class="container-fluid">
+            <h3 id="question" align="left">{{exercises[number].question}}</h3>
+        </div>
 
         <div ng-repeat="i in ordering track by $index" ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/2-1)+'%'}">
             <button ng-mouseover="setButtonClassNum()" ng-class="getButtonClass($index, ordering.length)" class="btn-tfalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
