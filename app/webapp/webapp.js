@@ -37,16 +37,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             //};
             $scope.subjectFilter = subjectsService.getFilterText();
             $scope.loading = false;
+            $scope.resetMain = function() {
+                subjectsService.setFilterText('');
+                subjectsService.setScrollPos('0');
+            };
             if(subjectsService.getScrollPos()) {
                 $location.replace();
                 $location.hash(subjectsService.getScrollPos());
-                if(!subjectsService.getFilterRemove()) {
-                    subjectsService.setFilterRemove();
-                } else {
-                    subjectsService.setScrollPos("subjectSearch");
-                    subjectsService.setFilterText("");
-                    subjectsService.setFilterRemove();
-                }
             }
         };
         if(subjectsService.getInfo()) {
@@ -130,7 +127,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 quizService.setThreshold(length ? length:info[target].length);
                 quizService.setModeModel($scope.modeModel)
             };
-
             $scope.loading = false;
         };
         if(collectionsService.getInfo() && collectionsService.getInfo()._id == $routeParams.subjectId ) {
