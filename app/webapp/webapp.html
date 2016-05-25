@@ -34,7 +34,7 @@
             <h4 style="color: white; margin-bottom: 0;">{{prevSubject.code}}</h4>
         </button>
     </a>
-    <h4 class="opensans-text" align="left" style="width: 60%; margin-left: 20px">Alle fag:</h4>
+    <h4 ng-if="prevSubject" class="opensans-text" align="left" style="width: 60%; margin-left: 20px">Alle fag:</h4>
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectSearch">
         <a ng-if="i.released" ng-href="#/webapp/{{targetId}}">
             <button id="{{i._id}}" class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
