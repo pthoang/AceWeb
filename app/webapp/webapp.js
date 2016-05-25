@@ -78,7 +78,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
     })
 
-    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService) {
+    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
         quizService.emptyExercises();
@@ -122,6 +122,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 quizService.setThreshold(length ? length:info[target].length);
                 quizService.setModeModel($scope.modeModel)
             };
+            subjectsService.setTargetSubject($scope.subject);
             $scope.loading = false;
         };
         if(collectionsService.getInfo() && collectionsService.getInfo()._id == $routeParams.subjectId ) {
