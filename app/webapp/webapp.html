@@ -1,6 +1,6 @@
 
 
-<div ng-include="'navbar/navbar_main.html'"></div>
+<div ng-include="'navbar/navbar_main.html'" autoscroll="true"></div>
 
 <div class="container-fluid" style="background-color: #336E7B; margin-top: -20px" align="center">
     <div class="container-fluid" align="center">
@@ -22,10 +22,19 @@
     <input id="0" class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter fag..." style="width: 400px; height: 50px; margin-top: 10px">
 </div>
 <div ng-show="stickySearch" class="fixed-search" align="center" style="margin-bottom: 30px; width: 100%; height: 70px; background-color: #F1F1F2">
-    <input id="1" onkeyup="window.scrollTo(0,200)" class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter fag..." style="width: 400px; height: 50px; margin-top: 10px">
+    <input id="1" onkeyup="window.scrollTo(0,205)" class="form-control" ng-model="subjectFilter" type="text" placeholder="Søk etter fag..." style="width: 400px; height: 50px; margin-top: 10px">
 </div>
 
 <div class="container-fluid" align="center">
+
+    <h4 ng-if="prevSubject && !subjectFilter" class="opensans-text" align="left" style="width: 60%; margin-left: 20px">Sist besøkte fag:</h4>
+    <a ng-if="prevSubject && !subjectFilter" ng-href="#/webapp/{{targetId}}">
+        <button id="{{prevSelectdSubject._id}}" class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(prevSubject.color)" ng-click="setTarget(prevSubject)">
+            <h1 class="h1-subjectName" style="color: white; margin-top: 0;">{{prevSubject.name}}</h1>
+            <h4 style="color: white; margin-bottom: 0;">{{prevSubject.code}}</h4>
+        </button>
+    </a>
+    <h4 class="opensans-text" align="left" style="width: 60%; margin-left: 20px">Alle fag:</h4>
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectSearch">
         <a ng-if="i.released" ng-href="#/webapp/{{targetId}}">
             <button id="{{i._id}}" class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">

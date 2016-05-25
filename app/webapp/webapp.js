@@ -19,37 +19,31 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             $scope.setTarget = function(target) {
                 $scope.targetId = target._id;
                 $cookies.putObject('targetSubject', target);
-                subjectsService.setScrollPos(target._id);
+                subjectsService.setTargetSubject(target);
                 subjectsService.setFilterText($scope.subjectFilter);
             };
             var w = angular.element($window);
             w.bind('scroll', function() {
-                if(window.pageYOffset > 200) {
-                    document.getElementById('1').focus();
+                if(window.pageYOffset > 205) {
+                    document.getElementById('0').blur();
                     $scope.stickySearch = true;
+
                 } else {
-                    document.getElementById('0').focus();
+                    if(document.getElementById('1').value.length > 0) {
+                        document.getElementById('0').focus();
+                        document.getElementById('0').selectionStart = document.getElementById('1').value.length ;
+                    }
                     $scope.stickySearch = false;
                 }
                 $scope.$apply();
             });
-            //$scope.getSearchClass = function() {
-            //    if(window.pageYOffset > 200) {
-            //        $scope.stickySearch = true;
-            //    } else {
-            //        $scope.stickeSearch = false;
-            //    }
-            //};
+
             $scope.subjectFilter = subjectsService.getFilterText();
+            $scope.prevSubject = subjectsService.getTargetSubject();
             $scope.loading = false;
             $scope.resetMain = function() {
                 subjectsService.setFilterText('');
-                subjectsService.setScrollPos('0');
             };
-            if(subjectsService.getScrollPos()) {
-                $location.replace();
-                $location.hash(subjectsService.getScrollPos());
-            }
         };
         if(subjectsService.getInfo()) {
             initSubjects(subjectsService.getInfo());
@@ -82,13 +76,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             })
         };
 
-
-    })
-    .run(function($anchorScroll) {
-        $anchorScroll.yOffset = window.innerHeight/2 - 70;
     })
 
-    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
+    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService) {
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
         quizService.emptyExercises();
@@ -123,7 +113,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
             $scope.setCollection = function(target, length){
 
-                $scope.targetCollection = target;
+                $scope.targetCollection = target.replace('/', '').replace('#', '').replace(" ", "");
                 quizService.setCollectionName(target);
                 for(var i=0; i < info[target].length; i++) {
                     var stringExercise = JSON.stringify(info[target][i]);
@@ -716,8 +706,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
     .service('subjectsService', function() {
         var subjectsInfo;
         var filterText;
-        var scrollPos;
-        var filterRemove = 0;
+        var targetSubject;
         var setInfo = function(info) {
             subjectsInfo = info;
         };
@@ -730,26 +719,19 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         var getFilterText = function() {
             return filterText;
         };
-        var setScrollPos = function (number) {
-            scrollPos = number;
+        var setTargetSubject = function(target) {
+            targetSubject = target;
         };
-        var getScrollPos = function() {
-            return scrollPos;
+        var getTargetSubject = function() {
+            return targetSubject;
         };
-        var setFilterRemove = function() {
-            filterRemove = filterRemove==1? 0:1;
-        };
-        var getFilterRemove = function() {
-            return filterRemove;
-        };
+
         return {
             setInfo: setInfo,
             getInfo: getInfo,
             setFilterText: setFilterText,
             getFilterText: getFilterText,
-            setScrollPos: setScrollPos,
-            getScrollPos: getScrollPos,
-            setFilterRemove: setFilterRemove,
-            getFilterRemove: getFilterRemove
+            setTargetSubject: setTargetSubject,
+            getTargetSubject: getTargetSubject
         }
     });
