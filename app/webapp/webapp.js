@@ -29,9 +29,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                     $scope.stickySearch = true;
 
                 } else {
-                    if(document.getElementById('1').value.length > 0) {
+                    if(document.getElementById('1').value.length > 0 && $scope.stickySearch) {
                         document.getElementById('0').focus();
-                        document.getElementById('0').selectionStart = document.getElementById('1').value.length ;
                     }
                     $scope.stickySearch = false;
                 }
@@ -40,6 +39,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
             $scope.subjectFilter = subjectsService.getFilterText();
             $scope.prevSubject = subjectsService.getTargetSubject();
+            if($cookies.getObject('targetSubject') && !$scope.prevSubject) {
+                $scope.prevSubject = $cookies.getObject('targetSubject')
+            }
             $scope.loading = false;
             $scope.resetMain = function() {
                 subjectsService.setFilterText('');
