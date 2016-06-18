@@ -1,56 +1,37 @@
+<div class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
+    <div ng-hide="hideHeader" ng-include="'navbar/navbar_collections.html'" style="width: 960px; margin-left: -15px"></div>
 
-<div ng-hide="hideHeader" ng-include="'navbar/navbar_collections.html'"></div>
 
-<!--<div ng-hide="hideHeader" class="container-fluid" style="width: 30%; border-color: black; border: 1px" align="center">-->
-    <!--<div class="panel panel-default">-->
-        <!--<div class="panel-heading" ng-style="setColor(subject.color)" style="height: 40px">-->
-            <!--<img src="img/info.png" style="height: 30px; margin-top: -5px" align="left" ng-click="alert(1)"> beskri-->
-        <!--</div>-->
-        <!--<div class="panel-body" style="border-color: black">-->
-            <!--<h4>{{subject.description}}</h4>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-
-<div class="container-fluid" align="center" style="text-align: center">
-    <div class="btn-group" style="width: 85%; margin-bottom: 50px;">
-        <h3 style="float: left; margin-right: 20px; margin-left: 20%;">Quizmodus:</h3>
-        <label class="btn btn-default" uib-btn-radio="10" ng-model="modeModel" style="width: 10%">
-            <h4>10</h4>
-        </label>
-        <label class="btn btn-default" uib-btn-radio="0" ng-model="modeModel" style="width: 10%">
-            <h4>Alle</h4>
-        </label>
-        <input class="form-control" ng-model="collectionFilter.name" placeholder="Finn..." style="width: 25%; height: 50px; float: left; margin-left: 5%" align="center">
-    </div>
-</div>
-
-<div class="container-fluid" style="width: 85%;">
-    <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter">
-            <a href="#/webapp/{{subject._id}}/{{targetCollection}}">
-                <button class="btn btn-default btn-collection" ng-click="setCollection(collection.name, modeModel)">
-                    <h4 class="opensans-text">{{collection.name}}</h4>
-                    <p>{{collection.value}} oppgaver</p>
-                </button>
-            </a>
+    <div class="container-fluid" align="center" style="text-align: center; margin-top: 10px">
+        <div class="btn-group" style="width: 100%; margin-bottom: 50px;">
+            <h3 style="float: left; margin-right: 20px; margin-left: 15%;">Quizmodus:</h3>
+            <label class="btn btn-default" uib-btn-radio="10" ng-model="modeModel" style="width: 15%">
+                <h4>10</h4>
+            </label>
+            <label class="btn btn-default" uib-btn-radio="0" ng-model="modeModel" style="width: 15%">
+                <h4>Alle</h4>
+            </label>
+            <input class="form-control" ng-model="collectionFilter.name" placeholder="Finn..." style="width: 25%; height: 50px; float: left; margin-left: 5%" align="center">
         </div>
     </div>
+
+    <div class="container-fluid" style="width: 100%; margin-bottom: 30px">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter">
+                <a href="#/webapp/{{subject._id}}/{{targetCollection}}">
+                    <button class="btn btn-default btn-collection" ng-click="setCollection(collection.name, modeModel)">
+                        <h4 class="opensans-text">{{collection.name}}</h4>
+                        <p>{{collection.value}} oppgaver</p>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="cssload-container" ng-show="loading">
+        <div class="cssload-item cssload-moon"></div>
+    </div>
 </div>
 
-<!--<div class="container-fluid" style="width: 85%; text-align: center">-->
-    <!--<div ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter" style="display: inline-block">-->
-        <!--<a href="#/webapp/{{subject._id}}/{{targetCollection}}">-->
-            <!--<button class="btn btn-default btn-collection" ng-click="setCollection(collection.name, modeModel)">-->
-                <!--<h4>{{collection.name}}</h4>-->
-                <!--<p>{{collection.value}} oppgaver</p>-->
-            <!--</button>-->
-        <!--</a>-->
-    <!--</div>-->
-<!--</div>-->
 
 
-<div class="cssload-container" ng-show="loading">
-    <div class="cssload-item cssload-moon"></div>
-</div>
 

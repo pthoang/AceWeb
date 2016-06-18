@@ -1,18 +1,20 @@
 
-<div ng-include="'navbar/navbar_quiz.html'"></div>
-<div ng-if="number-threshold*(round-1) < threshold" class="container-fluid div-progressbar" style="width: 85%; margin-top: -40px;">
-    <uib-progressbar max="threshold" value="threshold - (number+1-threshold*(round-1))" type="custom" ng-style="setColor(subject.color)">
-        <span style="color: black; white-space: nowrap; "></span>
-    </uib-progressbar>
+
+<div ng-style="{'height': document.}" class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
+    <div ng-include="'navbar/navbar_quiz.html'" style="width: 960px; margin-left: -15px"></div>
+    <div ng-if="number-threshold*(round-1) < threshold" class="container-fluid div-progressbar" style="width: 990px; margin-top: -40px;; margin-left: -30px">
+        <uib-progressbar max="threshold" value="threshold - (number+1-threshold*(round-1))" type="custom" ng-style="setColor(subject.color)">
+            <span style="color: black; white-space: nowrap; "></span>
+        </uib-progressbar>
+    </div>
+
+    <div ng-include="'modal/reportModal.html'"></div>
+    <div ng-include="showByType(number)"></div>
 </div>
+
+
+
 <script type="text/ng-template" id="exerciseInfo.html">
     <div ng-if="exercises[number].explanation == undefined">Ingen forklaring til oppgaven...</div>
     <div>{{exercises[number].explanation}}</div>
 </script>
-
-<div ng-include="'modal/reportModal.html'"></div>
-
-<div ng-include="showByType(number)"></div>
-
-
-

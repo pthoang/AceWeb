@@ -6,12 +6,31 @@
     <title>Ace(beta)</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel=stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css">
     <link href='https://fonts.googleapis.com/css?family=Arvo:700|Open+Sans:300' rel='stylesheet' type='text/css'>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
 </head>
+<nav class="navbar navbar-default" style="background-color: black">
+    <div class="container-fluid" style="width: 960px;">
+        <ul class="nav navbar-nav">
+            <li><a href="#/"><img ng-click="resetMain()" src="img/ace.png" style="width: 100px;"></a></li>
+            <li><a href="#">Quizzer</a></li>
+            <li><a href="#">Content editor</a></li>
+            <li><a href="#/about">Om oss</a></li>
+        </ul>
+        <ul class="nav navbar-nav" style="float: right">
+            <li><a href="#">Min profil</a></li>
+        </ul>
+    </div>
+</nav>
 <body style="background-color: #F1F1F2">
 <div ng-if="showAll" ng-view></div>
+
+<div class="container-fluid" align="center" style="margin-top: 50px;margin-bottom: 50px">
+    Diverse
+</div>
 
 
 <script src="bower_components/angular/angular.js"></script>
@@ -19,6 +38,7 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-hotkeys/build/hotkeys.js"></script>
 <script src="mainApp.js"></script>
 <script src="info/about.js"></script>
 <script src="webapp/webapp.js"></script>

@@ -52,7 +52,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
+    border: 1px solid grey;
     border-radius: 4px;
 }
 .btn-quizloaded {
@@ -73,7 +73,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border: 1px solid transparent;
+    border: 1px solid grey;
     border-radius: 4px;
 }
 

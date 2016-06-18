@@ -1,24 +1,13 @@
 
-<nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 150px;" ng-style="setColor(subject.color)">
+<nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 100px;" ng-style="setColor(subject.color)">
     <div class="container-fluid">
 
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-            </ul>
-        </div>
-        <div class="container-fluid" style="position: absolute; right: 10px">
-            <a href="#/about"><span class="glyphicon glyphicon-info-sign" style="color: white; font-size: 30px;"></span> </a>
-        </div>
-        <div ng-hide="hideBackButton" class="container-fluid" style="float: left">
+        <div ng-hide="hideBackButton" class="container-fluid" style="position: absolute; top: 25px; left: 50px">
             <a href="#/webapp/{{subject._id}}">
-                <span class="glyphicon glyphicon-chevron-left" style=" float: left;color: white;font-size: 25px;"></span>
-                <h4 style="float: left; margin-top: 4px; color: white;">{{subject.name}}</h4>
+                <img src="img/x_white.png" style="width: 30px">
             </a>
         </div>
-        <div class="container-fluid" align="center" style="width: 100px">
-            <a href="#/"> <img src="img/ace_white.png" style="width: 50px; margin-top: -5px"> </a>
-        </div>
-        <div class="container-fluid" align="center" style="margin-top: -20px">
+        <div class="container-fluid" align="center">
             <h1 class="h1-subjectName" style="color: white;">{{collectionName}}</h1>
             <h4 ng-if="number-threshold*(round-1) < threshold" style="color: white">{{number+1-threshold*(round-1)}} / {{threshold}}</h4>
         </div>

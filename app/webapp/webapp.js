@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
+angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, $location,$window, subjectsService) {
         $scope.loading = true;
@@ -24,7 +24,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             };
             var w = angular.element($window);
             w.bind('scroll', function() {
-                if(window.pageYOffset > 205) {
+                if(window.pageYOffset > 240) {
                     document.getElementById('0').blur();
                     $scope.stickySearch = true;
 
@@ -267,7 +267,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         }
 
     })
-    .controller('pdCtrl', function ($scope, quizService) {
+    .controller('pdCtrl', function ($scope, quizService, hotkeys) {
         $scope.nextExercise = function() {
             $scope.incrementNumber();
             $scope.nextBtn = false;
@@ -275,13 +275,15 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 randAlternatives = [];
                 $scope.ordering = [];
                 selectRandomAlternatives();
-                quizService.shuffle($scope.ordering);
                 styles = {}
             }
         };
 
         var styles = {};
         $scope.checkAnswer = function(i) {
+            for(var j=0; j < $scope.ordering.length; j++) {
+                hotkeys.del(''+(j+1));
+            }
             if($scope.nextBtn){
 
                 return $scope.nextExercise();
@@ -301,6 +303,24 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
             return styles[i]
 
         };
+        hotkeys.bindTo($scope).add({
+            combo:'n',
+            description: "Neste oppgave",
+            callback: function () {
+                if($scope.nextBtn) {
+                    $scope.nextExercise()
+                }
+            }
+        });
+        $scope.makeHotkey = function (i, key) {
+            hotkeys.bindTo($scope).add({
+                combo: (key+1)+'',
+                description: 'Svar på alternativ ' + (key+1),
+                callback: function () {
+                    $scope.checkAnswer(i)
+                }
+            })
+        };
         $scope.ordering = [];
         var randAlternatives = [];
         var selectRandomAlternatives = function () {
@@ -313,10 +333,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 $scope.ordering.push(i);
             }
             $scope.ordering.push($scope.ordering.length);
+            quizService.shuffle($scope.ordering);
+            for(var j=0; j <$scope.ordering.length; j++) {
+                $scope.makeHotkey($scope.ordering[j], j)
+            }
+
 
         };
         selectRandomAlternatives();
-        quizService.shuffle($scope.ordering);
 
         $scope.getAlternative = function(i) {
             if(i == $scope.ordering.length-1) {
@@ -328,14 +352,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
 
     })
-    .controller('mcCtrl', function($scope, quizService) {
+    .controller('mcCtrl', function($scope, quizService, hotkeys) {
 
         $scope.nextExercise = function () {
             $scope.incrementNumber();
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number].type == "mc") {
                 initAlternatives();
-                quizService.shuffle($scope.ordering);
                 styles = {}
             }
 
@@ -343,7 +366,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         };
         var styles = {};
         $scope.checkAnswer = function(i) {
+            for(var j=0; j < $scope.ordering.length; j++) {
+                hotkeys.del(''+(j+1));
+            }
             if($scope.nextBtn) {
+
                 return $scope.nextExercise()
             }
             $scope.nextBtn = true;
@@ -355,6 +382,25 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 styles[i] = quizService.getWrongStyle();
                 $scope.wrongList.push($scope.number)
             }
+
+        };
+        hotkeys.bindTo($scope).add({
+            combo:'n',
+            description: "Neste oppgave",
+            callback: function () {
+                if($scope.nextBtn) {
+                    $scope.nextExercise()
+                }
+            }
+        });
+        $scope.makeHotkey = function (i, key) {
+            hotkeys.bindTo($scope).add({
+                    combo: (key+1)+'',
+                    description: 'Svar på alternativ ' + (key+1),
+                    callback: function () {
+                        $scope.checkAnswer(i)
+                    }
+                })
         };
 
 
@@ -367,22 +413,29 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
                 $scope.ordering.push(i+1)
             }
             $scope.alternatives.push($scope.exercises[$scope.number].correctAnswer);
+            quizService.shuffle($scope.ordering);
+            for(var j=0; j <$scope.ordering.length; j++) {
+                $scope.makeHotkey($scope.ordering[j], j)
+            }
+
         };
 
         initAlternatives();
-        quizService.shuffle($scope.ordering);
 
         $scope.getStyle = function(i) {
             return styles[i]
         };
 
 
+
+
     })
-    .controller('tfCtrl', function($scope, quizService) {
+    .controller('tfCtrl', function($scope, quizService, hotkeys) {
         $scope.nextExercise = function () {
             $scope.incrementNumber();
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number].type == "tf") {
+                $scope.initHotkeys()
                 correctAnswer = $scope.exercises[$scope.number].correctAnswer? 1:0;
                 styles = {};
             }
@@ -390,8 +443,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
         var styles = {};
         var correctAnswer = $scope.exercises[$scope.number].correctAnswer? 1:0;
-
         $scope.checkAnswer = function(i){
+            for(var j=0; j < $scope.ordering.length; j++) {
+                hotkeys.del(''+(j+1));
+            }
             if($scope.nextBtn){
                 return $scope.nextExercise()
             }
@@ -409,8 +464,31 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
         $scope.getStyle = function(i) {
             return styles[i]
         };
+        hotkeys.bindTo($scope).add({
+            combo:'n',
+            description: "Neste oppgave",
+            callback: function () {
+                if($scope.nextBtn) {
+                    $scope.nextExercise()
+                }
+            }
+        });
+        $scope.makeHotkey = function (i, key) {
+            hotkeys.bindTo($scope).add({
+                combo: (key+1)+'',
+                description: 'Svar på alternativ ' + (key+1),
+                callback: function () {
+                    $scope.checkAnswer(i)
+                }
+            })
+        };
         $scope.alternatives =["False", "True"];
-        $scope.ordering = [1,0]
+        $scope.ordering = [1,0];
+        $scope.initHotkeys = function () {
+            $scope.makeHotkey($scope.ordering[0], 0);
+            $scope.makeHotkey($scope.ordering[1], 1)
+        };
+        $scope.initHotkeys()
     })
     .controller('mtfCtrl', function ($scope, quizService) {
 
@@ -465,7 +543,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies'])
 
 
     })
-    .controller('resultCtrl', function($scope) {
+    .controller('resultCtrl', function($scope, hotkeys) {
         $scope.wrongIndexes.push($scope.wrongList.length);
         $scope.tabsArray = [];
         for(var i=0; i<$scope.round; i++) {

@@ -1,26 +1,6 @@
-
-<nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 150px;" ng-style="setColor(subject.color)">
-    <div class="container-fluid">
-
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-            </ul>
-        </div>
-        <div class="container-fluid" style="position: absolute; right: 10px">
-            <a href="#/about"><span class="glyphicon glyphicon-info-sign" style="color: white; font-size: 30px;"></span> </a>
-        </div>
-        <div class="container-fluid" style="float: left">
-            <a href="#/webapp">
-                <span class="glyphicon glyphicon-chevron-left" style=" float: left;color: white;font-size: 25px;"></span>
-                <h4 style="float: left; margin-top: 4px; color: white;">Hovedside</h4>
-            </a>
-        </div>
-        <div class="container-fluid" align="center" style="width: 100px">
-            <a href="#/"> <img src="img/ace_white.png" style="width: 50px; margin-top: -5px"> </a>
-        </div>
-        <div class="container-fluid" align="center" style="margin-top: -25px">
-            <h1 class="h1-subjectName" style="color: white">{{subject.name}}</h1>
-            <h4 style="color: white;">{{subject.code}}</h4>
-        </div>
+ <div class="container-fluid" style=" height: 100px;" ng-style="setColor(subject.color)">
+    <div class="container-fluid" align="center">
+        <h1 class="h1-subjectName" style="color: white">{{subject.name}}</h1>
+        <h4 style="color: white;">{{subject.code}}</h4>
     </div>
-</nav>
+ </div>
