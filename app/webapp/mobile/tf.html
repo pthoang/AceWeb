@@ -1,0 +1,23 @@
+
+
+<div ng-app="mainApp.webapp" ng-controller="tfCtrl">
+
+    <div class="container-fluid" style="width: 100%;">
+        <div class="container-fluid">
+            <h4 id="question" align="left">{{exercises[number].question}}</h4>
+        </div>
+
+        <div ng-repeat="i in ordering track by $index" class="col-xs-12" style="width: 100%; height: 90px; margin-top: 2px; margin-bottom: 2px">
+            <button ng-mouseover="setButtonClassNum()" style="height: 90px" class="btn-quizloaded btn-tfalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
+                <h4>{{alternatives[i]}}</h4>
+            </button>
+
+        </div>
+
+
+        <div ng-include="'webapp/quiz_buttons.html'" style="margin-top: 0px"></div>
+
+
+    </div>
+
+</div>

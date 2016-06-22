@@ -1,0 +1,30 @@
+
+<div class="container-fluid" style="width: 100%; background-color: white; margin-top: -15px;">
+    <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 70px;width: 100%;" ng-style="{'background-color': '#'+subject.color}">
+        <div class="container-fluid">
+
+            <div ng-hide="hideBackButton" class="container-fluid" style="position: absolute; top: 7px; left: 2px">
+                <a href="#/mobile/{{subject._id}}">
+                    <img src="img/x_white.png" style="width: 20px">
+                </a>
+            </div>
+            <div class="container-fluid" align="center" style="width: 90%">
+                <h4 class="h1-subjectName" style="color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{collectionName}}</h4>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" ng-repeat="exercise in exercises track by $index" style="margin-bottom: 5px; margin-top: 5px" align="center">
+        <button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal">
+            {{exercise.question}}
+        </button>
+        <div uib-collapse="exerciseOpen[$index]">
+            <div class="well well-sm" align="left" style="margin-bottom: 0">
+                {{exercise.correctAnswer}}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 30px"></div>
+
+
+</div>

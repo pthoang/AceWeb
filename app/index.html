@@ -6,30 +6,49 @@
     <title>Ace(beta)</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
-    <link rel=stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.css">
     <link href='https://fonts.googleapis.com/css?family=Arvo:700|Open+Sans:300' rel='stylesheet' type='text/css'>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
 <nav class="navbar navbar-default" style="background-color: black">
-    <div class="container-fluid" style="width: 960px;">
-        <ul class="nav navbar-nav">
-            <li><a href="#/"><img ng-click="resetMain()" src="img/ace.png" style="width: 100px;"></a></li>
-            <li><a href="#">Quizzer</a></li>
-            <li><a href="#">Content editor</a></li>
-            <li><a href="#/about">Om oss</a></li>
-        </ul>
-        <ul class="nav navbar-nav" style="float: right">
-            <li><a href="#">Min profil</a></li>
-        </ul>
+    <div class="container-fluid" ng-style="mobileNav()? {'width': '960px'}: {'width': '100%'}">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#{{appPath}}/"><img ng-click="resetMain()" src="img/ace.png" style="width: 100px;"></a>
+        </div>
+        <div uib-collapse="isCollapsed" class="navbar-collapse bs-js-navbar-collapse">
+            <ul style="width: 80%" class="nav navbar-nav">
+                <li><a href="#{{appPath}}/">Quizzer</a></li>
+                <li ng-if="!mobile"><a href="#">Content editor</a></li>
+                <li><a href="#/about/{{appPath.substring(1)}}">Om oss</a></li>
+                <li ng-style="mobileNav()? {'float':'right'}: {}"><a href="#">Min profil</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
 <body style="background-color: #F1F1F2">
-<div ng-if="showAll" ng-view></div>
+<div ng-if="showAll" ng-view autoscroll="true"></div>
 
-<div class="container-fluid" align="center" style="margin-top: 50px;margin-bottom: 50px">
-    Diverse
+<div class="container-fluid" align="center" style="width: 30%;margin-top: 50px;margin-bottom: 50px">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="#/about/{{appPath.substring(1)}}">Om oss</a>
+        </div>
+        <div class="col-md-4">
+            <a href="">Kontakt oss</a>
+        </div>
+        <div class="col-md-4">
+            <a href="">Diverse</a>
+        </div>
+
+    </div>
 </div>
 
 

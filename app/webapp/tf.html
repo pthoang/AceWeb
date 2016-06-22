@@ -7,7 +7,7 @@
             <h3 id="question" align="left">{{exercises[number].question}}</h3>
         </div>
 
-        <div ng-repeat="i in ordering track by $index" ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/2-1)+'%'}">
+        <div ng-repeat="i in ordering track by $index" ng-class="'div-alternatives'" ng-style="{'width': (100/2-1)+'%'}">
             <button ng-mouseover="setButtonClassNum()" ng-class="getButtonClass($index, ordering.length)" class="btn-tfalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
                 <h3>{{alternatives[i]}}</h3>
             </button>

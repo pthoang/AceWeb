@@ -1,14 +1,13 @@
 
 
 <div ng-app="mainApp.webapp" ng-controller="mcCtrl">
-    {{test}}
     <div class="container-fluid" style="width: 960px; margin-left: -15px">
         <div ng-style="getQHeight() > 170 ? {'height': (getQHeight()+30)+'px'}:{'height': 190+'px'}" class="container-fluid">
             <h3 id="question" align="left">{{exercises[number].question}}</h3>
         </div>
 
-        <div ng-class="checkScreenRatio() ? 'col-xs-12': 'div-alternatives'" ng-repeat="i in ordering track by $index" ng-style="checkScreenRatio() ? {'margin': '7px'}:{'width': (100/alternatives.length-1) +'%'}">
-            <button ng-mouseover="setButtonClassNum()" ng-mouseleave="" ng-class="getButtonClass($index, ordering.length)" class="btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="this.blur()">
+        <div ng-class="'div-alternatives'" ng-repeat="i in ordering track by $index" ng-style="{'width': (100/alternatives.length-1) +'%'}">
+            <button ng-mouseover="setButtonClassNum()" ng-class="getButtonClass($index, ordering.length)" class="btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="this.blur()">
                 {{alternatives[i]}}
             </button>
         </div>

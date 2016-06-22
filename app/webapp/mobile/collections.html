@@ -1,7 +1,15 @@
-<div class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
-    <div ng-hide="hideHeader" ng-include="'navbar/navbar_collections.html'" style="width: 960px; margin-left: -15px"></div>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div ng-hide="loading" class="container-fluid" align="center" style="width: 500px; margin-top: 20px; margin-bottom: 30px">
+<div class="container-fluid" style="width: 100%; background-color: white; margin-top: -15px;">
+    <div ng-hide="hideHeader" class="container-fluid" style=" height: 110px;" ng-style="setColor(subject.color)">
+        <div class="container-fluid" align="center" st>
+            <h3 class="h1-subjectName" style="color: white">{{subject.name}}</h3>
+            <h4 style="color: white;">{{subject.code}}</h4>
+        </div>
+    </div>
+
+
+    <div ng-hide="loading" class="container-fluid" align="center" style="width: 100%; margin-top: 10px; margin-bottom: 20px">
         <button type="button" class="btn btn-default" ng-click="collapse.description = !collapse.description" style="width: 100%; text-align: left">
             <span class="glyphicon glyphicon-info-sign">
             </span>
@@ -39,17 +47,16 @@
         </div>
     </div>
 
-
     <div class="container-fluid" style="width: 100%; margin-bottom: 30px">
         <div class="row">
-            <div class="col-sm-3" ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter">
-                <a href="#/webapp/{{subject._id}}/{{targetCollection}}">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter">
+                <a href="#/mobile/{{subject._id}}/{{targetCollection}}">
                     <button class="btn btn-default btn-collection" ng-click="setCollection(collection.name, modeModel)">
                         <h4 class="opensans-text">{{collection.name}}</h4>
                         <p>{{collection.value}} oppgaver</p>
                     </button>
                 </a>
-                <a href="#/webapp/{{subject._id}}/{{targetCollection}}/exercises">
+                <a href="#/mobile/{{subject._id}}/{{targetCollection}}/exercises">
                     <label class="btn btn-default" style="margin-top: -13px; width: 100%" ng-click="setCollection(collection.name, modeModel)">
                         <img src="../img/definition-icon.png" style="height: 15px">
                     </label>

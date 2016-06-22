@@ -1,6 +1,6 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-<div ng-include="'navbar/navbar_main.html'" autoscroll="true" style="margin-top: -20px"></div>
+<!--<div ng-include="'navbar/navbar_main.html'" autoscroll="true" style="margin-top: -20px"></div>-->
 
 <div class="container-fluid" style="background-color: #336E7B; margin-top: -20px" align="center">
     <div class="container-fluid" align="center">
@@ -16,32 +16,29 @@
     </div>
 </div>
 
-<div class="container" style="width: 80px; margin-bottom: 20px" align="center">
+<div class="container" style="width: 100%; margin-bottom: 20px" align="center">
 </div>
 <div class="container-fluid" align="center" style="margin-bottom: 20px; width: 100%; height: 70px; background-color: #F1F1F2">
-    <input id="0" class="form-control" ng-model="subjectFilter" type="text" placeholder="Finn et fag..." style="width: 400px; height: 50px; margin-top: 10px">
-</div>
-<div ng-show="stickySearch" class="fixed-search" align="center" style="margin-bottom: 30px; width: 100%; height: 70px; background-color: #F1F1F2">
-    <input id="1" onkeyup="window.scrollTo(0,240)" class="form-control" ng-model="subjectFilter" type="text" placeholder="Finn et fag..." style="width: 400px; height: 50px; margin-top: 10px">
+    <input id="0" class="form-control" ng-model="subjectFilter" type="text" placeholder="Finn et fag..." style="width: 100%; height: 50px; margin-top: 10px">
 </div>
 
-<div class="container-fluid" align="center">
+<div class="container-fluid" align="center" style="width: 100%">
 
     <div ng-if="prevSubject" ng-repeat="i in [prevSubject] | filter:subjectSearch">
-        <h4 class="opensans-text" align="left" style="width: 60%; margin-left: 20px">Sist besøkte fag:</h4>
-        <a ng-href="#/webapp/{{targetId}}">
-            <button id="{{prevSelectdSubject._id}}" class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(prevSubject.color)" ng-click="setTarget(prevSubject)">
-                <h1 class="h1-subjectName" style="color: white; margin-top: 0;">{{prevSubject.name}}</h1>
+        <h4 class="opensans-text" align="left" style="width: 100%;">Sist besøkte fag:</h4>
+        <a ng-href="#/mobile/{{targetId}}">
+            <button id="{{prevSelectdSubject._id}}" class="btn btn-default" style="width: 100%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(prevSubject.color)" ng-click="setTarget(prevSubject)">
+                <h3 class="h1-subjectName" style="color: white; margin-top: 0;">{{prevSubject.name}}</h3>
                 <h4 style="color: white; margin-bottom: 0;">{{prevSubject.code}}</h4>
             </button>
         </a>
-        <h4 class="opensans-text" align="left" style="width: 60%; margin-left: 20px">Alle fag:</h4>
+        <h4 class="opensans-text" align="left" style="width: 100%;">Alle fag:</h4>
     </div>
 
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectSearch">
-        <a ng-if="i.released" ng-href="#/webapp/{{targetId}}">
-            <button id="{{i._id}}" class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
-                <h1 class="h1-subjectName" style="color: white; margin-top: 0;">{{i.name}}</h1>
+        <a ng-if="i.released" ng-href="#/mobile/{{targetId}}">
+            <button id="{{i._id}}" class="btn btn-default" style="width: 100%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
+                <h3 class="h1-subjectName" style="color: white; margin-top: 0;">{{i.name}}</h3>
                 <h4 style="color: white; margin-bottom: 0;">{{i.code}}</h4>
             </button>
         </a>

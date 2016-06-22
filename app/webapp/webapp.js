@@ -24,7 +24,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             var w = angular.element($window);
             w.bind('scroll', function() {
-                if(window.pageYOffset > 240) {
+                if(window.pageYOffset > 210) {
                     document.getElementById('0').blur();
                     $scope.stickySearch = true;
 
@@ -83,7 +83,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
-        quizService.emptyExercises();
         $scope.setColor = function (color) {
             return {"background-color": '#'+color};
         };
@@ -115,8 +114,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
             $scope.setCollection = function(target, length){
 
-                $scope.targetCollection = target.replace('/', '').replace('#', '').replace(" ", "");
+                $scope.targetCollection = target.replace('/', '').replace('#', '').replace(" ", "").replace('?', '');
                 quizService.setCollectionName(target);
+                quizService.emptyExercises();
                 for(var i=0; i < info[target].length; i++) {
                     var stringExercise = JSON.stringify(info[target][i]);
                     quizService.addExercises(JSON.parse(stringExercise))
@@ -125,12 +125,17 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 quizService.setModeModel($scope.modeModel)
             };
             subjectsService.setTargetSubject($scope.subject);
+            $scope.collapse = {
+                description: true,
+                settings: true
+            };
             $scope.loading = false;
         };
         if(collectionsService.getInfo() && collectionsService.getInfo()._id == $routeParams.subjectId ) {
             initCollections(collectionsService.getInfo())
         }
         else {
+            quizService.emptyExercises();
             $http({
                 method: 'GET',
                 url: $scope.url + '/subjects/' + subjectId
@@ -143,14 +148,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         }
     })
 
-    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService, collectionsService) {
-
+    .controller('exercisesCtrl', function ($scope, $cookies, $location, $routeParams, quizService, collectionsService, hotkeys) {
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
-        $scope.exercises = quizService.getExercises();
-        if($scope.exercises.length == 0) {
-            $location.path('/webapp/' + $routeParams.subjectId)
-        }
         if($scope.subject._id != $routeParams.subjectId) {
             var info = collectionsService.getInfo();
             $scope.subject = {
@@ -162,6 +162,77 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             $cookies.putObject('targetSubject', $scope.subject)
         }
+        if($scope.collectionName) {
+            if($scope.collectionName.replace(/ /g,'').replace('?','') != $routeParams.collectionName.replace(/ /g,'')) {
+                quizService.emptyExercises()
+            };
+        }
+
+        $scope.exercises = quizService.getExercises();
+        if($scope.exercises.length == 0) {
+            if($scope.appPath == '') {
+                $location.path('/webapp/' + $routeParams.subjectId)
+            } else {
+                $location.path('/mobile/' + $routeParams.subjectId)
+            }
+        }
+
+        $scope.exerciseOpen = {};
+        for(var i=0; i < $scope.exercises.length; i++) {
+            $scope.exerciseOpen[i] = true
+        }
+        hotkeys.bindTo($scope)
+            .add({
+                combo: 'o',
+                description: 'Åpne alle',
+                callback: function () {
+                    for(var i=0; i < $scope.exercises.length; i++) {
+                        $scope.exerciseOpen[i] = false;
+                    }
+                }
+            })
+            .add({
+                combo: 'p',
+                description: 'Lukke alle',
+                callback: function () {
+                    for(var i=0; i < $scope.exercises.length; i++) {
+                        $scope.exerciseOpen[i] = true;
+                    }
+                }
+            })
+
+
+
+    })
+
+    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService, collectionsService, hotkeys) {
+        $scope.subject = $cookies.getObject('targetSubject');
+        $scope.collectionName = quizService.getCollectionName();
+        if($scope.subject._id != $routeParams.subjectId) {
+            var info = collectionsService.getInfo();
+            $scope.subject = {
+                _id: info._id,
+                code: info.code,
+                name: info.name,
+                color: info.color,
+                description: info.description
+            };
+            $cookies.putObject('targetSubject', $scope.subject)
+        }
+        if($scope.collectionName) {
+            if($scope.collectionName.replace(/ /g,'').replace('?','') != $routeParams.collectionName.replace(/ /g,'')) {
+                quizService.emptyExercises()
+            };
+        }
+
+        $scope.exercises = quizService.getExercises();
+        if($scope.exercises.length == 0) {
+            if($scope.appPath == '') {
+                $location.path('/webapp/' + $routeParams.subjectId)
+            } else {
+                $location.path('/mobile/' + $routeParams.subjectId)
+            }
+        }
 
         quizService.shuffle($scope.exercises);
         $scope.number = 0;
@@ -169,12 +240,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.wrongList = [];
 
         $scope.showByType = function (number) {
+            var typePath = $scope.appPath==''? 'webapp/': 'webapp/mobile/';
             if($scope.number == $scope.threshold*$scope.round) {
-                return 'webapp/resultpage.html'
+                return typePath + 'resultpage.html'
             }
-            return 'webapp/' + $scope.exercises[number].type + '.html'
+            return typePath + $scope.exercises[number].type + '.html'
         };
         $scope.incrementNumber = function() {
+            window.scrollTo(0,0);
             $scope.number++;
             $scope.buttonClassNum = 0;
         };
@@ -264,7 +337,16 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         $scope.getQHeight = function() {
             return document.getElementById('question').offsetHeight;
-        }
+        };
+        hotkeys.bindTo($scope).add({
+            combo: 'r',
+            description: 'Rapporter oppgave',
+            callback:function () {
+                if(!($scope.number == $scope.threshold*$scope.round)) {
+                    $scope.openReport()
+                }
+            }
+        })
 
     })
     .controller('pdCtrl', function ($scope, quizService, hotkeys) {
@@ -435,7 +517,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.incrementNumber();
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number].type == "tf") {
-                $scope.initHotkeys()
+                $scope.initHotkeys();
                 correctAnswer = $scope.exercises[$scope.number].correctAnswer? 1:0;
                 styles = {};
             }
@@ -621,6 +703,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
 
         };
+        hotkeys.bindTo($scope).add({
+            combo: 'n',
+            description: 'Neste quiz',
+            callback: function () {
+                $scope.startQuiz()
+            }
+        });
 
         $scope.feedbackText = $scope.getFeedback();
 
