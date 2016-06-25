@@ -1,0 +1,14 @@
+@keyframes slideInUp {
+    from {transform: translateY(100%);}
+    to {transform: translateY(0);}
+}
+
+@keyframes slideOutDown {
+    from {transform: translateY(0);}
+    to {transform: translateY(100%);}
+}
+
+.page-quiz.ng-leave {animation: slideOutDown 0.4s both ease-in-out}
+.page-quiz.ng-enter { animation: slideInUp 0.4s both ease}
+.page-exercises.ng-leave {animation: slideOutDown 0.4s both ease-in-out}
+.page-exercises.ng-enter { animation: slideInUp 0.4s both ease}

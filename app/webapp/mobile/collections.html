@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div class="container-fluid" style="width: 100%; background-color: white; margin-top: -15px;">
-    <div ng-hide="hideHeader" class="container-fluid" style=" height: 110px;" ng-style="setColor(subject.color)">
+    <div ng-hide="hideHeader" class="container-fluid" style="width: 100%; height: 110px;" ng-style="setColor(subject.color)">
         <div class="container-fluid" align="center" st>
             <h3 class="h1-subjectName" style="color: white">{{subject.name}}</h3>
             <h4 style="color: white;">{{subject.code}}</h4>
@@ -9,7 +9,7 @@
     </div>
 
 
-    <div ng-hide="loading" class="container-fluid" align="center" style="width: 100%; margin-top: 10px; margin-bottom: 20px">
+    <div ng-hide="loading" class="container-fluid" align="center" style="width: 100%; margin-top: 10px; margin-bottom: 20px;">
         <button type="button" class="btn btn-default" ng-click="collapse.description = !collapse.description" style="width: 100%; text-align: left">
             <span class="glyphicon glyphicon-info-sign">
             </span>

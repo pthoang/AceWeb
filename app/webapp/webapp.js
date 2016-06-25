@@ -78,9 +78,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             })
         };
 
+
     })
 
     .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
+        $scope.pageClass = 'page-collections';
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.setColor = function (color) {
@@ -148,7 +150,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         }
     })
 
-    .controller('exercisesCtrl', function ($scope, $cookies, $location, $routeParams, quizService, collectionsService, hotkeys) {
+    .controller('exercisesCtrl', function ($scope, $cookies, $window, $location, $routeParams, quizService, collectionsService, hotkeys) {
+        $scope.pageClass='page-exercises';
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
         if($scope.subject._id != $routeParams.subjectId) {
@@ -181,6 +184,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         for(var i=0; i < $scope.exercises.length; i++) {
             $scope.exerciseOpen[i] = true
         }
+        $scope.goBack = function () {
+            $window.history.back();
+        };
         hotkeys.bindTo($scope)
             .add({
                 combo: 'o',
@@ -206,6 +212,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     })
 
     .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService, collectionsService, hotkeys) {
+        $scope.pageClass = 'page-quiz';
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.collectionName = quizService.getCollectionName();
         if($scope.subject._id != $routeParams.subjectId) {
@@ -334,6 +341,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
 
         $scope.startQuiz();
+        $scope.goBack = function () {
+          $window.history.back();
+        };
 
         $scope.getQHeight = function() {
             return document.getElementById('question').offsetHeight;

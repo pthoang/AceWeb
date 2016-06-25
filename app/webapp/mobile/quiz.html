@@ -4,8 +4,8 @@
     <nav class="navbar navbar-default navbar-static-top"  role="navigation" style="width: 100%;height: 70px;" ng-style="setColor(subject.color)">
         <div class="container-fluid">
 
-            <div ng-hide="hideBackButton" class="container-fluid" style="position: absolute; top: 7px; left: 2px">
-                <a href="#/mobile/{{subject._id}}">
+            <div class="container-fluid" style="position: absolute; top: 7px; left: 2px">
+                <a href="" ng-click="goBack()">
                     <img src="img/x_white.png" style="width: 20px">
                 </a>
             </div>
@@ -22,7 +22,7 @@
     </div>
 
     <div ng-include="'modal/reportModal.html'"></div>
-    <div ng-include="showByType(number)"></div>
+    <div ng-include="showByType(number)" style="width: 110%; margin-left: -5%"></div>
 </div>
 
 

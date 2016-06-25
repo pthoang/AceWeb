@@ -34,7 +34,8 @@
     </div>
 </nav>
 <body style="background-color: #F1F1F2">
-<div ng-if="showAll" ng-view autoscroll="true"></div>
+<div class="page {{pageClass}}" ng-if="showAll" ng-view autoscroll="true"></div>
+
 
 <div class="container-fluid" align="center" style="width: 30%;margin-top: 50px;margin-bottom: 50px">
     <div class="row">

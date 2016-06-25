@@ -97,7 +97,9 @@ angular.module('mainApp', [
 
         });
         $scope.isCollapsed = true;
-        $scope.mobile = window.mobilecheck()
+        $scope.mobile = window.mobilecheck();
+        $scope.pageClass = '';
+        $scope.loading = 'true';
 
 
 });
