@@ -35,24 +35,5 @@
             <h5 ng-repeat="correctAns in getCorrectAnswer(wrong)">- &nbsp;&nbsp; {{correctAns}}</h5>
             <h5 ng-repeat="wrongAnswer in getWrongAnswer(wrong)">- &nbsp;&nbsp; <s>{{wrongAnswer}}</s></h5>
         </div>
-        <uib-tabset ng-show="false">
-            <uib-tab ng-repeat="i in tabsArray" heading="{{i+1}}." active="true">
-                <div ng-repeat="wrong in getWrongs(i) track by $index">
-                    <br>
-                    <h4>{{exercises[wrong].question}}</h4>
-                    <h5 ng-repeat="correctAns in getCorrectAnswer(wrong)">- &nbsp;&nbsp; {{correctAns}}</h5>
-                    <h5 ng-repeat="wrongAnswer in getWrongAnswer(wrong)">- &nbsp;&nbsp; <s>{{wrongAnswer}}</s></h5>
-                </div>
-            </uib-tab>
-
-            <uib-tab heading="Alle">
-                <div ng-repeat="wrong in wrongList track by $index">
-                    <br>
-                    <h4>{{exercises[wrong].question}}</h4>
-                    <h5 ng-repeat="correctAns in getCorrectAnswer(wrong)">- &nbsp;&nbsp; {{correctAns}}</h5>
-                    <h5 ng-repeat="wrongAnswer in getWrongAnswer(wrong)">- &nbsp;&nbsp; <s>{{wrongAnswer}}</s></h5>
-                </div>
-            </uib-tab>
-        </uib-tabset>
     </div>
 </div>
