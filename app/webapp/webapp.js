@@ -109,21 +109,22 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             var info = collectionsInfo.collections;
             for(var collection in info) {
                 $scope.collections.push({
-                    name: collection,
-                    value: info[collection].length
+                    name: info[collection].name,
+                    length: info[collection].length,
+                    value: collection
                 });
             }
 
-            $scope.setCollection = function(target, length){
+            $scope.setCollection = function(target, mode){
 
-                $scope.targetCollection = target.replace('/', '').replace('#', '').replace(" ", "").replace('?', '');
-                quizService.setCollectionName(target);
+                $scope.targetCollection = target.name.replace('/', '').replace('#', '').replace(" ", "").replace('?', '');
+                quizService.setCollectionName(target.name);
                 quizService.emptyExercises();
-                for(var i=0; i < info[target].length; i++) {
-                    var stringExercise = JSON.stringify(info[target][i]);
+                for(var i=0; i < info[target.value].exercises.length; i++) {
+                    var stringExercise = JSON.stringify(info[target.value].exercises[i]);
                     quizService.addExercises(JSON.parse(stringExercise))
                 }
-                quizService.setThreshold(length ? length:info[target].length);
+                quizService.setThreshold(mode ? mode:info[target.value].length);
                 quizService.setModeModel($scope.modeModel)
             };
             subjectsService.setTargetSubject($scope.subject);
