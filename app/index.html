@@ -26,31 +26,31 @@
         <div uib-collapse="isCollapsed" class="navbar-collapse bs-js-navbar-collapse">
             <ul style="width: 80%" class="nav navbar-nav">
                 <li><a href="#{{appPath}}/">Quizzer</a></li>
-                <li ng-if="!mobile"><a href="#">Content editor</a></li>
+                <!--<li ng-if="!mobile"><a href="#">Content editor</a></li>-->
                 <li><a href="#/about/{{appPath.substring(1)}}">Om oss</a></li>
-                <li ng-style="mobileNav()? {'float':'right'}: {}"><a href="#">Min profil</a></li>
+                <!--<li ng-style="mobileNav()? {'float':'right'}: {}"><a href="#">Min profil</a></li>-->
             </ul>
         </div>
     </div>
 </nav>
 <body style="background-color: #F1F1F2">
-<div class="page {{pageClass}}" ng-if="showAll" ng-view autoscroll="true"></div>
+<div ng-if="showAll" ng-view autoscroll="true"></div>
 
 
-<div class="container-fluid" align="center" style="width: 30%;margin-top: 50px;margin-bottom: 50px">
-    <div class="row">
-        <div class="col-md-4">
-            <a href="#/about/{{appPath.substring(1)}}">Om oss</a>
-        </div>
-        <div class="col-md-4">
-            <a href="">Kontakt oss</a>
-        </div>
-        <div class="col-md-4">
-            <a href="">Diverse</a>
-        </div>
+<!--<div class="container-fluid" align="center" style="width: 30%;margin-top: 50px;margin-bottom: 50px">-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-4">-->
+            <!--<a href="#/about/{{appPath.substring(1)}}">Om oss</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<a href="">Kontakt oss</a>-->
+        <!--</div>-->
+        <!--<div class="col-md-4">-->
+            <!--<a href="">Diverse</a>-->
+        <!--</div>-->
 
-    </div>
-</div>
+    <!--</div>-->
+<!--</div>-->
 
 
 <script src="bower_components/angular/angular.js"></script>
