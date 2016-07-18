@@ -110,7 +110,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             for(var collection in info) {
                 $scope.collections.push({
                     name: info[collection].name,
-                    length: info[collection].length,
+                    length: info[collection].exercises.length,
                     value: collection
                 });
             }
