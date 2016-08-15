@@ -417,7 +417,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.ordering = [];
         var randAlternatives = [];
         var selectRandomAlternatives = function () {
-            var relatedAlternatives = angular.copy($scope.exercises[$scope.number].relatedAlternatives);
+            var relatedAlternatives = angular.copy($scope.exercises[$scope.number].alternatives);
             var relatedAlternativesInitLength = relatedAlternatives.length;
             for(var i=0; i<Math.min(relatedAlternativesInitLength, 3); i++) {
                 var randNum = Math.floor(Math.random()*relatedAlternatives.length);

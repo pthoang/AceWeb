@@ -3,9 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="AceWeb node_modules" level="project" />
-    <orderEntry type="library" name="Node.js v4.1.1 Core Modules" level="application" />
-    <orderEntry type="library" name="angular.js" level="application" />
+    <orderEntry type="library" name="aceweb node_modules" level="project" />
+    <orderEntry type="library" name="angular.js" level="project" />
   </component>
 </module>
