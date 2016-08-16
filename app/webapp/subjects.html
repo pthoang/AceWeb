@@ -39,7 +39,7 @@
     </div>
 
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectSearch">
-        <a ng-if="i.released" ng-href="#/webapp/{{targetId}}">
+        <a ng-href="#/webapp/{{targetId}}">
             <button id="{{i._id}}" class="btn btn-default" style="width: 60%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
                 <h1 class="h1-subjectName" style="color: white; margin-top: 0;">{{i.name}}</h1>
                 <h4 style="color: white; margin-bottom: 0;">{{i.code}}</h4>

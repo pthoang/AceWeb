@@ -7,6 +7,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.loading = true;
         var initSubjects = function(subjectsInfo) {
             $scope.subjects = subjectsInfo;
+            console.log($scope.subjects)
             $scope.subjectSearch = function(item) {
                 if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
                     return true;
