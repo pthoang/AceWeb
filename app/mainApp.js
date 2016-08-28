@@ -22,11 +22,11 @@ angular.module('mainApp', [
                 templateUrl: 'webapp/collections.html',
                 controller: 'collectionsCtrl'
             })
-            .when('/webapp/:subjectId/:collectionName', {
+            .when('/webapp/:subjectId/:collectionId', {
                 templateUrl: 'webapp/quiz.html',
                 controller: 'quizCtrl'
             })
-            .when('/webapp/:subjectId/:collectionName/exercises', {
+            .when('/webapp/:subjectId/:collectionId/exercises', {
                 templateUrl: 'webapp/exercises.html',
                 controller: 'exercisesCtrl'
             })
@@ -38,11 +38,11 @@ angular.module('mainApp', [
                 templateUrl: 'webapp/mobile/collections.html',
                 controller: 'collectionsCtrl'
             })
-            .when('/mobile/:subjectId/:collectionName', {
+            .when('/mobile/:subjectId/:collectionId', {
                 templateUrl: 'webapp/mobile/quiz.html',
                 controller: 'quizCtrl'
             })
-            .when('/mobile/:subjectId/:collectionName/exercises', {
+            .when('/mobile/:subjectId/:collectionId/exercises', {
                 templateUrl: 'webapp/mobile/exercises.html',
                 controller: 'exercisesCtrl'
             })
@@ -96,6 +96,15 @@ angular.module('mainApp', [
             $scope.$apply();
 
         });
+        $scope.setColor = function (color) {
+            if(!color) {
+                color = '336E7B';
+            }
+            return {"background-color": '#'+color};
+        };
+        $scope.hideNavBar = function () {
+            return (window.mobilecheck() && $location.path() != '/mobile')
+        };
         $scope.isCollapsed = true;
         $scope.mobile = window.mobilecheck();
         $scope.pageClass = '';

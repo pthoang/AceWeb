@@ -13,7 +13,7 @@
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
-<nav class="navbar navbar-default" style="background-color: black">
+<nav ng-hide="hideNavBar()" class="navbar navbar-default" style="background-color: black">
     <div class="container-fluid" ng-style="mobileNav()? {'width': '960px'}: {'width': '100%'}">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">

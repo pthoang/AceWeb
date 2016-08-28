@@ -4,7 +4,12 @@
 
     <div class="container-fluid" style="width: 960px; margin-left: -15px">
         <div ng-style="getQHeight() > 170 ? {'height': (getQHeight()+30)+'px'}:{'height': 190+'px'}" class="container-fluid">
-            <h3 id="question" align="left">{{exercises[number].question}}</h3>
+            <div id="question">
+                <h3 align="left">{{exercises[number].question.text}}</h3>
+                <div class="container-fluid" ng-if="exercises[number].question.image" align="center">
+                    <img src="{{getImage(exercises[number].question.image)}}" style="height: 200px">
+                </div>
+            </div>
         </div>
 
         <div ng-repeat="i in ordering track by $index" ng-class="'div-alternatives'" ng-style="{'width': (100/2-1)+'%'}">

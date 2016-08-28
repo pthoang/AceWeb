@@ -1,7 +1,7 @@
 
 
 <div class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
-    <div ng-include="'navbar/navbar_quiz.html'" style="width: 960px; margin-left: -15px"></div>
+    <div id="quizTop" ng-include="'navbar/navbar_quiz.html'" style="width: 960px; margin-left: -15px"></div>
     <div ng-if="number-threshold*(round-1) < threshold" class="container-fluid div-progressbar" style="width: 990px; margin-top: -40px;; margin-left: -30px">
         <uib-progressbar max="threshold" value="threshold - (number+1-threshold*(round-1))" type="custom" ng-style="setColor(subject.color)">
             <span style="color: black; white-space: nowrap; "></span>

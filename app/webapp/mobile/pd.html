@@ -1,12 +1,15 @@
 
 <div ng-app="mainApp.webapp" ng-controller="pdCtrl">
-    <div class="container-fluid" align="center" style="width: 100%; ">
+    <div class="container-fluid" style="width: 100%; ">
         <div class="container-fluid">
-            <h3 id="question">{{exercises[number].question}}</h3>
+            <h4 id="question">{{exercises[number].question.text}}</h4>
+            <div ng-if="exercises[number].question.image" align="center">
+                <img src="{{getImage(exercises[number].question.image)}}" style="height: 100px; margin-bottom: 10px">
+            </div>
         </div>
 
-        <div ng-repeat="i in ordering track by $index" class="col-xs-12" style="width: 100%; height: 120px; margin-top: 2px; margin-bottom: 2px">
-            <button ng-mouseover="setButtonClassNum()" style="height: 120px" class="btn-quizloaded btn-mcalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
+        <div ng-repeat="i in ordering track by $index" class="col-xs-12" style="width: 100%; height: 110px;margin-top: 1px; margin-bottom: 1px">
+            <button ng-mouseover="setButtonClassNum()" style="height: 110px" class="btn-quizloaded btn-mcalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
                 {{getAlternative(i)}}
             </button>
         </div>

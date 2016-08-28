@@ -1,6 +1,14 @@
- <div class="container-fluid" style=" height: 100px;" ng-style="setColor(subject.color)">
-    <div class="container-fluid" align="center">
-        <h1 class="h1-subjectName" style="color: white">{{subject.name}}</h1>
-        <h4 style="color: white;">{{subject.code}}</h4>
-    </div>
- </div>
+
+ <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 100px;" ng-style="setColor(subject.color)">
+     <div class="container-fluid">
+         <div class="container-fluid" style="position: absolute; top: 25px; left: 20px">
+             <a href="#/">
+                 <span class="glyphicon glyphicon-chevron-left" style="font-size: 30px; color: white"></span>
+             </a>
+         </div>
+         <div class="container-fluid" align="center">
+             <h1 class="h1-subjectName" style="color: white">{{subject.name}}</h1>
+             <h4 style="color: white;">{{subject.code}}</h4>
+         </div>
+     </div>
+ </nav>

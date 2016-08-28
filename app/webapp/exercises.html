@@ -1,6 +1,6 @@
 
 <div class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
-    <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 100px;width: 960px; margin-left: -15px" ng-style="{'background-color': '#'+subject.color}">
+    <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 100px;width: 960px; margin-left: -15px" ng-style="setColor(subject.color)">
         <div class="container-fluid">
 
             <div class="container-fluid" style="position: absolute; top: 25px; left: 20px">
@@ -15,11 +15,11 @@
     </nav>
     <div class="container-fluid" ng-repeat="exercise in exercises track by $index" style="margin-bottom: 5px; margin-top: 5px" align="center">
         <button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal">
-            {{exercise.question}}
+            {{exercise.question.text}}
         </button>
         <div uib-collapse="exerciseOpen[$index]">
             <div class="well well-sm" align="left" style="margin-bottom: 0">
-                {{exercise.correctAnswer}}
+                {{exercise.correct.answer}}
             </div>
         </div>
     </div>

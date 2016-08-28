@@ -14,9 +14,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 }
                 return false;
             };
-            $scope.setColor = function (color) {
-                return {"background-color": '#'+color};
-            };
+
             $scope.setTarget = function(target) {
                 $scope.targetId = target._id;
                 $cookies.putObject('targetSubject', target);
@@ -86,9 +84,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.pageClass = 'page-collections';
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
-        $scope.setColor = function (color) {
-            return {"background-color": '#'+color};
-        };
+
         $scope.modeModel = quizService.getModeModel() != undefined ? quizService.getModeModel() : 10;
         $scope.loading = true;
         if (! $cookies.getObject('targetSubject') || $scope.subject._id != subjectId) {
@@ -112,14 +108,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.collections.push({
                     name: info[collection].name,
                     length: info[collection].exercises.length,
-                    value: collection
+                    value: collection,
+                    _id: info[collection]._id
                 });
             }
 
             $scope.setCollection = function(target, mode){
-
-                $scope.targetCollection = target.name.replace('/', '').replace('#', '').replace(" ", "").replace('?', '');
-                quizService.setCollectionName(target.name);
+                $scope.targetCollection = target._id;
+                quizService.setCollection(target);
                 quizService.emptyExercises();
                 for(var i=0; i < info[target.value].exercises.length; i++) {
                     var stringExercise = JSON.stringify(info[target.value].exercises[i]);
@@ -155,7 +151,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     .controller('exercisesCtrl', function ($scope, $cookies, $window, $location, $routeParams, quizService, collectionsService, hotkeys) {
         $scope.pageClass='page-exercises';
         $scope.subject = $cookies.getObject('targetSubject');
-        $scope.collectionName = quizService.getCollectionName();
+        if(quizService.getCollection()) {
+            $scope.collectionId = quizService.getCollection()._id;
+            $scope.collectionName = quizService.getCollection().name;
+        }
         if($scope.subject._id != $routeParams.subjectId) {
             var info = collectionsService.getInfo();
             $scope.subject = {
@@ -167,8 +166,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             $cookies.putObject('targetSubject', $scope.subject)
         }
-        if($scope.collectionName) {
-            if($scope.collectionName.replace(/ /g,'').replace('?','') != $routeParams.collectionName.replace(/ /g,'')) {
+        if($scope.collectionId) {
+            if($scope.collectionId!= $routeParams.collectionId) {
                 quizService.emptyExercises()
             };
         }
@@ -213,10 +212,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
 
-    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $window, quizService, collectionsService, hotkeys) {
+    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $timeout, $window, quizService, collectionsService, hotkeys) {
         $scope.pageClass = 'page-quiz';
         $scope.subject = $cookies.getObject('targetSubject');
-        $scope.collectionName = quizService.getCollectionName();
+        if(quizService.getCollection()) {
+            $scope.collectionId = quizService.getCollection()._id;
+            $scope.collectionName = quizService.getCollection().name;
+        }
         if($scope.subject._id != $routeParams.subjectId) {
             var info = collectionsService.getInfo();
             $scope.subject = {
@@ -228,8 +230,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             $cookies.putObject('targetSubject', $scope.subject)
         }
-        if($scope.collectionName) {
-            if($scope.collectionName.replace(/ /g,'').replace('?','') != $routeParams.collectionName.replace(/ /g,'')) {
+        if($scope.collectionId) {
+            if($scope.collectionId != $routeParams.collectionId) {
                 quizService.emptyExercises()
             };
         }
@@ -256,9 +258,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             return typePath + $scope.exercises[number].type + '.html'
         };
         $scope.incrementNumber = function() {
-            window.scrollTo(0,0);
             $scope.number++;
             $scope.buttonClassNum = 0;
+            window.scrollTo(0,0)
         };
         $scope.updateExercises = function () {
             for(var k=0; k < $scope.wrongList.length; k++) {
@@ -295,6 +297,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.wrongList = [];
             $scope.wrongIndexes = [0];
             $scope.round++;
+            window.scrollTo(0,0)
 
         };
         $scope.openReport = function() {
@@ -313,9 +316,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 }
             })
         };
-        $scope.setColor = function (color) {
-            return {"background-color": '#'+color};
-        };
+
 
         $scope.checkScreenRatio = function() {
 
@@ -349,6 +350,16 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         $scope.getQHeight = function() {
             return document.getElementById('question').offsetHeight;
+        };
+        $scope.getImage = function (image) {
+            var imageUrlParts = image.url.split('/');
+            imageUrlParts[imageUrlParts.indexOf("upload") + 1] = "h_200";
+            imageUrlParts.splice(0, 2);
+            var newUrl = "http:/";
+            angular.forEach(imageUrlParts, function (part) {
+                newUrl = newUrl + "/" + part
+            });
+            return newUrl;
         };
         hotkeys.bindTo($scope).add({
             combo: 'r',
@@ -418,7 +429,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.ordering = [];
         var randAlternatives = [];
         var selectRandomAlternatives = function () {
-            var relatedAlternatives = angular.copy($scope.exercises[$scope.number].alternatives);
+            var relatedAlternatives = angular.copy($scope.exercises[$scope.number].wrongs);
             var relatedAlternativesInitLength = relatedAlternatives.length;
             for(var i=0; i<Math.min(relatedAlternativesInitLength, 3); i++) {
                 var randNum = Math.floor(Math.random()*relatedAlternatives.length);
@@ -438,10 +449,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         $scope.getAlternative = function(i) {
             if(i == $scope.ordering.length-1) {
-                return $scope.exercises[$scope.number].correctAnswer
+                return $scope.exercises[$scope.number].correct.answer
             }
             else {
-                return randAlternatives[i]
+                return randAlternatives[i].answer
             }
         };
 
@@ -501,12 +512,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         var initAlternatives = function() {
             $scope.alternatives = [];
             $scope.ordering = [0];
-            var wrongAlternatives = $scope.exercises[$scope.number].alternatives;
+            var wrongAlternatives = $scope.exercises[$scope.number].wrongs;
             for(var i=0; i<wrongAlternatives.length; i++) {
                 $scope.alternatives.push(wrongAlternatives[i]);
                 $scope.ordering.push(i+1)
             }
-            $scope.alternatives.push($scope.exercises[$scope.number].correctAnswer);
+            $scope.alternatives.push($scope.exercises[$scope.number].correct);
             quizService.shuffle($scope.ordering);
             for(var j=0; j <$scope.ordering.length; j++) {
                 $scope.makeHotkey($scope.ordering[j], j)
@@ -530,13 +541,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number].type == "tf") {
                 $scope.initHotkeys();
-                correctAnswer = $scope.exercises[$scope.number].correctAnswer? 1:0;
+                correctAnswer = $scope.exercises[$scope.number].correct.answer? 1:0;
                 styles = {};
             }
         };
 
         var styles = {};
-        var correctAnswer = $scope.exercises[$scope.number].correctAnswer? 1:0;
+        var correctAnswer = $scope.exercises[$scope.number].correct.answer? 1:0;
         $scope.checkAnswer = function(i){
             for(var j=0; j < $scope.ordering.length; j++) {
                 hotkeys.del(''+(j+1));
@@ -584,59 +595,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.initHotkeys()
     })
-    .controller('mtfCtrl', function ($scope, quizService) {
-
-        $scope.nextExercise = function() {
-            $scope.incrementNumber();
-            $scope.nextBtn = false;
-            if($scope.exercises[$scope.number].type == "mtf") {
-                $scope.alternatives = $scope.exercises[$scope.number].alternatives;
-                quizService.shuffle($scope.alternatives);
-                $scope.checkModel = {
-                    0: false,
-                    1: false,
-                    2: false,
-                    3: false
-                };
-                $scope.tabModel = "solution";
-            }
-        };
-
-        $scope.alternatives = $scope.exercises[$scope.number].alternatives;
-        quizService.shuffle($scope.alternatives);
-        $scope.checkModel = {
-            0: false,
-            1: false,
-            2: false,
-            3: false
-        };
-        $scope.tabModel = "solution";
-        $scope.checkAnswer = function() {
-
-            $scope.nextBtn = true;
-            var point = 1;
-            for(var i=0; i<$scope.alternatives.length; i++) {
-                if(! $scope.checkModel[i] == $scope.alternatives[i].correctAnswer) {
-                    point = 0
-                }
-
-            }
-            if(point) {
-                $scope.incrementScore();
-            }
-            else {
-                $scope.wrongList.push($scope.number)
-            }
-        };
-        $scope.setColor = function(value) {
-            if(value) {
-                return $scope.tabModel=='solution' ? quizService.getCorrectStyle():{'background-color': '#E6E6E6', 'border-color': '#ADADAD'}
-            }
-        }
-
-
-
-    })
     .controller('resultCtrl', function($scope, hotkeys) {
         $scope.wrongIndexes.push($scope.wrongList.length);
         $scope.tabsArray = [];
@@ -653,31 +611,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.getCorrectAnswer = function(i) {
             var type = $scope.exercises[i].type;
-            if(type == "mtf") {
-                var correctInfo = [];
-                for(var j=0; j<$scope.exercises[i].alternatives.length; j++) {
-                    if($scope.exercises[i].alternatives[j].correctAnswer){
-                        correctInfo.push($scope.exercises[i].alternatives[j].statement)
-                    }
-                }
-                return correctInfo;
-            }
-            else {
-                return [$scope.exercises[i].correctAnswer];
-            }
+            return [$scope.exercises[i].correct.answer];
+
         };
 
         $scope.getWrongAnswer = function(i) {
             var type = $scope.exercises[i].type;
-            if(type == "mtf") {
-                var wrongInfo = [];
-                for(var j=0; j<$scope.exercises[i].alternatives.length; j++) {
-                    if(!$scope.exercises[i].alternatives[j].correctAnswer) {
-                        wrongInfo.push( $scope.exercises[i].alternatives[j].statement)
-                    }
-                }
-                return wrongInfo
-            }
         };
 
         $scope.showContinueBtn = function() {
@@ -728,7 +667,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     })
 
 
-    .controller('reportModalCtrl', function($scope, $http, $uibModalInstance, exercise_id, url) {
+    .controller('reportModalCtrl', function($scope, $http, $uibModalInstance, $routeParams, exercise_id, url) {
         $scope.exercise_id = exercise_id;
         $scope.url = url;
         $scope.cancel = function() {
@@ -737,10 +676,16 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.send = function() {
             $scope.isSending = true;
             var message = {
-                message: $scope.message
+                subjectId: $routeParams.subjectId,
+                collectionId: $routeParams.collectionId,
+                exerciseId: $scope.exercise_id,
+                report: {
+                    message: $scope.message,
+                    device: 'web'
+                }
             };
 
-            $http.post($scope.url + '/reports/' + $scope.exercise_id, message)
+            $http.post($scope.url + '/reports', message)
                 .success(function(response) {
                     $scope.sendPressed = true;
                     $scope.isSuccess = true;
@@ -797,18 +742,18 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     })
 
     .service('quizService', function() {
-        var collectionName;
+        var collection;
         var exercises = [];
         var correctStyle = {'background-color': '#43A047', 'color': 'white'},
             wrongStyle = {'background-color': '#F44336', 'color': 'white'};
         var threshold;
         var modeModel;
 
-        var setCollectionName = function(name) {
-            collectionName = name
+        var setCollection = function(targetCollection) {
+            collection = targetCollection
         };
-        var getCollectionName = function () {
-            return collectionName
+        var getCollection = function () {
+            return collection
         };
         var addExercises = function(exercise) {
             exercises.push(exercise)
@@ -856,8 +801,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
 
         return {
-            setCollectionName: setCollectionName,
-            getCollectionName: getCollectionName,
+            setCollection: setCollection,
+            getCollection: getCollection,
             addExercises: addExercises,
             getExercises: getExercises,
             emptyExercises: emptyExercises,
