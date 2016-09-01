@@ -5,13 +5,14 @@
     <div class="container-fluid" style="width: 100%;">
         <div class="container-fluid">
             <h4 id="question" align="left">{{exercises[number].question.text}}</h4>
-            <div ng-if="exercises[number].question.image" align="center">
-                <img src="{{getImage(exercises[number].question.image)}}" style="height: 100px; margin-bottom: 10px">
+            <div ng-if="exercises[number].question.image" style="margin-bottom: 10px" align="center">
+                <img src="{{getImage(exercises[number].question.image)}}" ng-click="showBigImage=!showBigImage"
+                     ng-style="showBigImage? {'height': '170px', 'cursor': 'pointer'}: {'height': '100px', 'cursor': 'pointer'}">
             </div>
         </div>
 
-        <div ng-repeat="i in ordering track by $index" class="col-xs-12" style="width: 100%; height: 110px; margin-top: 1px; margin-bottom: 1px">
-            <button ng-mouseover="setButtonClassNum()" style="height: 110px" class="btn-quizloaded btn-tfalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
+        <div ng-repeat="i in ordering track by $index" class="col-xs-12" style="width: 100%; height: 100px; margin-top: 1px; margin-bottom: 1px">
+            <button ng-mouseover="setButtonClassNum()" style="height: 100px" class="btn-quizloaded btn-tfalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
                 <p>{{alternatives[i]}}</p>
             </button>
 

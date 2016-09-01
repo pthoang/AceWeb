@@ -156,6 +156,13 @@ body {
     border-radius: 100px;
 }
 
+.flipped-h {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
 .color-banner {
     height: 100px;
 }

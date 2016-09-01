@@ -5,8 +5,9 @@
         <div ng-style="getQHeight() > 170 ? {'height': (getQHeight()+30)+'px'}:{'height': 190+'px'}" class="container-fluid">
             <div id="question">
                 <h3 align="left">{{exercises[number].question.text}}</h3>
-                <div class="container-fluid" ng-if="exercises[number].question.image" align="center">
-                    <img src="{{getImage(exercises[number].question.image)}}" style="height: 200px">
+                <div ng-if="exercises[number].question.image" style="margin-bottom: 10px" align="center">
+                    <img src="{{getImage(exercises[number].question.image)}}" ng-click="showBigImage=!showBigImage"
+                         ng-style="showBigImage? {'height': '400px', 'cursor': 'pointer'}: {'height': '200px', 'cursor': 'pointer'}">
                 </div>
             </div>
         </div>

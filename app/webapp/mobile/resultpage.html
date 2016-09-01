@@ -6,28 +6,28 @@
     <div class="container-fluid" align="center">
         <h1>{{feedbackText}}</h1>
         <h2>{{score}} av {{threshold}}</h2>
-        <br>
-        <div class="container-fluid" style="width: 300px;">
-            <a href="#/mobile">
-                <button uib-popover="Hovedside" popover-trigger="mouseenter" class="btn btn-round" ng-style="setColor(subject.color)">
-                    <span class="glyphicon glyphicon-home" style="color: white; font-size: 30px"></span>
-                </button>
-            </a>
-            <a href="#/mobile/{{subject._id}}">
-                <button uib-popover="{{subject.name}}" popover-trigger="mouseenter" class="btn btn-round" ng-style="setColor(subject.color)">
-                    <span class="glyphicon glyphicon-book" style="color: white; font-size: 30px"></span>
-                </button>
-            </a>
-            <button ng-show="showContinueBtn()" uib-popover="Videre" popover-trigger="mouseenter" class="btn btn-round" ng-click="startQuiz()" ng-style="setColor(subject.color)">
+        <div class="container-fluid" style="width: 100px; margin-bottom: 10px">
+            <button ng-show="showContinueBtn()" style="margin-left: -5px" class="btn btn-round" ng-click="startQuiz()" ng-style="setColor(subject.color)">
                 <img src="img/more-quiz-icon-white.png" style="width: 40px">
             </button>
-            <button ng-show="showAgainBtn()" uib-popover="Igjen" popover-trigger="mouseenter" class="btn btn-round" ng-click="startQuiz()" ng-style="setColor(subject.color)">
+            <button ng-show="showAgainBtn()" style="margin-left: -5px" class="btn btn-round" ng-click="startQuiz()" ng-style="setColor(subject.color)">
                 <span class="glyphicon glyphicon-repeat" style="color: white; font-size: 30px;"></span>
             </button>
         </div>
+        <div class="container-fluid" style="width: 220px">
+
+            <i><p>Hva synes du om quizen?</p></i>
+            <button class="btn btn-round" ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-thumbs-up" style="color: white; font-size: 30px"></span>
+            </button>
+            <button class="btn btn-round" ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-thumbs-down flipped-h" style="color: white; font-size: 30px;"></span>
+            </button>
+
+        </div>
     </div>
 
-    <div ng-hide="score == threshold" class="container-fluid" style="width: 100%; margin-top: 50px; margin-bottom: 30px">
+    <div ng-hide="score == threshold" class="container-fluid" style="width: 100%; margin-top: 10px; margin-bottom: 30px">
         <h3>Til neste gang:</h3>
         <div ng-repeat="wrong in wrongList track by $index">
             <br>

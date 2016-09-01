@@ -353,7 +353,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.getImage = function (image) {
             var imageUrlParts = image.url.split('/');
-            imageUrlParts[imageUrlParts.indexOf("upload") + 1] = "h_200";
+            imageUrlParts[imageUrlParts.indexOf("upload") + 1] = "h_300";
             imageUrlParts.splice(0, 2);
             var newUrl = "http:/";
             angular.forEach(imageUrlParts, function (part) {
@@ -373,6 +373,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
     .controller('pdCtrl', function ($scope, quizService, hotkeys) {
+        $scope.showBigImage = false;
         $scope.nextExercise = function() {
             $scope.incrementNumber();
             $scope.nextBtn = false;
@@ -458,7 +459,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
     .controller('mcCtrl', function($scope, quizService, hotkeys) {
-
+        $scope.showBigImage = false;
         $scope.nextExercise = function () {
             $scope.incrementNumber();
             $scope.nextBtn = false;
@@ -536,6 +537,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
     .controller('tfCtrl', function($scope, quizService, hotkeys) {
+        $scope.showBigImage = false;
         $scope.nextExercise = function () {
             $scope.incrementNumber();
             $scope.nextBtn = false;
