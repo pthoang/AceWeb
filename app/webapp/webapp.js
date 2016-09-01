@@ -377,7 +377,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.nextExercise = function() {
             $scope.incrementNumber();
             $scope.nextBtn = false;
-            if($scope.exercises[$scope.number].type == "pd") {
+            if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "pd") {
                 randAlternatives = [];
                 $scope.ordering = [];
                 selectRandomAlternatives();
@@ -463,7 +463,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.nextExercise = function () {
             $scope.incrementNumber();
             $scope.nextBtn = false;
-            if($scope.exercises[$scope.number].type == "mc") {
+            if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "mc") {
                 initAlternatives();
                 styles = {}
             }
@@ -541,7 +541,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.nextExercise = function () {
             $scope.incrementNumber();
             $scope.nextBtn = false;
-            if($scope.exercises[$scope.number].type == "tf") {
+            if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "tf") {
                 $scope.initHotkeys();
                 correctAnswer = $scope.exercises[$scope.number].correct.answer? 1:0;
                 styles = {};
