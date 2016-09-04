@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a70f5ba8-9a81-44a1-a8f7-6f5650e45fc5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webapp/exercisesType/mc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webapp/exercisesType/pd.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webapp/exercisesType/tf.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webapp/resultpageType/mc.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webapp/resultpageType/pd.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/webapp/resultpageType/tf.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/.bower.json" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/.bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/bower.json" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/package.json" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap.js" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap.min.js" afterPath="$PROJECT_DIR$/app/bower_components/angular-bootstrap/ui-bootstrap.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/exercises.html" afterPath="$PROJECT_DIR$/app/webapp/exercises.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/mobile/exercises.html" afterPath="$PROJECT_DIR$/app/webapp/mobile/exercises.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/mobile/quiz.html" afterPath="$PROJECT_DIR$/app/webapp/mobile/quiz.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/quiz.html" afterPath="$PROJECT_DIR$/app/webapp/quiz.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/resultpage.html" afterPath="$PROJECT_DIR$/app/webapp/resultpage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/webapp.js" afterPath="$PROJECT_DIR$/app/webapp/webapp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" afterPath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
     </list>
     <ignored path="aceweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
+            <state relative-caret-position="374">
               <caret line="688" column="38" selection-start-line="688" selection-start-column="38" selection-end-line="688" selection-end-column="38" />
               <folding>
                 <element signature="e#203#3029#0" expanded="false" />
@@ -92,8 +74,8 @@
       <file leaf-file-name="resultpage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/resultpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="58" column="75" selection-start-line="58" selection-start-column="75" selection-end-line="58" selection-end-column="75" />
+            <state relative-caret-position="290">
+              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -132,12 +114,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resultpage.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="resultpage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/webapp/mobile/resultpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
-              <folding />
+            <state relative-caret-position="409">
+              <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -170,7 +155,6 @@
         <option value="$PROJECT_DIR$/app/webapp/mobile/collections.html" />
         <option value="$PROJECT_DIR$/app/navbar/navbar_collections.html" />
         <option value="$PROJECT_DIR$/app/css/custom.css" />
-        <option value="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
         <option value="$PROJECT_DIR$/app/webapp/tf.html" />
         <option value="$PROJECT_DIR$/app/webapp/pd.html" />
         <option value="$PROJECT_DIR$/app/webapp/mc.html" />
@@ -191,6 +175,7 @@
         <option value="$PROJECT_DIR$/app/webapp/mobile/quiz.html" />
         <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
         <option value="$PROJECT_DIR$/app/webapp/resultpage.html" />
+        <option value="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
       </list>
     </option>
   </component>
@@ -243,6 +228,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -449,7 +435,6 @@
       </pane>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -942,12 +927,13 @@
       <workItem from="1472935253813" duration="1365000" />
       <workItem from="1472980139165" duration="46000" />
       <workItem from="1472981863975" duration="227000" />
-      <workItem from="1472990781634" duration="8049000" />
+      <workItem from="1472990781634" duration="8517000" />
+      <workItem from="1472999534901" duration="238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38409000" />
+    <option name="totallyTimeSpent" value="39115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -959,10 +945,10 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.30063966" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.6993604" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3279003" sideWeight="0.6993604" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32981783" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2867804" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1247,7 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1259,19 +1244,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/resultpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="70" selection-start-line="12" selection-start-column="70" selection-end-line="12" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/mobile/exercises.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1279,10 +1255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1290,10 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1301,10 +1269,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1360,24 +1324,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="18" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/resultpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="58" column="75" selection-start-line="58" selection-start-column="75" selection-end-line="58" selection-end-column="75" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
+        <state relative-caret-position="374">
           <caret line="688" column="38" selection-start-line="688" selection-start-column="38" selection-end-line="688" selection-end-column="38" />
           <folding>
             <element signature="e#203#3029#0" expanded="false" />
@@ -1385,6 +1337,28 @@
             <element signature="e#14216#17136#0" expanded="false" />
             <element signature="e#17203#19682#0" expanded="false" />
             <element signature="e#19749#21811#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/webapp/resultpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/resultpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -17,10 +17,16 @@
         <div class="container-fluid" style="width: 220px">
 
             <i><p>Hva synes du om quizen?</p></i>
-            <button class="btn btn-round" ng-style="setColor(subject.color)">
+            <button ng-click="sendUserFeedback(true)"
+                    uib-popover-template="'userFeedbackPopover.html'" popover-is-open="showPositiveFeedback" popover-trigger="'none'" popover-title="Takk for tilbakemeldingen!"
+                    popover-placement="left"
+                    class="btn btn-round" ng-style="setColor(subject.color)">
                 <span class="glyphicon glyphicon-thumbs-up" style="color: white; font-size: 30px"></span>
             </button>
-            <button class="btn btn-round" ng-style="setColor(subject.color)">
+            <button ng-click="sendUserFeedback(false)"
+                    uib-popover-template="'userFeedbackPopover.html'" popover-is-open="showNegativeFeedback" popover-trigger="'none'" popover-title="Takk for tilbakemeldingen!"
+                    popover-placement="right"
+                    class="btn btn-round" ng-style="setColor(subject.color)">
                 <span class="glyphicon glyphicon-thumbs-down flipped-h" style="color: white; font-size: 30px;"></span>
             </button>
 
@@ -32,8 +38,26 @@
         <div ng-repeat="wrong in wrongList track by $index">
             <br>
             <h4>{{exercises[wrong].question.text}}</h4>
-            <h5 ng-repeat="correctAns in getCorrectAnswer(wrong)">- &nbsp;&nbsp; {{correctAns}}</h5>
-            <h5 ng-repeat="wrongAnswer in getWrongAnswer(wrong)">- &nbsp;&nbsp; <s>{{wrongAnswer}}</s></h5>
+            <div ng-if="exercises[wrong].type == 'mc'" ng-include="'webapp/resultpageType/mc.html'"></div>
+            <div ng-if="exercises[wrong].type == 'pd'" ng-include="'webapp/resultpageType/pd.html'"></div>
+            <div ng-if="exercises[wrong].type == 'tf'" ng-include="'webapp/resultpageType/tf.html'"></div>
         </div>
     </div>
 </div>
+
+<script type="text/ng-template" id="userFeedbackPopover.html">
+    <div>
+        Ønsker du gi oss en mer detaljert tilbakemelding?
+    </div>
+    <div ng-repeat="option in userFeedbackOptions track by $index">
+        <input type="checkbox" ng-model="userFeedbackSendList[option]"> {{option}}
+    </div>
+    <div style="margin-bottom: 2px">
+        <input type="checkbox" ng-model="userFeedbackSendList.other"> Annet
+    </div>
+    <div align="right">
+        <button class="btn btn-primary">Send</button>
+        <button ng-click="closeUserFeedbackPopover()" class="btn btn-default">Lukk</button>
+    </div>
+</script>
+
