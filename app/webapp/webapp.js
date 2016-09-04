@@ -251,11 +251,21 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.wrongList = [];
 
         $scope.showByType = function (number) {
-            var typePath = $scope.appPath==''? 'webapp/': 'webapp/mobile/';
-            if($scope.number == $scope.threshold*$scope.round) {
-                return typePath + 'resultpage.html'
+            if($scope.exercises.length > 0){
+                if($scope.number == $scope.threshold*$scope.round) {
+                    return 'resultpage'
+                }
+                return $scope.exercises[number].type
             }
-            return typePath + $scope.exercises[number].type + '.html'
+        };
+        $scope.getTypeFile = function (type) {
+            var typePath = $scope.appPath==''? 'webapp/': 'webapp/mobile/';
+            if(type == 'resultpage') {
+                return typePath + 'resultpage.html'
+            } else {
+                return typePath + type + '.html'
+            }
+
         };
         $scope.incrementNumber = function() {
             $scope.number++;
@@ -518,7 +528,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.alternatives.push(wrongAlternatives[i]);
                 $scope.ordering.push(i+1)
             }
-            $scope.alternatives.push($scope.exercises[$scope.number].correct);
+            var randCorrect = Math.floor(Math.random()*$scope.exercises[$scope.number].corrects.length);
+            $scope.alternatives.push($scope.exercises[$scope.number].corrects[randCorrect]);
             quizService.shuffle($scope.ordering);
             for(var j=0; j <$scope.ordering.length; j++) {
                 $scope.makeHotkey($scope.ordering[j], j)
@@ -656,6 +667,23 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
 
         };
+        $scope.feedbackText = $scope.getFeedback();
+
+
+        $scope.sendUserFeedback = function (positive, id) {
+            if($scope.userFeedbackClicked) {
+                return
+            }
+            if(positive) {
+                $scope.userFeedbackOptions = ['Riktig vanskelighetsgrad', 'Relevante oppgaver', 'Kvalitetsoppgaver'];
+                $scope.showPositiveFeedback = true;
+            } else {
+                $scope.userFeedbackOptions = ['For vanskelig', 'For lett', 'Urelevante oppgaver', 'Dårlig kvalitet på oppgaver'];
+                $scope.showNegativeFeedback = true;
+            }
+            $scope.userFeedbackSendList = {};
+            $scope.userFeedbackClicked = true;
+        };
         hotkeys.bindTo($scope).add({
             combo: 'n',
             description: 'Neste quiz',
@@ -663,8 +691,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.startQuiz()
             }
         });
+        $scope.closeUserFeedbackPopover = function () {
+            $scope.showPositiveFeedback = false;
+            $scope.showNegativeFeedback = false;
+        }
 
-        $scope.feedbackText = $scope.getFeedback();
 
     })
 

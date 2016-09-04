@@ -1,0 +1,11 @@
+<button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal">
+    {{exercise.question.text}}
+</button>
+<div uib-collapse="exerciseOpen[$index]">
+    <div class="well well-sm" align="left" style="margin-bottom: 0">
+        <div ng-repeat="alternative in exercise.corrects">
+            <span class="glyphicon glyphicon-ok"></span>
+            {{alternative.answer}}
+        </div>
+    </div>
+</div>

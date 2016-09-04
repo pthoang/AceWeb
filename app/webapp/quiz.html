@@ -9,7 +9,10 @@
     </div>
 
     <div ng-include="'modal/reportModal.html'"></div>
-    <div ng-include="showByType(number)"></div>
+    <div ng-if="showByType(number) == 'mc'" ng-include="getTypeFile('mc')"></div>
+    <div ng-if="showByType(number) == 'pd'" ng-include="getTypeFile('pd')"></div>
+    <div ng-if="showByType(number) == 'tf'" ng-include="getTypeFile('tf')"></div>
+    <div ng-if="showByType(number) == 'resultpage'" ng-include="getTypeFile('resultpage')"></div>
 </div>
 
 

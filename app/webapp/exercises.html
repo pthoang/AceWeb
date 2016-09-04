@@ -14,14 +14,9 @@
         </div>
     </nav>
     <div class="container-fluid" ng-repeat="exercise in exercises track by $index" style="margin-bottom: 5px; margin-top: 5px" align="center">
-        <button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal">
-            {{exercise.question.text}}
-        </button>
-        <div uib-collapse="exerciseOpen[$index]">
-            <div class="well well-sm" align="left" style="margin-bottom: 0">
-                {{exercise.correct.answer}}
-            </div>
-        </div>
+        <div ng-if="exercise.type == 'mc'" ng-include="'webapp/exercisesType/mc.html'"></div>
+        <div ng-if="exercise.type == 'pd'" ng-include="'webapp/exercisesType/pd.html'"></div>
+        <div ng-if="exercise.type == 'tf'" ng-include="'webapp/exercisesType/tf.html'"></div>
     </div>
 
     <div class="container-fluid" style="margin-top: 30px"></div>
