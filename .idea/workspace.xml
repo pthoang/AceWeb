@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a70f5ba8-9a81-44a1-a8f7-6f5650e45fc5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" afterPath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/webapp.js" afterPath="$PROJECT_DIR$/app/webapp/webapp.js" />
     </list>
     <ignored path="aceweb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,18 +25,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="688" column="38" selection-start-line="688" selection-start-column="38" selection-end-line="688" selection-end-column="38" />
+            <state relative-caret-position="214">
+              <caret line="124" column="76" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="76" />
               <folding>
                 <element signature="e#203#3029#0" expanded="false" />
-                <element signature="e#8298#14148#0" expanded="false" />
-                <element signature="e#14216#17136#0" expanded="false" />
-                <element signature="e#17203#19682#0" expanded="false" />
-                <element signature="e#19749#21811#0" expanded="false" />
+                <element signature="e#8342#14192#0" expanded="false" />
+                <element signature="e#14260#17180#0" expanded="false" />
+                <element signature="e#17247#19726#0" expanded="false" />
+                <element signature="e#19793#21855#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="collections.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/webapp/mobile/collections.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-306">
+              <caret line="6" column="108" selection-start-line="6" selection-start-column="108" selection-end-line="6" selection-end-column="108" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -113,7 +124,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resultpage.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="resultpage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/mobile/resultpage.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="171">
@@ -172,9 +183,9 @@
         <option value="$PROJECT_DIR$/app/webapp/resultpageType/tf.html" />
         <option value="$PROJECT_DIR$/app/webapp/quiz.html" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/quiz.html" />
-        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
         <option value="$PROJECT_DIR$/app/webapp/resultpage.html" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
+        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
       </list>
     </option>
   </component>
@@ -927,12 +938,12 @@
       <workItem from="1472980139165" duration="46000" />
       <workItem from="1472981863975" duration="227000" />
       <workItem from="1472990781634" duration="8517000" />
-      <workItem from="1472999534901" duration="403000" />
+      <workItem from="1472999534901" duration="1301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39280000" />
+    <option name="totallyTimeSpent" value="40178000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -1130,13 +1141,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/collections.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="108" selection-start-line="6" selection-start-column="108" selection-end-line="6" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/navbar/navbar_collections.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1326,20 +1330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="688" column="38" selection-start-line="688" selection-start-column="38" selection-end-line="688" selection-end-column="38" />
-          <folding>
-            <element signature="e#203#3029#0" expanded="false" />
-            <element signature="e#8298#14148#0" expanded="false" />
-            <element signature="e#14216#17136#0" expanded="false" />
-            <element signature="e#17203#19682#0" expanded="false" />
-            <element signature="e#19749#21811#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/resultpage.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="290">
@@ -1358,6 +1348,28 @@
           <folding>
             <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/collections.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-306">
+          <caret line="6" column="108" selection-start-line="6" selection-start-column="108" selection-end-line="6" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="124" column="76" selection-start-line="124" selection-start-column="71" selection-end-line="124" selection-end-column="76" />
+          <folding>
+            <element signature="e#203#3029#0" expanded="false" />
+            <element signature="e#8342#14192#0" expanded="false" />
+            <element signature="e#14260#17180#0" expanded="false" />
+            <element signature="e#17247#19726#0" expanded="false" />
+            <element signature="e#19793#21855#0" expanded="false" />
           </folding>
         </state>
       </provider>

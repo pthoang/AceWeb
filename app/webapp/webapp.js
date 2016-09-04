@@ -121,7 +121,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     var stringExercise = JSON.stringify(info[target.value].exercises[i]);
                     quizService.addExercises(JSON.parse(stringExercise))
                 }
-                quizService.setThreshold(mode ? mode:info[target.value].length);
+                console.log(mode)
+                quizService.setThreshold(mode ? mode:info[target.value].exercises.length);
                 quizService.setModeModel($scope.modeModel)
             };
             subjectsService.setTargetSubject($scope.subject);
