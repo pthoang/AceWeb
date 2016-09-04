@@ -19,13 +19,13 @@
             <i><p>Hva synes du om quizen?</p></i>
             <button ng-click="sendUserFeedback(true)"
                     uib-popover-template="'userFeedbackPopover.html'" popover-is-open="showPositiveFeedback" popover-trigger="'none'" popover-title="Takk for tilbakemeldingen!"
-                    popover-placement="left"
+                    popover-placement="bottom"
                     class="btn btn-round" ng-style="setColor(subject.color)">
                 <span class="glyphicon glyphicon-thumbs-up" style="color: white; font-size: 30px"></span>
             </button>
             <button ng-click="sendUserFeedback(false)"
                     uib-popover-template="'userFeedbackPopover.html'" popover-is-open="showNegativeFeedback" popover-trigger="'none'" popover-title="Takk for tilbakemeldingen!"
-                    popover-placement="right"
+                    popover-placement="bottom"
                     class="btn btn-round" ng-style="setColor(subject.color)">
                 <span class="glyphicon glyphicon-thumbs-down flipped-h" style="color: white; font-size: 30px;"></span>
             </button>

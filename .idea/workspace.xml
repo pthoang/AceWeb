@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a70f5ba8-9a81-44a1-a8f7-6f5650e45fc5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" afterPath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
     </list>
     <ignored path="aceweb.iws" />
@@ -117,8 +116,8 @@
       <file leaf-file-name="resultpage.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/webapp/mobile/resultpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+            <state relative-caret-position="171">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -928,12 +927,12 @@
       <workItem from="1472980139165" duration="46000" />
       <workItem from="1472981863975" duration="227000" />
       <workItem from="1472990781634" duration="8517000" />
-      <workItem from="1472999534901" duration="238000" />
+      <workItem from="1472999534901" duration="403000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39115000" />
+    <option name="totallyTimeSpent" value="39280000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -1354,8 +1353,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/mobile/resultpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="50" column="10" selection-start-line="50" selection-start-column="10" selection-end-line="50" selection-end-column="10" />
+        <state relative-caret-position="171">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
             <element signature="n#style#0;n#span#0;n#button#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#button#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
