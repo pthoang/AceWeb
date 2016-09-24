@@ -30,6 +30,10 @@ angular.module('mainApp', [
                 templateUrl: 'webapp/exercises.html',
                 controller: 'exercisesCtrl'
             })
+            .when('/preview/:subjectId/:hashCode', {
+                templateUrl: 'webapp/collections.html',
+                controller: 'collectionsCtrl'
+            })
             .when('/mobile', {
                 templateUrl: 'webapp/mobile/subjects.html',
                 controller: 'subjectsCtrl'

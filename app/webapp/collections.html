@@ -43,13 +43,13 @@
     <div class="container-fluid" style="width: 100%; margin-bottom: 30px">
         <div class="row">
             <div class="col-sm-3" ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter">
-                <a href="#/webapp/{{subject._id}}/{{targetCollection}}">
+                <a href="#/webapp/{{subject.id}}/{{targetCollection}}">
                     <button class="btn btn-default btn-collection" ng-click="setCollection(collection, modeModel)">
                         <h4 class="opensans-text">{{collection.name}}</h4>
                         <p>{{collection.length}} oppgaver</p>
                     </button>
                 </a>
-                <a href="#/webapp/{{subject._id}}/{{targetCollection}}/exercises">
+                <a href="#/webapp/{{subject.id}}/{{targetCollection}}/exercises">
                     <label class="btn btn-default" style="margin-top: -13px; width: 100%" ng-click="setCollection(collection, modeModel)">
                         <img src="../img/definition-icon.png" style="height: 15px">
                     </label>

@@ -3,9 +3,9 @@
 <div ng-app="mainApp.webapp" ng-controller="mcCtrl" style="width: 100%">
     <div style="width: 100%;">
         <div class="container-fluid">
-            <h4 id="question" align="left">{{exercises[number].question.text}}</h4>
-            <div ng-if="exercises[number].question.image" style="margin-bottom: 10px" align="center">
-                <img ng-src="{{getImage(exercises[number].question.image)}}" ng-click="showBigImage=!showBigImage"
+            <h4 id="question" align="left">{{exercises[number].content.question.text}}</h4>
+            <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
+                <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
                      ng-style="showBigImage? {'height': '170px', 'cursor': 'pointer'}: {'height': '100px', 'cursor': 'pointer'}">
             </div>
         </div>

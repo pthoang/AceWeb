@@ -27,7 +27,7 @@
     <div ng-if="prevSubject" ng-repeat="i in [prevSubject] | filter:subjectSearch">
         <h4 class="opensans-text" align="left" style="width: 100%;">Sist besøkte fag:</h4>
         <a ng-href="#/mobile/{{targetId}}">
-            <button id="{{prevSelectdSubject._id}}" class="btn btn-default" style="width: 100%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(prevSubject.color)" ng-click="setTarget(prevSubject)">
+            <button id="{{prevSelectdSubject.id}}" class="btn btn-default" style="width: 100%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(prevSubject.color)" ng-click="setTarget(prevSubject)">
                 <h3 class="h1-subjectName" style="color: white; margin-top: 0;">{{prevSubject.name}}</h3>
                 <h4 style="color: white; margin-bottom: 0;">{{prevSubject.code}}</h4>
             </button>
@@ -37,7 +37,7 @@
 
     <div ng-repeat="i in subjects | orderBy: 'code' | filter:subjectSearch">
         <a ng-href="#/mobile/{{targetId}}">
-            <button id="{{i._id}}" class="btn btn-default" style="width: 100%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
+            <button id="{{i.id}}" class="btn btn-default" style="width: 100%; height: 120px; margin-bottom: 20px; white-space: normal"  ng-style="setColor(i.color)" ng-click="setTarget(i)">
                 <h3 class="h1-subjectName" style="color: white; margin-top: 0;">{{i.name}}</h3>
                 <h4 style="color: white; margin-bottom: 0;">{{i.code}}</h4>
             </button>
