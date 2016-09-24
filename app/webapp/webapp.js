@@ -465,7 +465,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         $scope.getAlternative = function(i) {
             if(i == $scope.ordering.length-1) {
-                return $scope.exercises[$scope.number].content.correct.answer
+                return $scope.exercises[$scope.number].content.corrects[0].answer
             }
             else {
                 return randAlternatives[i].answer
