@@ -167,6 +167,12 @@ body {
     height: 100px;
 }
 
+.panel-feedback {
+    color: black;
+    background: white;
+    margin-top: -30px;
+}
+
 .cssload-container {
     position: relative;
     width: 97px;

@@ -683,12 +683,18 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.userFeedbackOptions = ['Riktig vanskelighetsgrad', 'Relevante oppgaver', 'Kvalitetsoppgaver'];
                 $scope.showPositiveFeedback = true;
             } else {
-                $scope.userFeedbackOptions = ['For vanskelig', 'For lett', 'Urelevante oppgaver', 'Dårlig kvalitet på oppgaver'];
+                $scope.userFeedbackOptions = ['For vanskelig', 'For lett', 'Irrelevante oppgaver', 'Dårlig kvalitet på oppgaver'];
                 $scope.showNegativeFeedback = true;
             }
             $scope.userFeedbackSendList = {};
             $scope.userFeedbackClicked = true;
+            $scope.showFeedback = true;
         };
+
+        $scope.sendDetailedUserFeedback = function () {
+            $scope.showFeedback = false;
+        };
+
         hotkeys.bindTo($scope).add({
             combo: 'n',
             description: 'Neste quiz',
@@ -696,10 +702,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.startQuiz()
             }
         });
-        $scope.closeUserFeedbackPopover = function () {
-            $scope.showPositiveFeedback = false;
-            $scope.showNegativeFeedback = false;
-        }
+
+
 
 
     })
@@ -714,8 +718,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.send = function() {
             $scope.isSending = true;
             var message = {
-                subjectId: $routeParams.subjectId,
-                collectionId: $routeParams.collectionId,
                 exerciseId: $scope.exerciseId,
                 report: {
                     message: $scope.message,
@@ -723,7 +725,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 }
             };
 
-            $http.post($scope.url + '/reports', message)
+            $http.post($scope.url + '/subjects/'+$routeParams.subjectId+'/reports', message)
                 .success(function(response) {
                     $scope.sendPressed = true;
                     $scope.isSuccess = true;
