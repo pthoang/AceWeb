@@ -88,7 +88,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.pageClass = 'page-collections';
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
-
         $scope.modeModel = quizService.getModeModel() != undefined ? quizService.getModeModel() : 10;
         $scope.loading = true;
         if (! $cookies.getObject('targetSubject') || $scope.subject.id != subjectId) {
@@ -142,11 +141,16 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             quizService.emptyExercises();
             $http({
                 method: 'GET',
-                url: $scope.url + '/app/subjects/' + subjectId + $routeParams.hash ? '/'+$routeParams.hash:''
+                url: $scope.url + '/app/subjects/' + subjectId + ($routeParams.hashCode ? '/'+$routeParams.hashCode:'')
             })
                 .success(function(response) {
                     initCollections(response);
                     collectionsService.setInfo(response);
+                    console.log(response)
+                })
+                .error(function (response, status) {
+                    console.log(response)
+                    console.log(status)
                 });
 
         }
