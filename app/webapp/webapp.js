@@ -125,7 +125,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     var stringExercise = JSON.stringify(info[target.value].exercises[i]);
                     quizService.addExercises(JSON.parse(stringExercise))
                 }
-                console.log(mode)
                 quizService.setThreshold(mode ? mode:info[target.value].exercises.length);
                 quizService.setModeModel($scope.modeModel)
             };
@@ -143,7 +142,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             quizService.emptyExercises();
             $http({
                 method: 'GET',
-                url: $scope.url + '/app/subjects/' + subjectId
+                url: $scope.url + '/app/subjects/' + subjectId + $routeParams.hash ? '/'+$routeParams.hash:''
             })
                 .success(function(response) {
                     initCollections(response);
@@ -718,14 +717,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.send = function() {
             $scope.isSending = true;
             var message = {
-                exerciseId: $scope.exerciseId,
-                report: {
-                    message: $scope.message,
-                    device: 'web'
-                }
+                message: $scope.message,
+                device: 'web'
             };
 
-            $http.post($scope.url + '/subjects/'+$routeParams.subjectId+'/reports', message)
+            $http.post($scope.url + '/app/exercises/'+$scope.exerciseId+'/reports', message)
                 .success(function(response) {
                     $scope.sendPressed = true;
                     $scope.isSuccess = true;
