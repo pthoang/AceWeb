@@ -6,7 +6,9 @@ angular.module('mainApp', [
     'ui.bootstrap',
     'ngAnimate',
     'mainApp.about',
-    'mainApp.webapp'
+    'mainApp.webapp',
+    'angulartics',
+    'angulartics.mixpanel'
 ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider

@@ -3,11 +3,11 @@
 
 angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
-    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, $location,$window, subjectsService) {
+    .controller('subjectsCtrl', function($scope, $http, $cookies, $uibModal, $location,$window, $analytics, subjectsService) {
         $scope.loading = true;
         var initSubjects = function(subjectsInfo) {
             $scope.subjects = subjectsInfo;
-            console.log($scope.subjects)
+            console.log($scope.subjects);
             $scope.subjectSearch = function(item) {
                 if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
                     return true;
@@ -17,6 +17,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
             $scope.setTarget = function(target) {
                 $scope.targetId = target.id;
+                $analytics.eventTrack('Package', {id: $scope.targetId, name:target.name,platform: 'web'});
                 $cookies.putObject('targetSubject', target);
                 subjectsService.setTargetSubject(target);
                 subjectsService.setFilterText($scope.subjectFilter);
@@ -68,6 +69,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         }
 
         $scope.openSuggestion = function() {
+            $analytics.eventTrack('Open Suggestion', {platform: 'web'});
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: 'suggestionModal.html',
@@ -84,7 +86,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
 
-    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, quizService, collectionsService, subjectsService) {
+    .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams, $analytics, quizService, collectionsService, subjectsService) {
         $scope.pageClass = 'page-collections';
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
@@ -118,6 +120,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
             $scope.setCollection = function(target, mode){
                 $scope.targetCollection = target.id;
+                $analytics.eventTrack('Collection', {id: $scope.targetCollection, name: target.name, platform: 'web'});
                 quizService.setCollection(target);
                 quizService.emptyExercises();
                 for(var i=0; i < info[target.value].exercises.length; i++) {
@@ -220,7 +223,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
 
-    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $timeout, $window, quizService, collectionsService, hotkeys) {
+    .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $timeout, $window, $analytics,
+                                      quizService, collectionsService, hotkeys) {
         $scope.pageClass = 'page-quiz';
         $scope.subject = $cookies.getObject('targetSubject');
         if(quizService.getCollection()) {
@@ -276,6 +280,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         };
         $scope.incrementNumber = function() {
+            $analytics.eventTrack('Exercise answered', {platform: 'web'});
             $scope.number++;
             $scope.buttonClassNum = 0;
             window.scrollTo(0,0)
@@ -301,6 +306,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.score++;
         };
         $scope.startQuiz = function() {
+            $analytics.eventTrack('Quiz started', {platform: 'web'});
             $scope.threshold = Math.min(quizService.getThreshold(), $scope.exercises.length);
             if($scope.threshold == 10) {
                 $scope.updateExercises();
@@ -532,7 +538,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.alternatives = [];
             $scope.ordering = [0];
             var wrongAlternatives = $scope.exercises[$scope.number].content.wrongs;
-            for(var i=0; i<wrongAlternatives.length; i++) {
+            quizService.shuffle(wrongAlternatives);
+            for(var i=0; i<Math.min(wrongAlternatives.length, 4); i++) {
                 $scope.alternatives.push(wrongAlternatives[i]);
                 $scope.ordering.push(i+1)
             }
@@ -616,7 +623,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.initHotkeys()
     })
-    .controller('resultCtrl', function($scope, hotkeys) {
+    .controller('resultCtrl', function($scope, $analytics, hotkeys) {
         $scope.wrongIndexes.push($scope.wrongList.length);
         $scope.tabsArray = [];
         for(var i=0; i<$scope.round; i++) {

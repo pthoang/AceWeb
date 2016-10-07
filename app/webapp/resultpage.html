@@ -52,7 +52,8 @@
         <h3>Til neste gang:</h3>
         <div ng-repeat="wrong in wrongList track by $index">
             <br>
-            <h4>{{exercises[wrong].question.text}}</h4>
+            {{exercises[wrong].content}}
+            <h4>{{exercises[wrong].content.question.text}}</h4>
             <div ng-if="exercises[wrong].type == 'mc'" ng-include="'webapp/resultpageType/mc.html'"></div>
             <div ng-if="exercises[wrong].type == 'pd'" ng-include="'webapp/resultpageType/pd.html'"></div>
             <div ng-if="exercises[wrong].type == 'tf'" ng-include="'webapp/resultpageType/tf.html'"></div>

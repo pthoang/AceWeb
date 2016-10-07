@@ -1,0 +1,27 @@
+{
+  "name": "angulartics-mixpanel",
+  "main": "./dist/angulartics-mixpanel.min.js",
+  "dependencies": {
+    "angulartics": "~1.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "example",
+    "package.json",
+    "lib/index.js"
+  ],
+  "homepage": "https://github.com/angulartics/angulartics-mixpanel",
+  "version": "0.1.2",
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.2",
+    "commit": "f9ce7e1ab52b94feb7d2bbbd95940200a431f42b"
+  },
+  "_source": "https://github.com/angulartics/angulartics-mixpanel.git",
+  "_target": "^0.1.2",
+  "_originalSource": "angulartics-mixpanel",
+  "_direct": true
+}
