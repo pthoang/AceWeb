@@ -38,6 +38,8 @@
                     </div>
                     <div style="margin-bottom: 2px">
                         <input type="checkbox" ng-model="userFeedbackSendList.other"> Annet
+                        <input ng-show="userFeedbackSendList.other" ng-model="userFeedbackSendList.specified"
+                               class="form-control" placeholder="Spesifiser">
                     </div>
                     <div align="right">
                         <button ng-click="sendDetailedUserFeedback()" class="btn btn-primary">Send</button>

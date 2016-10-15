@@ -24,7 +24,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             var w = angular.element($window);
             w.bind('scroll', function() {
-                if(window.pageYOffset > 210) {
+                if(window.pageYOffset > 110) {
                     document.getElementById('0').blur();
                     $scope.stickySearch = true;
 
@@ -317,6 +317,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.exercises = quizService.getExercises();
                 quizService.shuffle($scope.exercises)
             }
+            console.log(quizService.getExercises());
             $scope.score = 0;
             $scope.wrongList = [];
             $scope.wrongIndexes = [0];
@@ -623,7 +624,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.initHotkeys()
     })
-    .controller('resultCtrl', function($scope, $analytics, hotkeys) {
+    .controller('resultCtrl', function($scope, $http, $analytics, hotkeys, quizService) {
         $scope.wrongIndexes.push($scope.wrongList.length);
         $scope.tabsArray = [];
         for(var i=0; i<$scope.round; i++) {
@@ -689,10 +690,39 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             if($scope.userFeedbackClicked) {
                 return
             }
+
             if(positive) {
+                $analytics.eventTrack('Positive feedback', {collectionId: $scope.collectionId, platform: 'web'});
+                $http({
+                    method: 'POST',
+                    url: $scope.url + '/analytics',
+                    data: {
+                        type: 'click',
+                        positive: true,
+                        exercises: quizService.getModeModel() ? $scope.exercises.slice(-10): $scope.exercises
+                    }
+                }).success(function (response) {
+                    console.log(response)
+                }).error(function (response) {
+                    console.log(response)
+                });
                 $scope.userFeedbackOptions = ['Riktig vanskelighetsgrad', 'Relevante oppgaver', 'Kvalitetsoppgaver'];
                 $scope.showPositiveFeedback = true;
             } else {
+                $analytics.eventTrack('Negative feedback', {collectionId: $scope.collectionId, platform: 'web'});
+                $http({
+                    method: 'POST',
+                    url: $scope.url + '/analytics',
+                    data: {
+                        type: 'click',
+                        positive: false,
+                        exercises: quizService.getModeModel() ? $scope.exercises.slice(-10): $scope.exercises
+                    }
+                }).success(function (response) {
+                    console.log(response)
+                }).error(function (response) {
+                    console.log(response)
+                });
                 $scope.userFeedbackOptions = ['For vanskelig', 'For lett', 'Irrelevante oppgaver', 'Dårlig kvalitet på oppgaver'];
                 $scope.showNegativeFeedback = true;
             }
@@ -702,6 +732,19 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
 
         $scope.sendDetailedUserFeedback = function () {
+            $http({
+                method: 'POST',
+                url: $scope.url + '/analytics',
+                data: {
+                    type: 'detailed',
+                    fields: $scope.userFeedbackSendList,
+                    exercises: quizService.getModeModel() ? $scope.exercises.slice(-10): $scope.exercises
+                }
+            }).success(function (response) {
+                console.log(response)
+            }).error(function (response) {
+                console.log(response)
+            });
             $scope.showFeedback = false;
         };
 
