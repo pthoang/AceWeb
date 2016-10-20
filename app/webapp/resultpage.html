@@ -3,10 +3,15 @@
 </head>
 
 <div ng-app="mainApp.webapp" ng-controller="resultCtrl">
-    <div align="center">
-        <h1>{{feedbackText}}</h1>
+    <div class="row" align="center" ng-style="setColor(subject.color)" style="color: white; width: 960px;">
+        <h2 style="margin-bottom: 60px; margin-top: 30px">{{collectionName}}</h2>
+        <h1 style="font-size: 80px; font-weight: bold">{{feedbackText}}</h1>
         <h2>{{score}} av {{threshold}}</h2>
-        <div class="container-fluid" style="width: 100px; margin-bottom: 20px;">
+        <div class="container-fluid" style="width: 200px; margin-bottom: 20px;">
+            <button style="margin-left: -5px" class="btn btn-round" ng-click="goBack()"
+                    ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-remove" style="color: white; font-size: 30px;"></span>
+            </button>
             <button ng-show="showContinueBtn()" style="margin-left: -5px" class="btn btn-round" ng-click="startQuiz()"
                     ng-style="setColor(subject.color)">
                 <img src="img/more-quiz-icon-white.png" style="width: 40px">
@@ -17,7 +22,7 @@
             </button>
         </div>
         <div class="container-fluid" style="width: 220px; margin-bottom: 10px">
-            <i ng-show="!(showPositiveFeedback || showNegativeFeedback)"><p>Hva synes du om quizen?</p></i>
+            <i ng-show="!(showPositiveFeedback || showNegativeFeedback)"><p>Hva synes du om quizzen?</p></i>
             <i ng-show="(showPositiveFeedback || showNegativeFeedback)"><p>Takk for tilbakemelding!</p></i>
             <button ng-disabled="showNegativeFeedback" ng-click="sendUserFeedback(true)"
                     class="btn btn-round" ng-style="setColor(subject.color)">
@@ -29,9 +34,9 @@
             </button>
         </div>
         <div ng-show="showFeedback" class="container-fluid" style="width: 250px">
-            <i><p ng-click="showFeedbackOptions=true" style="cursor: pointer">Klikk her for å gi en mer detaljert tilbakemelding</p></i>
-            <uib-accordion>
-                <div uib-accordion-group class="panel-feedback"
+            <i ng-hide="showFeedbackOptions"><p ng-click="showFeedbackOptions=true" style="cursor: pointer;">Klikk her for å gi en mer detaljert tilbakemelding</p></i>
+            <uib-accordion ng-show="showFeedbackOptions">
+                <div uib-accordion-group class="panel-feedback" style="margin-top: 5px"
                      is-open="showFeedbackOptions" align="left">
                     <div ng-repeat="option in userFeedbackOptions track by $index">
                         <input type="checkbox" ng-model="userFeedbackSendList[option]"> {{option}}
@@ -47,10 +52,13 @@
                 </div>
             </uib-accordion>
         </div>
-
+        <div ng-show="showSentDetailed" class="container-fluid" style="width: 250px">
+            <i><p>Detaljert tilbakemelding sendt!</p></i>
+        </div>
+        <div style="height: 20px"></div>
     </div>
 
-    <div ng-hide="score == threshold" class="container-fluid" style="width: 60%; margin-top: 10px; margin-bottom: 30px">
+    <div ng-hide="score == threshold" class="container-fluid" style="margin-top: 10px; margin-bottom: 30px">
         <h3>Til neste gang:</h3>
         <div ng-repeat="wrong in wrongList track by $index">
             <br>

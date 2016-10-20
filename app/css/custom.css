@@ -149,8 +149,8 @@ body {
 }
 
 .btn-round {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     margin-left: 2px;
     margin-right: 2px;
     border-radius: 100px;
@@ -171,6 +171,15 @@ body {
     color: black;
     background: white;
     margin-top: -30px;
+}
+
+.unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .cssload-container {

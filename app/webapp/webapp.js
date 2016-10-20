@@ -741,6 +741,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     exercises: quizService.getModeModel() ? $scope.exercises.slice(-10): $scope.exercises
                 }
             }).success(function (response) {
+                $scope.showSentDetailed = true;
                 console.log(response)
             }).error(function (response) {
                 console.log(response)
