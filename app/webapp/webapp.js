@@ -378,9 +378,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.getImage = function (image) {
             var imageUrlParts = image.url.split('/');
-            imageUrlParts[imageUrlParts.indexOf("upload") + 1] = "h_300";
+            imageUrlParts[imageUrlParts.indexOf("upload") + 1] = "w_900";
             imageUrlParts.splice(0, 2);
-            var newUrl = "http:/";
+            var newUrl = "https:/";
             angular.forEach(imageUrlParts, function (part) {
                 newUrl = newUrl + "/" + part
             });
@@ -623,6 +623,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.makeHotkey($scope.ordering[1], 1)
         };
         $scope.initHotkeys()
+    })
+    .controller('mathCtrl', function ($scope, quizService) {
+
+        $scope.nextBtn = true;
+        $scope.nextExercise = function () {
+            $scope.incrementNumber();
+        }
     })
     .controller('resultCtrl', function($scope, $http, $analytics, hotkeys, quizService) {
         $scope.wrongIndexes.push($scope.wrongList.length);

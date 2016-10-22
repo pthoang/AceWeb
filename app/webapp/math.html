@@ -1,0 +1,10 @@
+
+<div ng-app="mainApp.webapp" ng-controller="mathCtrl">
+    <div class="container-fluid" style="margin-top: 20px">
+        <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
+             ng-style="{'width': '900px'}">
+    </div>
+
+    <div ng-include="'webapp/quiz_buttons.html'"></div>
+</div>
+
