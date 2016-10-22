@@ -1,9 +1,29 @@
 
 <div ng-app="mainApp.webapp" ng-controller="mathCtrl">
-    <div class="container-fluid" style="margin-top: 20px">
-        <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
+    <div class="container-fluid" style="margin-top: 20px" align="center">
+        <img ng-show="showImage=='question'" ng-src="{{getImage(exercises[number].content.question.image)}}"
              ng-style="{'width': '900px'}">
+        <img ng-show="showImage=='answer'" ng-src="{{getImage(exercises[number].content.correct.image)}}"
+             ng-style="{'width': '900px'}">
+
+        <div style="margin-top: 10px; margin-bottom: 5px">
+            <button ng-show="showImage=='question'" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showImage='answer'">
+                <span style="font-size: 20px; color: white;">Vis fasit</span>
+            </button>
+            <button ng-show="showImage=='answer'" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showImage='question'">
+                <span style="font-size: 20px; color: white;">Vis oppgave</span>
+            </button>
+        </div>
+        <div>
+            <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="answeredCorrect()">
+                <span class="glyphicon glyphicon-ok" style="font-size: 20px; color: white;"></span>
+            </button>
+            <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="answeredWrong()">
+                <span class="glyphicon glyphicon-remove" style="font-size: 20px; color: white;"></span>
+            </button>
+        </div>
     </div>
+
 
     <div ng-include="'webapp/quiz_buttons.html'"></div>
 </div>

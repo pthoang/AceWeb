@@ -1,0 +1,14 @@
+<div class="row">
+    <div ng-show="!makeCorrectBig[wrong]" ng-class="makeQuestionBig[wrong]? 'col-xs-12':'col-xs-6'" align="center">
+        <p>Oppgave:</p>
+        <img ng-src="{{getImage(exercises[wrong].content.question.image)}}"
+             ng-style="makeQuestionBig[wrong] ? {'width': '800px', 'cursor': 'pointer'}:{'width': '400px', 'cursor': 'pointer'}"
+             ng-click="makeQuestionBig[wrong]=!makeQuestionBig[wrong]">
+    </div>
+    <div ng-show="!makeQuestionBig[wrong]" ng-class="makeCorrectBig[wrong]? 'col-xs-12':'col-xs-6'" align="center">
+        <p>Fasit:</p>
+        <img ng-src="{{getImage(exercises[wrong].content.correct.image)}}" ng-click="makeCorrectBig[wrong]=!makeCorrectBig[wrong]"
+             ng-style="makeCorrectBig[wrong]? {'width': '800px', 'cursor': 'pointer'}:{'width': '400px', 'cursor': 'pointer'}">
+    </div>
+</div>
+<hr>

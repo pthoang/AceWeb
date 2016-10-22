@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div style="background-color: white;">
-    <nav id="quizTop" class="navbar navbar-default navbar-static-top"  role="navigation" style="width: 100%;height: 70px;" ng-style="setColor(subject.color)">
+    <nav ng-show="showByType(number) != 'resultpage'" id="quizTop" class="navbar navbar-default navbar-static-top"  role="navigation" style="width: 100%;height: 70px;" ng-style="setColor(subject.color)">
         <div class="container-fluid">
 
             <div class="container-fluid" style="position: absolute; top: 8px; left: 2px">
@@ -25,6 +25,7 @@
     <div ng-if="showByType(number) == 'mc'" ng-include="getTypeFile('mc')"></div>
     <div ng-if="showByType(number) == 'pd'" ng-include="getTypeFile('pd')"></div>
     <div ng-if="showByType(number) == 'tf'" ng-include="getTypeFile('tf')"></div>
+    <div ng-if="showByType(number) == 'math'" ng-include="getTypeFile('math')"></div>
     <div ng-if="showByType(number) == 'resultpage'" ng-include="getTypeFile('resultpage')"></div>
 </div>
 
