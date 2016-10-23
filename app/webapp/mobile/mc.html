@@ -2,7 +2,7 @@
 
 <div ng-app="mainApp.webapp" ng-controller="mcCtrl" style="width: 100%">
     <div class="container-fluid">
-        <h4 id="question" align="left">{{exercises[number].content.question.text}}</h4>
+        <h4 class="pre-wrap-text" id="question" align="left">{{exercises[number].content.question.text}}</h4>
         <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
             <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
                  ng-style="showBigImage? {'height': '170px', 'cursor': 'pointer'}: {'height': '100px', 'cursor': 'pointer'}">
@@ -11,7 +11,7 @@
 
     <div class="col-xs-12" ng-repeat="i in ordering track by $index" style="width: 100%;margin-top: 3px; margin-bottom: 3px">
         <button ng-mouseover="setButtonClassNum()" class="btn-quizloaded btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="this.blur()">
-            {{alternatives[i].answer}}
+            <span class="pre-wrap-text">{{alternatives[i].answer}}</span>
         </button>
     </div>
 

@@ -1,7 +1,7 @@
 
 <div ng-app="mainApp.webapp" ng-controller="pdCtrl">
     <div class="container-fluid">
-        <h4 id="question">{{exercises[number].content.question.text}}</h4>
+        <h4 class="pre-wrap-text" id="question">{{exercises[number].content.question.text}}</h4>
         <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
             <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
                  ng-style="showBigImage? {'height': '170px', 'cursor': 'pointer'}: {'height': '100px', 'cursor': 'pointer'}">
@@ -10,7 +10,7 @@
 
     <div ng-repeat="i in ordering track by $index" class="col-xs-12" style="width: 100%;margin-top: 3px; margin-bottom: 3px">
         <button ng-mouseover="setButtonClassNum()" class="btn-quizloaded btn-mcalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">
-            {{getAlternative(i)}}
+            <span class="pre-wrap-text">{{getAlternative(i)}}</span>
         </button>
     </div>
 

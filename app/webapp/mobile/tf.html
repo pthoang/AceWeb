@@ -3,7 +3,7 @@
 <div ng-app="mainApp.webapp" ng-controller="tfCtrl">
 
     <div class="container-fluid" style="width: 100%;">
-        <h4 id="question" align="left">{{exercises[number].content.question.text}}</h4>
+        <h4 class="pre-wrap-text" id="question" align="left">{{exercises[number].content.question.text}}</h4>
         <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
             <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
                  ng-style="showBigImage? {'height': '170px', 'cursor': 'pointer'}: {'height': '100px', 'cursor': 'pointer'}">

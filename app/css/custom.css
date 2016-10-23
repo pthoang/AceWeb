@@ -26,6 +26,10 @@ body {
     top: 0;
 }
 
+.pre-wrap-text {
+    white-space: pre-wrap;
+}
+
 .opensans-text {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;

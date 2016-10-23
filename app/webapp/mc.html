@@ -4,7 +4,7 @@
     <div class="container-fluid" style="width: 960px; margin-left: -15px">
         <div ng-style="getQHeight() > 100 ? {'height': (getQHeight()+30)+'px'}:{'height': 120+'px'}" class="container-fluid">
             <div id="question">
-                <h3 align="left">{{exercises[number].content.question.text}}</h3>
+                <h3 class="pre-wrap-text" align="left">{{exercises[number].content.question.text}}</h3>
                 <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
                     <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
                          ng-style="showBigImage? {'height': '400px', 'cursor': 'pointer'}: {'height': '200px', 'cursor': 'pointer'}">
@@ -28,7 +28,7 @@
                     </label>
                 </div>
                 <div class="col-xs-11">
-                    <span class="unselectable" style="display: inline-block; font-size: 20px; margin-top: 5px">{{alternatives[i].answer}}</span>
+                    <span class="unselectable pre-wrap-text" style="display: inline-block; font-size: 20px; margin-top: 5px">{{alternatives[i].answer}}</span>
                 </div>
             </div>
         </div>

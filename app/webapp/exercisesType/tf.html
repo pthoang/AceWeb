@@ -1,9 +1,9 @@
 <button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal">
-    {{exercise.content.question.text}}
+    <span class="pre-wrap-text">{{exercise.content.question.text}}</span>
 </button>
 <div uib-collapse="exerciseOpen[$index]">
     <div class="well well-sm" align="left" style="margin-bottom: 0">
         <span class="glyphicon glyphicon-ok"></span>
-        {{exercise.content.correct.answer}}
+        <span class="pre-wrap-text">{{exercise.content.correct.answer}}</span>
     </div>
 </div>
