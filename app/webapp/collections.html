@@ -25,7 +25,7 @@
                         <h5>Quizmodus:</h5>
                     </div>
                     <div class="col-sm-7">
-                        <div class="btn-group" style="width: 100%">
+                        <div ng-hide="isMath()" class="btn-group" style="width: 100%">
                             <label class="btn btn-default" uib-btn-radio="10" ng-model="modeModel" style="width: 33%;">
                                 10
                             </label>
@@ -33,6 +33,14 @@
                                 20
                             </label>
                             <label class="btn btn-default" uib-btn-radio="0" ng-model="modeModel" style="width: 33%;">
+                                Alle
+                            </label>
+                        </div>
+                        <div ng-show="isMath()" class="btn-group" style="width: 100%">
+                            <label class="btn btn-default" uib-btn-radio="3" ng-model="modeModel" style="width: 50%;">
+                                3
+                            </label>
+                            <label class="btn btn-default" uib-btn-radio="0" ng-model="modeModel" style="width: 50%;">
                                 Alle
                             </label>
                         </div>
@@ -48,13 +56,18 @@
             <div class="col-sm-3" ng-repeat="collection in collections | orderBy: 'name' | filter: collectionFilter">
                 <a href="#/webapp/{{subject.id}}/{{targetCollection}}">
                     <button class="btn btn-default btn-collection" ng-click="setCollection(collection, modeModel)">
-                        <h4 class="opensans-text">{{collection.name}}</h4>
-                        <p>{{collection.length}} oppgaver</p>
+                        <h4 class="opensans-text">{{collection.name}} <span ng-if="isMath()"> - Tilfeldige oppgaver</span></h4>
+                        <p>
+                            {{collection.length}}
+                            <span ng-if="collection.length != 1">oppgaver</span>
+                            <span ng-if="collection.length == 1">oppgave</span>
+                        </p>
                     </button>
                 </a>
                 <a href="#/webapp/{{subject.id}}/{{targetCollection}}/exercises">
                     <label class="btn btn-default" style="margin-top: -13px; width: 100%" ng-click="setCollection(collection, modeModel)">
-                        <img src="../img/definition-icon.png" style="height: 15px">
+                        <!--<img src="../img/definition-icon.png" style="height: 15px">-->
+                        Se alle oppgaver
                     </label>
                 </a>
             </div>

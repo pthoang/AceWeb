@@ -90,7 +90,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.pageClass = 'page-collections';
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
-        $scope.modeModel = quizService.getModeModel() != undefined ? quizService.getModeModel() : 10;
+        $scope.modeModel = quizService.getModeModel() != undefined && quizService.getModeModel() != 3? quizService.getModeModel() : 10;
         $scope.loading = true;
         if (! $cookies.getObject('targetSubject') || $scope.subject.id != subjectId) {
             $scope.hideHeader = true;
@@ -135,7 +135,16 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 description: true,
                 settings: true
             };
+
+            $scope.isMath = function () {
+                return ($scope.subject.code.indexOf('TMA') != -1)
+            };
+            if($scope.isMath()) {
+                $scope.modeModel = quizService.getModeModel() == 3 || quizService.getModeModel() == 0 ? quizService.getModeModel(): 3;
+            };
             $scope.loading = false;
+
+
         };
         if(collectionsService.getInfo() && collectionsService.getInfo().id == $routeParams.subjectId ) {
             initCollections(collectionsService.getInfo())
@@ -644,27 +653,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     .controller('mathCtrl', function ($scope, quizService) {
         $scope.showImage = 'question';
         $scope.nextExercise = function () {
+            $scope.incrementScore();
             $scope.incrementNumber();
             $scope.nextBtn = false;
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "math") {
-                $scope.showImage = "question"
+                $scope.showAnswer = false;
             }
         };
 
-        $scope.answeredCorrect = function () {
-            if($scope.nextBtn) {
-                return $scope.nextExercise()
-            }
-            $scope.nextBtn = true;
-            $scope.incrementScore()
-        };
-        $scope.answeredWrong = function () {
-            if($scope.nextBtn) {
-                return $scope.nextExercise()
-            }
-            $scope.nextBtn = true;
-            $scope.wrongList.push($scope.number)
-        }
 
     })
     .controller('resultCtrl', function($scope, $http, $analytics, hotkeys, quizService) {
