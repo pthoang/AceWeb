@@ -57,7 +57,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         else {
             $http({
                 method: 'GET',
-                url: $scope.url + '/app/subjects/'
+                url: $scope.url + '/subjects/'
             })
                 .success(function (response) {
                     initSubjects(response);
@@ -153,7 +153,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             quizService.emptyExercises();
             $http({
                 method: 'GET',
-                url: $scope.url + '/app/subjects/' + subjectId + ($routeParams.hashCode ? '/'+$routeParams.hashCode:'')
+                url: $scope.url + '/subjects/' + subjectId + ($routeParams.hashCode ? '/'+$routeParams.hashCode:'')
             })
                 .success(function(response) {
                     initCollections(response);
@@ -280,6 +280,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         quizService.shuffle($scope.exercises);
         $scope.number = 0;
+        $scope.maxNumber = 0;
         $scope.round = 0;
         $scope.wrongList = [];
 
@@ -298,13 +299,22 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             } else {
                 return typePath + type + '.html'
             }
-
         };
         $scope.incrementNumber = function() {
             $analytics.eventTrack('Exercise answered', {platform: 'web'});
             $scope.number++;
+            $scope.maxNumber++;
             $scope.buttonClassNum = 0;
             window.scrollTo(0,0)
+        };
+        $scope.prevNumber = function () {
+            if($scope.userAnswered[$scope.number]) {
+                $scope.userAnswered[$scope.number].show = true;
+            }
+            $scope.number--;
+        };
+        $scope.nextNumber = function () {
+            $scope.number++;
         };
         $scope.updateExercises = function () {
             // for(var k=0; k < $scope.wrongList.length; k++) {
@@ -339,12 +349,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             if($scope.number >= $scope.exercises.length) {
                 $scope.number = 0;
+                $scope.maxNumber = 0;
                 $scope.round = 0;
                 $scope.exercises = quizService.getExercises();
                 quizService.shuffle($scope.exercises)
             }
             console.log(quizService.getExercises());
             $scope.score = 0;
+            $scope.userAnswered = {};
             $scope.wrongList = [];
             $scope.wrongIndexes = [0];
             $scope.round++;
@@ -412,6 +424,15 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             });
             return newUrl;
         };
+
+        $scope.getCorrectStyle = function () {
+            return quizService.getCorrectStyle();
+        };
+
+        $scope.getWrongStyle = function () {
+            return quizService.getWrongStyle()
+        };
+
         hotkeys.bindTo($scope).add({
             combo: 'r',
             description: 'Rapporter oppgave',
@@ -420,14 +441,36 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     $scope.openReport()
                 }
             }
+        });
+        hotkeys.bindTo($scope).add({
+            combo:'right',
+            description: 'Bla fram',
+            callback: function () {
+                if($scope.number < $scope.maxNumber || $scope.userAnswered[$scope.number] && $scope.userAnswered[$scope.number].show) {
+                    $scope.nextNumber();
+                }
+            }
+        });
+        hotkeys.bindTo($scope).add({
+            combo:'left',
+            description: 'Bla tilbake',
+            callback: function () {
+                if($scope.number-$scope.threshold*($scope.round-1) > 0) {
+                    $scope.prevNumber();
+                }
+            }
         })
 
     })
     .controller('pdCtrl', function ($scope, quizService, hotkeys) {
         $scope.showBigImage = false;
         $scope.nextExercise = function() {
-            $scope.incrementNumber();
-            $scope.nextBtn = false;
+            if($scope.number < $scope.maxNumber) {
+                $scope.nextNumber()
+            } else {
+                $scope.incrementNumber();
+                $scope.nextBtn = false;
+            }
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "pd") {
                 randAlternatives = [];
                 $scope.ordering = [];
@@ -442,17 +485,17 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 hotkeys.del(''+(j+1));
             }
             if($scope.nextBtn){
-
                 return $scope.nextExercise();
-
             }
             $scope.nextBtn = true;
             styles[$scope.ordering.length-1] = quizService.getCorrectStyle();
+            $scope.userAnswered[$scope.number] = [$scope.exercises[$scope.number].content.corrects[0]];
             if(i == $scope.ordering.length-1) {
                 $scope.incrementScore()
             }
             else {
                 $scope.wrongList.push($scope.number);
+                $scope.userAnswered[$scope.number].push(randAlternatives[i]);
                 styles[i] = quizService.getWrongStyle()
             }
         };
@@ -512,15 +555,19 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     .controller('mcCtrl', function($scope, quizService, hotkeys) {
         $scope.showBigImage = false;
         $scope.nextExercise = function () {
-            $scope.incrementNumber();
-            $scope.nextBtn = false;
+            if($scope.number < $scope.maxNumber) {
+                $scope.nextNumber()
+            } else {
+                $scope.incrementNumber();
+                $scope.nextBtn = false;
+            }
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "mc") {
                 initAlternatives();
                 styles = {}
             }
-
-
         };
+
+
         var styles = {};
         $scope.checkAnswer = function(i) {
             for(var j=0; j < $scope.ordering.length; j++) {
@@ -532,14 +579,15 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             }
             $scope.nextBtn = true;
             styles[$scope.alternatives.length-1] = quizService.getCorrectStyle();
+            $scope.userAnswered[$scope.number] = [$scope.alternatives[$scope.alternatives.length-1]];
             if(i == $scope.alternatives.length-1) {
                 $scope.incrementScore()
             }
             else {
                 styles[i] = quizService.getWrongStyle();
                 $scope.wrongList.push($scope.number)
+                $scope.userAnswered[$scope.number].push($scope.alternatives[i])
             }
-
         };
         hotkeys.bindTo($scope).add({
             combo:'n',
@@ -592,8 +640,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     .controller('tfCtrl', function($scope, quizService, hotkeys) {
         $scope.showBigImage = false;
         $scope.nextExercise = function () {
-            $scope.incrementNumber();
-            $scope.nextBtn = false;
+            if($scope.number < $scope.maxNumber) {
+                $scope.nextNumber()
+            } else {
+                $scope.incrementNumber();
+                $scope.nextBtn = false;
+            }
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "tf") {
                 $scope.initHotkeys();
                 correctAnswer = $scope.exercises[$scope.number].content.correct.answer? 1:0;
@@ -613,12 +665,14 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
             $scope.nextBtn = true;
             styles[correctAnswer] = quizService.getCorrectStyle();
+            $scope.userAnswered[$scope.number] = [$scope.alternatives[correctAnswer]];
             if(i == correctAnswer) {
                 $scope.incrementScore()
             }
             else {
                 styles[i] = quizService.getWrongStyle();
-                $scope.wrongList.push($scope.number)
+                $scope.wrongList.push($scope.number);
+                $scope.userAnswered[$scope.number].push($scope.alternatives[i])
             }
         };
         $scope.getStyle = function(i) {
@@ -653,13 +707,23 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     .controller('mathCtrl', function ($scope, quizService) {
         $scope.showImage = 'question';
         $scope.nextExercise = function () {
-            $scope.incrementScore();
-            $scope.incrementNumber();
-            $scope.nextBtn = false;
+            if($scope.number < $scope.maxNumber) {
+                $scope.nextNumber()
+            } else {
+                $scope.incrementScore();
+                $scope.incrementNumber();
+                $scope.nextBtn = false;
+            };
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "math") {
                 $scope.showAnswer = false;
             }
         };
+        $scope.prevNumber = function () {
+            $scope.$parent.prevNumber();
+            if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "math") {
+                $scope.showAnswer = false;
+            }
+        }
 
 
     })
@@ -815,7 +879,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 device: 'web'
             };
 
-            $http.post($scope.url + '/app/exercises/'+$scope.exerciseId+'/reports', message)
+            $http.post($scope.url + '/exercises/'+$scope.exerciseId+'/reports', message)
                 .success(function(response) {
                     $scope.sendPressed = true;
                     $scope.isSuccess = true;
