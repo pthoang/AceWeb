@@ -1,5 +1,13 @@
 <button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal; background-color: white">
     <img ng-src="{{getImage(exercise.content.question.image)}}"  ng-style="{'width': '100%'}">
+    <div ng-show="exerciseOpen[$index]" class="container-fluid" align="center">
+        <p>Vis fasit</p>
+        <span class="glyphicon glyphicon-chevron-down" style="font-size: 25px; margin-top: -10px"></span>
+    </div>
+    <div ng-show="!exerciseOpen[$index]" class="container-fluid" align="center">
+        <p>Skjul fasit</p>
+        <span class="glyphicon glyphicon-chevron-up" style="font-size: 25px; margin-top: -10px"></span>
+    </div>
 </button>
 <div uib-collapse="exerciseOpen[$index]">
     <div class="well well-sm" align="left" style="margin-bottom: 10px">
