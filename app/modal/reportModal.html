@@ -9,6 +9,10 @@
         </div>
         <div class="modal-body">
             <textarea style="resize: none; left: 0" ng-model="message" rows="4" cols="30" placeholder="Beskrivelse"></textarea>
+            <div class="container-fluid">
+                <span><input style="margin-top: 2px" type="checkbox" ng-model="sendMail">Informer meg om endringer</span>
+                <input ng-show="sendMail" class="form-control" ng-model="userMail" placeholder="E-mail">
+            </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-disabled="isSending" ng-click="send()">Send</button>

@@ -10,15 +10,15 @@
         <button ng-show="showAnswer" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showAnswer=false">
             <span style="font-size: 20px; color: white;">Skjul fasit</span>
         </button>
-
+        <p ng-show="showAnswer">(Fasit ligger under knappene)</p>
         <div ng-show="showAnswer">
-            <div ng-include="'webapp/quiz_buttons.html'"></div>
+            <div ng-include="'webapp/quiz_buttons.html'" style="margin-top: -30px"></div>
             <img ng-src="{{getImage(exercises[number].content.correct.image)}}"
                  ng-style="{'width': '900px'}">
         </div>
     </div>
 
 
-    <div ng-include="'webapp/quiz_buttons.html'"></div>
+    <div ng-include="'webapp/quiz_buttons.html'" style="margin-top: -30px"></div>
 </div>
 
