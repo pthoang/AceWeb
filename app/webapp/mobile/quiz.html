@@ -3,7 +3,6 @@
 <div style="background-color: white;">
     <nav ng-show="showByType(number) != 'resultpage'" id="quizTop" class="navbar navbar-default navbar-static-top"  role="navigation" style="width: 100%;height: 70px;" ng-style="setColor(subject.color)">
         <div class="container-fluid">
-
             <div class="container-fluid" style="position: absolute; top: 8px; left: 2px">
                 <a href="" ng-click="goBack()">
                     <img src="img/x_white.png" style="width: 20px">
@@ -15,8 +14,8 @@
             </div>
         </div>
     </nav>
-    <div ng-if="number-threshold*(round-1) < threshold" class="container-fluid div-progressbar" style="width: 100%; margin-top: -40px;">
-        <uib-progressbar max="threshold" value="threshold - (number+1-threshold*(round-1))" type="custom" style="width: 109%; margin-left: -15px" ng-style="setColor(subject.color)">
+    <div ng-if="maxNumber-threshold*(round-1) < threshold" class="container-fluid div-progressbar" style="width: 100%; margin-top: -40px;">
+        <uib-progressbar max="threshold" value="threshold - (maxNumber+1-threshold*(round-1))" type="custom" style="width: 109%; margin-left: -15px" ng-style="setColor(subject.color)">
             <span style="color: black; white-space: nowrap; "></span>
         </uib-progressbar>
     </div>
