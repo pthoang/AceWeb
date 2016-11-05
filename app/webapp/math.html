@@ -1,6 +1,9 @@
 
 <div ng-app="mainApp.webapp" ng-controller="mathCtrl">
     <div class="container-fluid" style="margin-top: 20px" align="center">
+        <div align="left">
+            <h2>{{exercises[number].content.exam}}</h2>
+        </div>
         <img ng-src="{{getImage(exercises[number].content.question.image)}}"
              ng-style="{'width': '900px'}">
 

@@ -95,24 +95,32 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         if (! $cookies.getObject('targetSubject') || $scope.subject.id != subjectId) {
             $scope.hideHeader = true;
         }
+
+        var countSolvedExercises = function (collection) {
+            var solved = 0;
+            angular.forEach(collection.exercises, function (exercise) {
+                solved += exercise.answer_status ? 1:0;
+            });
+            return solved
+        };
+
         var initCollections = function(collectionsInfo) {
-            if ($scope.hideHeader){
-                $scope.subject = {
-                    id: collectionsInfo.id,
-                    code: collectionsInfo.code,
-                    name: collectionsInfo.name,
-                    color: collectionsInfo.color,
-                    description: collectionsInfo.description
-                };
-                $cookies.putObject('targetSubject', $scope.subject);
-                $scope.hideHeader = false;
-            }
+            $scope.subject = {
+                id: collectionsInfo.id,
+                code: collectionsInfo.code,
+                name: collectionsInfo.name,
+                color: collectionsInfo.color,
+                description: collectionsInfo.description
+            };
+            $cookies.putObject('targetSubject', $scope.subject);
+            $scope.hideHeader = false;
             $scope.collections = [];
             var info = collectionsInfo.collections;
             for(var collection in info) {
                 $scope.collections.push({
                     name: info[collection].name,
                     length: info[collection].exercises.length,
+                    solved: countSolvedExercises(info[collection]),
                     value: collection,
                     id: info[collection].id
                 });
@@ -124,8 +132,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 quizService.setCollection(target);
                 quizService.emptyExercises();
                 for(var i=0; i < info[target.value].exercises.length; i++) {
-                    var stringExercise = JSON.stringify(info[target.value].exercises[i]);
-                    quizService.addExercises(JSON.parse(stringExercise))
+                    quizService.addExercises(info[target.value].exercises[i])
                 }
                 quizService.setThreshold(mode ? mode:info[target.value].exercises.length);
                 quizService.setModeModel($scope.modeModel)
@@ -153,7 +160,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             quizService.emptyExercises();
             $http({
                 method: 'GET',
-                url: $scope.url + '/subjects/' + subjectId + ($routeParams.hashCode ? '/'+$routeParams.hashCode:'')
+                url: $scope.url + '/subjects/' + subjectId + ($routeParams.hashCode ? '/'+$routeParams.hashCode:''),
+                headers: {
+                    'client-id': $cookies.getObject('userId')
+                }
             })
                 .success(function(response) {
                     initCollections(response);
@@ -218,6 +228,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 newUrl = newUrl + "/" + part
             });
             return newUrl;
+        };
+
+        $scope.getCorrectStyle = function () {
+            return {'color': '#43A047'}
         };
 
         hotkeys.bindTo($scope)
@@ -300,12 +314,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 return typePath + type + '.html'
             }
         };
+
         $scope.incrementNumber = function() {
             $analytics.eventTrack('Exercise answered', {platform: 'web'});
             $scope.number++;
             $scope.maxNumber++;
             $scope.buttonClassNum = 0;
-            window.scrollTo(0,0)
+            window.scrollTo(0,0);
         };
         $scope.prevNumber = function () {
             if($scope.userAnswered[$scope.number]) {
@@ -339,6 +354,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         };
         $scope.incrementScore = function() {
+            $scope.exercises[$scope.number].answer_status = true;
             $scope.score++;
         };
         $scope.startQuiz = function() {
@@ -496,7 +512,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             else {
                 $scope.wrongList.push($scope.number);
                 $scope.userAnswered[$scope.number].push(randAlternatives[i]);
-                styles[i] = quizService.getWrongStyle()
+                styles[i] = quizService.getWrongStyle();
+                if(!$scope.exercises[$scope.number].answer_status){
+                    $scope.exercises[$scope.number].answer_status = false;
+                }
             }
         };
         $scope.getStyle = function(i) {
@@ -585,8 +604,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             }
             else {
                 styles[i] = quizService.getWrongStyle();
-                $scope.wrongList.push($scope.number)
-                $scope.userAnswered[$scope.number].push($scope.alternatives[i])
+                $scope.wrongList.push($scope.number);
+                $scope.userAnswered[$scope.number].push($scope.alternatives[i]);
+                if(!$scope.exercises[$scope.number].answer_status){
+                    $scope.exercises[$scope.number].answer_status = false;
+                }
             }
         };
         hotkeys.bindTo($scope).add({
@@ -672,7 +694,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             else {
                 styles[i] = quizService.getWrongStyle();
                 $scope.wrongList.push($scope.number);
-                $scope.userAnswered[$scope.number].push($scope.alternatives[i])
+                $scope.userAnswered[$scope.number].push($scope.alternatives[i]);
+                if(!$scope.exercises[$scope.number].answer_status){
+                    $scope.exercises[$scope.number].answer_status = false;
+                }
             }
         };
         $scope.getStyle = function(i) {
@@ -727,13 +752,38 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
 
     })
-    .controller('resultCtrl', function($scope, $http, $analytics, hotkeys, quizService) {
+    .controller('resultCtrl', function($scope, $http, $cookies, $analytics, hotkeys, quizService) {
         $scope.wrongIndexes.push($scope.wrongList.length);
         $scope.tabsArray = [];
         for(var i=0; i<$scope.round; i++) {
             $scope.tabsArray.push(i)
         }
 
+        var sendAnswerStatus = function () {
+            var answerStatus = {};
+            for(var i=$scope.threshold*($scope.round-1); i < $scope.threshold*$scope.round; i++) {
+                answerStatus["E"+$scope.exercises[i].id] = {
+                    uri:  $scope.url + '/exercises/' + $scope.exercises[i].id,
+                    method: 'PUT',
+                    json: true,
+                    headers: {
+                        'client-id': $cookies.getObject('userId')
+                    },
+                    body: {
+                        answer_status: $scope.exercises[i].answer_status
+                    }
+                }
+            }
+            console.log(answerStatus);
+            $http.post($scope.url + '/batch', answerStatus)
+                .success(function (response) {
+                    console.log(response);
+                })
+                .error(function (response) {
+                    console.log(response)
+                })
+        };
+        sendAnswerStatus();
         $scope.getWrongs = function(index) {
             var wrongs = [];
             for(var i=$scope.wrongIndexes[index]; i<$scope.wrongIndexes[index+1]; i++) {

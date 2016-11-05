@@ -1,5 +1,9 @@
-<button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]" style="width: 100%; text-align: left; white-space: normal">
-    <span class="pre-wrap-text">{{exercise.content.question.text}}</span>
+<button type="button" class="btn btn-quizloaded" ng-click="exerciseOpen[$index] = !exerciseOpen[$index]"
+        style="width: 100%; text-align: left; white-space: normal; position: relative">
+    <span class="pre-wrap-text" ng-style="exercise.answer_status ? {'width': '95%'}:{'width': '100%'}">{{exercise.content.question.text}}</span>
+    <div ng-if="exercise.answer_status" style="position: absolute; top: 7px; right: 10px;">
+        <span class="fa fa-check-square-o" style="font-size: 20px" ng-style="getCorrectStyle()"></span>
+    </div>
 </button>
 <div uib-collapse="exerciseOpen[$index]">
     <div class="well well-sm" align="left" style="margin-bottom: 0">
