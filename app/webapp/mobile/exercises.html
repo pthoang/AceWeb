@@ -2,17 +2,21 @@
 <div style="background-color: white;">
     <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 70px;width: 100%;" ng-style="setColor(subject.color)">
         <div class="container-fluid">
-
             <div class="container-fluid" style="position: absolute; top: 7px; left: 2px">
                 <a href="" ng-click="goBack()">
                     <img src="img/x_white.png" style="width: 20px">
                 </a>
             </div>
             <div class="container-fluid" align="center" style="width: 90%">
-                <h4 class="h1-subjectName" style="color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{collectionName}}</h4>
+                <h4 class="h1-subjectName" style="color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{collection.name}}</h4>
+                <h4 style="color: white">{{collection.length}} oppgaver, {{collection.solved}} løst</h4>
             </div>
         </div>
     </nav>
+    <div class="container-fluid" align="center" style="margin-bottom: 10px">
+        <button class="btn btn-default" style="color: white; width: 49%" ng-style="setColor(subject.color)" ng-click="openAll()">Vis fasit til alle</button>
+        <button class="btn btn-default" style="color: white; width: 49%" ng-style="setColor(subject.color)" ng-click="closeAll()">Skjul fasit til alle</button>
+    </div>
     <div class="container-fluid" ng-repeat="exercise in exercises track by $index" style="margin-bottom: 5px; margin-top: 5px" align="center">
         <div ng-if="exercise.type == 'mc'" ng-include="'webapp/exercisesType/mc.html'"></div>
         <div ng-if="exercise.type == 'pd'" ng-include="'webapp/exercisesType/pd.html'"></div>
