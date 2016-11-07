@@ -7,7 +7,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.loading = true;
         var initSubjects = function(subjectsInfo) {
             $scope.subjects = subjectsInfo;
-            console.log($scope.subjects);
             $scope.subjectSearch = function(item) {
                 if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
                     return true;
@@ -168,7 +167,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 .success(function(response) {
                     initCollections(response);
                     collectionsService.setInfo(response);
-                    console.log(response)
                 })
                 .error(function (response, status) {
                     console.log(response)
@@ -374,7 +372,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $scope.exercises = quizService.getExercises();
                 quizService.shuffle($scope.exercises)
             }
-            console.log(quizService.getExercises());
             $scope.score = 0;
             $scope.userAnswered = {};
             $scope.wrongList = [];
@@ -780,7 +777,6 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     }
                 }
             }
-            console.log(answerStatus);
             $http.post($scope.url + '/batch', answerStatus)
                 .success(function (response) {
                     console.log(response);
