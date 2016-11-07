@@ -18,7 +18,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.setTarget = function(target) {
                 $scope.targetId = target.id;
                 $analytics.eventTrack('Package', {id: $scope.targetId, name:target.name,platform: 'web'});
-                $cookies.putObject('targetSubject', target);
+                $cookies.putObject('targetSubject', target, {expires: $scope.expDate});
                 subjectsService.setTargetSubject(target);
                 subjectsService.setFilterText($scope.subjectFilter);
             };
@@ -112,7 +112,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 color: collectionsInfo.color,
                 description: collectionsInfo.description
             };
-            $cookies.putObject('targetSubject', $scope.subject);
+            $cookies.putObject('targetSubject', $scope.subject, {expires: $scope.expDate});
             $scope.hideHeader = false;
             $scope.collections = [];
             var info = collectionsInfo.collections;
@@ -194,7 +194,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 color: info.color,
                 description: info.description
             };
-            $cookies.putObject('targetSubject', $scope.subject)
+            $cookies.putObject('targetSubject', $scope.subject, {expires: $scope.expDate})
         }
         if($scope.collection) {
             if($scope.collection.id!= $routeParams.collectionId) {
@@ -279,7 +279,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 color: info.color,
                 description: info.description
             };
-            $cookies.putObject('targetSubject', $scope.subject)
+            $cookies.putObject('targetSubject', $scope.subject, {expires: $scope.expDate})
         }
         if($scope.collectionId) {
             if($scope.collectionId != $routeParams.collectionId) {
