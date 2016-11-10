@@ -360,7 +360,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.score++;
         };
         $scope.startQuiz = function() {
-            $analytics.eventTrack('Quiz started', {platform: 'web'});
+            $analytics.eventTrack('Quiz started', {
+                platform: 'web',
+                collection: $scope.collectionName,
+                subject: $scope.subject.name,
+                subjectCode: $scope.subject.code
+            });
             $scope.threshold = Math.min(quizService.getThreshold(), $scope.exercises.length);
             if($scope.threshold == quizService.getThreshold()) {
                 $scope.updateExercises();
@@ -760,7 +765,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         for(var i=0; i<$scope.round; i++) {
             $scope.tabsArray.push(i)
         }
-
+        $analytics.eventTrack('Quiz completed', {
+            platform: 'web',
+            collection: $scope.collectionName,
+            subject: $scope.subject.name,
+            subjectCode: $scope.subject.code,
+            score: $scope.score/$scope.threshold
+        });
         var sendAnswerStatus = function () {
             var answerStatus = {};
             for(var i=$scope.threshold*($scope.round-1); i < $scope.threshold*$scope.round; i++) {

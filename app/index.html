@@ -40,7 +40,10 @@
 <body style="background-color: #F1F1F2">
 <div ng-if="showAll" ng-view autoscroll="true"></div>
 
-
+<div ng-if="!hideCookiesInfo" class="container-fluid" style="position: fixed; bottom: 10px; right: 20px; height: 25px; background-color: black">
+    <span style="color: white; font-size: 16px; display: inline-block; margin-top: 2px">Vi bruker cookies. </span>
+    <a style="cursor: pointer" ng-click="okCookies()">Ok</a>
+</div>
 <!--<div class="container-fluid" align="center" style="width: 30%;margin-top: 50px;margin-bottom: 50px">-->
     <!--<div class="row">-->
         <!--<div class="col-md-4">-->

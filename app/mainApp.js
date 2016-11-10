@@ -90,6 +90,15 @@ angular.module('mainApp', [
                 }
             });
 
+        if($cookies.getObject('okCookies')) {
+            $scope.hideCookiesInfo = true;
+        }
+
+        $scope.okCookies = function () {
+            $cookies.putObject('okCookies', true, {expires: $scope.expDate});
+            $scope.hideCookiesInfo = true;
+        };
+
         $scope.loadNavbar = function() {
             var location = $window.location.hash.split('/');
             if(location.length < 3) {
