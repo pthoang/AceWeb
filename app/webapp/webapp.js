@@ -56,7 +56,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         else {
             $http({
                 method: 'GET',
-                url: $scope.url + '/subjects/'
+                url: $scope.url + '/subjects/',
+                headers: {
+                    platform: 'web'
+                }
             })
                 .success(function (response) {
                     initSubjects(response);
