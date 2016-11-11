@@ -740,6 +740,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
     })
     .controller('mathCtrl', function ($scope, quizService) {
         $scope.showImage = 'question';
+        $scope.nextBtn = true;
         $scope.nextExercise = function () {
             $scope.userAnswered[$scope.number] = {};
             if($scope.number < $scope.maxNumber) {
@@ -751,6 +752,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             };
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "math") {
                 $scope.showAnswer = false;
+                $scope.nextBtn = true;
             }
         };
         $scope.prevNumber = function () {

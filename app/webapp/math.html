@@ -7,7 +7,7 @@
         <img ng-src="{{getImage(exercises[number].content.question.image)}}"
              ng-style="{'width': '900px'}">
 
-        <button ng-show="!showAnswer" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showAnswer=true; nextBtn=true">
+        <button ng-show="!showAnswer" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showAnswer=true">
             <span style="font-size: 20px; color: white;">Vis fasit</span>
         </button>
         <button ng-show="showAnswer" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showAnswer=false">
