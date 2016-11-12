@@ -1,0 +1,16 @@
+<script type="text/ng-template" id="explanationModal.html">
+    <div class="modal-header">
+        <h3>Forklaring</h3>
+    </div>
+    <div class="modal-body">
+        <p ng-if="!exercise.content.explanation">
+            Denne oppgaven mangler forklaring
+        </p>
+        <p>
+            {{exercise.content.explanation.text}}
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="close()">Lukk</button>
+    </div>
+</script>

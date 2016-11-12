@@ -1,13 +1,7 @@
-<div class="container-fluid" align="center" style="margin-top: 50px; margin-bottom: 20px">
-
+<div class="container-fluid" align="center" style="margin-top: 50px; margin-bottom: 10px">
     <span style="width: 65px; display: inline-block">
         <button ng-show="number-threshold*(round-1) > 0" class="btn btn-round" ng-click="prevNumber()" ng-style="setColor(subject.color)">
             <span class="glyphicon glyphicon-chevron-left" style="color: white; font-size: 20px"></span>
-        </button>
-    </span>
-    <span style="width: 65px; display: inline-block">
-        <button class="btn btn-round" uib-popover="Rapporter feil i oppgaven" popover-trigger="'mouseenter'" ng-click="openReport()" ng-style="setColor(subject.color)">
-            <span class="glyphicon glyphicon-flag" style="color: white; font-size: 20px"></span>
         </button>
     </span>
     <span style="width: 65px; display: inline-block">
@@ -20,4 +14,21 @@
     <!--<button class="btn btn-round" uib-popover-template="'exerciseInfo.html'" popover-trigger="mouseenter" popover-title="Forklaring:" type="button" ng-style="{'background-color': '#'+'{{subject.color}}'}">-->
         <!--<img src="img/info.png" style="width: 40px">-->
     <!--</button>-->
+</div>
+<div style="margin-bottom: 10px;">
+        <span ng-click="openReport()">
+            <div align="center" style="width: 80px; cursor: pointer; display: inline-block">
+                <span class="fa fa-bullhorn"></span>
+                <span class="fa fa-exclamation"></span>
+                <p>Rapporter</p>
+            </div>
+        </span>
+        <span ng-show="nextBtn || number < maxNumber || userAnswered[number].show" ng-click="openExplanation()">
+            <div align="center" style="cursor: pointer; display: inline-block"
+                 ng-style="exercises[number].content.explanation ? {'width': '70px'}:{'width': '120px'}">
+                <span class="fa fa-book"></span>
+                <p ng-if="exercises[number].content.explanation">Forklaring</p>
+                <p ng-if="!exercises[number].content.explanation">Mangler forklaring</p>
+            </div>
+        </span>
 </div>

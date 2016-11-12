@@ -405,6 +405,19 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             })
         };
 
+        $scope.openExplanation = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: 'explanationModal.html',
+                controller: 'explanationModalCtrl',
+                size: 'sm',
+                resolve: {
+                    exercise: function () {
+                        return $scope.exercises[$scope.number]
+                    }
+                }
+            })
+        };
 
         $scope.checkScreenRatio = function() {
 
@@ -968,7 +981,13 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             $scope.sendPressed = false;
         }
     })
+    .controller('explanationModalCtrl', function ($scope, $uibModalInstance, exercise) {
+        $scope.exercise = exercise;
 
+        $scope.close = function () {
+            $uibModalInstance.dismiss('close')
+        }
+    })
     .controller('suggestionModalCtrl', function($scope, $http, $uibModalInstance, url){
         $scope.url = url;
         $scope.cancel = function() {
