@@ -16,7 +16,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
             $scope.setTarget = function(target) {
                 $scope.targetId = target.id;
-                $analytics.eventTrack('Package', {id: $scope.targetId, name:target.name,platform: 'web'});
+                $analytics.eventTrack('Subject', {id: $scope.targetId, name:target.name,platform: 'web'});
                 $cookies.putObject('targetSubject', target, {expires: $scope.expDate});
                 subjectsService.setTargetSubject(target);
                 subjectsService.setFilterText($scope.subjectFilter);

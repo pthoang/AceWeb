@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="be6b0ff0-3550-440f-8dc2-5f9e0df6f113" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" afterPath="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/webapp.js" afterPath="$PROJECT_DIR$/app/webapp/webapp.js" />
     </list>
     <ignored path="AceWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +28,7 @@
       <file leaf-file-name="subjects.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/subjects.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="255">
               <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -61,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="option_buttons.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="option_buttons.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
@@ -88,13 +88,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="605">
-              <caret line="335" column="41" selection-start-line="335" selection-start-column="41" selection-end-line="335" selection-end-column="41" />
+            <state relative-caret-position="8619">
+              <caret line="900" column="38" selection-start-line="900" selection-start-column="38" selection-end-line="900" selection-end-column="38" />
               <folding>
-                <element signature="e#215#3393#0" expanded="false" />
                 <element signature="e#3542#7270#0" expanded="false" />
                 <element signature="e#7410#10007#0" expanded="false" />
                 <element signature="e#18512#21930#0" expanded="false" />
@@ -108,7 +107,7 @@
       <file leaf-file-name="mc.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/mc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
+            <state relative-caret-position="748">
               <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
               <folding />
             </state>
@@ -135,7 +134,7 @@
       <file leaf-file-name="subjects.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/mobile/subjects.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="272">
               <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -214,8 +213,8 @@
         <option value="$PROJECT_DIR$/app/webapp/quizButtonsParts/options_buttons.html" />
         <option value="$PROJECT_DIR$/app/webapp/quiz_buttons.html" />
         <option value="$PROJECT_DIR$/app/webapp/math.html" />
-        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
         <option value="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" />
+        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
       </list>
     </option>
   </component>
@@ -233,8 +232,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="width" value="1296" />
+    <option name="height" value="696" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -263,7 +262,6 @@
     <panes>
       <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -338,6 +336,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -854,15 +853,16 @@
       <workItem from="1478887922085" duration="297000" />
       <workItem from="1478953002782" duration="9046000" />
       <workItem from="1479293166950" duration="553000" />
-      <workItem from="1479305658380" duration="4585000" />
+      <workItem from="1479305658380" duration="6022000" />
+      <workItem from="1479329562440" duration="387000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140378000" />
+    <option name="totallyTimeSpent" value="142202000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1296" height="696" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -873,11 +873,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3202301" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3202301" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15351813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15291262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1167,7 +1167,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/mobile/subjects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="272">
           <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -1200,7 +1200,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/subjects.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="255">
           <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -1222,7 +1222,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/mc.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
+        <state relative-caret-position="748">
           <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
           <folding />
         </state>
@@ -1243,21 +1243,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="605">
-          <caret line="335" column="41" selection-start-line="335" selection-start-column="41" selection-end-line="335" selection-end-column="41" />
-          <folding>
-            <element signature="e#215#3393#0" expanded="false" />
-            <element signature="e#3542#7270#0" expanded="false" />
-            <element signature="e#7410#10007#0" expanded="false" />
-            <element signature="e#18512#21930#0" expanded="false" />
-            <element signature="e#25112#27656#0" expanded="false" />
-            <element signature="e#35253#36423#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1266,6 +1251,20 @@
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#span#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8619">
+          <caret line="900" column="38" selection-start-line="900" selection-start-column="38" selection-end-line="900" selection-end-column="38" />
+          <folding>
+            <element signature="e#3542#7270#0" expanded="false" />
+            <element signature="e#7410#10007#0" expanded="false" />
+            <element signature="e#18512#21930#0" expanded="false" />
+            <element signature="e#25112#27656#0" expanded="false" />
+            <element signature="e#35253#36423#0" expanded="false" />
           </folding>
         </state>
       </provider>
