@@ -996,11 +996,12 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.send = function() {
             $scope.isSending = true;
             var message = {
+                type: 'suggestion',
                 name: $scope.subjectName,
                 code: $scope.subjectCode
             };
 
-            $http.post($scope.url + '/reports/suggestions/', message)
+            $http.post($scope.url + '/analytics', message)
                 .success(function(response) {
                     $scope.sendPressed = true;
                     $scope.isSuccess = true;
