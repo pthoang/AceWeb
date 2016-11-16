@@ -6,7 +6,7 @@
                 <p>Rapporter</p>
             </div>
         </span>
-    <span ng-show="exercises[number].content.explanation&&(nextBtn || number < maxNumber || userAnswered[number].show)" ng-click="openExplanation()">
+    <span ng-show="exercises[number].content.explanation.text.length>0&&(nextBtn || number < maxNumber || userAnswered[number].show)" ng-click="openExplanation()">
             <div align="center" style="cursor: pointer; display: inline-block"
                  ng-style="exercises[number].content.explanation ? {'width': '70px'}:{'width': '120px'}">
                 <span class="fa fa-book"></span>
