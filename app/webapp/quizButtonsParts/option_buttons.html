@@ -1,0 +1,16 @@
+<div style="margin-bottom: 10px;">
+        <span ng-click="openReport()">
+            <div align="center" style="width: 80px; cursor: pointer; display: inline-block">
+                <span class="fa fa-bullhorn"></span>
+                <span class="fa fa-exclamation"></span>
+                <p>Rapporter</p>
+            </div>
+        </span>
+    <span ng-show="exercises[number].content.explanation&&(nextBtn || number < maxNumber || userAnswered[number].show)" ng-click="openExplanation()">
+            <div align="center" style="cursor: pointer; display: inline-block"
+                 ng-style="exercises[number].content.explanation ? {'width': '70px'}:{'width': '120px'}">
+                <span class="fa fa-book"></span>
+                <p>Forklaring</p>
+            </div>
+        </span>
+</div>

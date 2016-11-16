@@ -15,7 +15,7 @@
         </button>
         <p ng-show="showAnswer">(Fasit ligger under knappene)</p>
         <div ng-show="showAnswer">
-            <div ng-include="'webapp/quiz_buttons.html'" style="margin-top: -30px"></div>
+            <div ng-include="'webapp/quizButtonsParts/nav_buttons.html'" style="margin-top: -30px"></div>
             <img ng-src="{{getImage(exercises[number].content.correct.image)}}"
                  ng-style="{'width': '900px'}">
         </div>

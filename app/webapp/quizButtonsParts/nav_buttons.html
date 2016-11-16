@@ -1,0 +1,14 @@
+<div class="container-fluid" align="center" style="margin-top: 50px; margin-bottom: 10px">
+    <span style="width: 65px; display: inline-block">
+        <button ng-show="number-threshold*(round-1) > 0" class="btn btn-round" ng-click="prevNumber()" ng-style="setColor(subject.color)">
+            <span class="glyphicon glyphicon-chevron-left" style="color: white; font-size: 20px"></span>
+        </button>
+    </span>
+    <span style="width: 65px; display: inline-block">
+        <button ng-show="nextBtn || number < maxNumber || userAnswered[number].show" class="btn btn-round" ng-click="nextExercise()"
+                ng-style="setColor(subject.color)">
+            <span class="glyphicon glyphicon-chevron-right" style="color: white; font-size: 20px"></span>
+        </button>
+    </span>
+    <div class="container-fluid" style="height: 5px"></div>
+</div>

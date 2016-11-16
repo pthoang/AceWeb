@@ -484,7 +484,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             combo:'right',
             description: 'Bla fram',
             callback: function () {
-                if($scope.number < $scope.maxNumber || $scope.userAnswered[$scope.number] && $scope.userAnswered[$scope.number].show) {
+                if($scope.number < $scope.maxNumber) {
                     $scope.nextNumber();
                 }
             }
@@ -755,10 +755,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.showImage = 'question';
         $scope.nextBtn = true;
         $scope.nextExercise = function () {
-            $scope.userAnswered[$scope.number] = {};
             if($scope.number < $scope.maxNumber) {
-                $scope.nextNumber()
+                $scope.nextNumber();
             } else {
+                $scope.userAnswered[$scope.number] = {};
                 $scope.incrementScore();
                 $scope.incrementNumber();
                 $scope.nextBtn = false;
