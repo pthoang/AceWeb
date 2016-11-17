@@ -172,7 +172,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     collectionsService.setInfo(response);
                 })
                 .error(function (response, status) {
-                    console.log(response)
+                    console.log(response);
                     console.log(status)
                 });
 
@@ -751,7 +751,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
         $scope.initHotkeys()
     })
-    .controller('mathCtrl', function ($scope, quizService) {
+    .controller('mathCtrl', function ($scope, quizService, hotkeys) {
         $scope.showImage = 'question';
         $scope.nextBtn = true;
         $scope.nextExercise = function () {
@@ -773,7 +773,26 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             if($scope.exercises[$scope.number] && $scope.exercises[$scope.number].type == "math") {
                 $scope.showAnswer = false;
             }
-        }
+        };
+
+        hotkeys.bindTo($scope).add({
+            combo:'n',
+            description: "Neste oppgave",
+            callback: function () {
+                if($scope.nextBtn) {
+                    $scope.nextExercise()
+                }
+            }
+        });
+        hotkeys.bindTo($scope).add({
+            combo: 'v',
+            description: "Vis/skjul fasit",
+            callback: function () {
+                $scope.showAnswer = !$scope.showAnswer;
+            }
+        })
+
+
 
 
     })
