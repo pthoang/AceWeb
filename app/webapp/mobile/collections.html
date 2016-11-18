@@ -15,6 +15,15 @@
 
 
     <div ng-hide="loading" class="container-fluid" align="center" style="width: 100%; margin-top: 10px; margin-bottom: 20px;">
+        <a href="#/mobile/{{subject.id}}/quizme">
+            <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="setCollection(getAllCollection(), modeModel)"
+                    style="height: 77px; width: 100%; color: white; margin-bottom: 10px">
+                <h4 class="opensans-text">Quiz me</h4>
+                <p>
+                    Tilfeldig blanding av alt
+                </p>
+            </button>
+        </a>
         <button type="button" class="btn btn-default" ng-click="collapse.description = !collapse.description" style="width: 100%; text-align: left">
             <span class="glyphicon glyphicon-info-sign">
             </span>
@@ -72,8 +81,8 @@
                     <button class="btn btn-default btn-collection" style="height: 100px" ng-click="setCollection(collection, modeModel)">
                         <h4 class="opensans-text">{{collection.name}}</h4>
                         <p>
-                            {{collection.length}}
-                            <span>oppgave<span ng-if="collection.length > 1">r</span>, {{collection.solved}} løst</span>
+                            {{collection.exercises.length}}
+                            <span>oppgave<span ng-if="collection.exercises.length > 1">r</span>, {{collection.solved}} løst</span>
                         </p>
                     </button>
                 </a>

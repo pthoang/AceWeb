@@ -121,9 +121,8 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             for(var collection in info) {
                 $scope.collections.push({
                     name: info[collection].name,
-                    length: info[collection].exercises.length,
+                    exercises: info[collection].exercises,
                     solved: countSolvedExercises(info[collection]),
-                    value: collection,
                     id: info[collection].id
                 });
             }
@@ -133,10 +132,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 $analytics.eventTrack('Collection', {id: $scope.targetCollection, name: target.name, platform: 'web'});
                 quizService.setCollection(target);
                 quizService.emptyExercises();
-                for(var i=0; i < info[target.value].exercises.length; i++) {
-                    quizService.addExercises(info[target.value].exercises[i])
+                for(var i=0; i < target.exercises.length; i++) {
+                    quizService.addExercises(target.exercises[i])
                 }
-                quizService.setThreshold(mode ? mode:info[target.value].exercises.length);
+                quizService.setThreshold(mode ? mode:target.exercises.length);
                 quizService.setModeModel($scope.modeModel)
             };
             subjectsService.setTargetSubject($scope.subject);
@@ -145,12 +144,31 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 settings: true
             };
 
+            $scope.getAllCollection = function () {
+                $analytics.eventTrack('Quiz me', {
+                    subject: $scope.subject.name,
+                    subjectCode: $scope.subject.code,
+                    platform: 'web'
+                });
+                var allCollection = {
+                    id: 'quizme',
+                    name: 'Quiz me - Tilfeldig blanding av alt',
+                    exercises: []
+
+                };
+                angular.forEach($scope.collections, function (collection) {
+                    allCollection.exercises = allCollection.exercises.concat(collection.exercises);
+                });
+                return allCollection
+            };
+
             $scope.isMath = function () {
                 return ($scope.subject.code.indexOf('TMA') != -1)
             };
             if($scope.isMath()) {
                 $scope.modeModel = quizService.getModeModel() == 3 || quizService.getModeModel() == 0 ? quizService.getModeModel(): 3;
             };
+
             $scope.loading = false;
 
 
@@ -493,7 +511,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             combo:'left',
             description: 'Bla tilbake',
             callback: function () {
-                if($scope.number-$scope.threshold*($scope.round-1) > 0) {
+                if($scope.number-$scope.threshold*($scope.round-1) > 0 && $scope.number != $scope.threshold*$scope.round) {
                     $scope.prevNumber();
                 }
             }
@@ -812,7 +830,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         var sendAnswerStatus = function () {
             var answerStatus = {};
             for(var i=$scope.threshold*($scope.round-1); i < $scope.threshold*$scope.round; i++) {
-                $scope.exercises[i].answer_status = $scope.userAnswered[i].answer_status;
+                if(!$scope.exercises[i].answer_status) {
+                    $scope.exercises[i].answer_status = $scope.userAnswered[i].answer_status;
+                };
                 answerStatus["E"+$scope.exercises[i].id] = {
                     uri:  $scope.url + '/exercises/' + $scope.exercises[i].id,
                     method: 'PUT',
@@ -902,7 +922,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     data: {
                         type: 'click',
                         positive: true,
-                        exercises: $scope.exercises.slice($scope.threshold*($scope.round-1), $scope.threshold*$scope.round)
+                        exercises: $scope.exercises.slice($scope.threshold*($scope.round-1), $scope.threshold*$scope.round),
+                        subjectId: $scope.subject.id,
+                        subjectName: $scope.subject.name,
+                        subjectCode: $scope.subject.code
                     }
                 }).success(function (response) {
                     console.log(response)
@@ -919,7 +942,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     data: {
                         type: 'click',
                         positive: false,
-                        exercises: $scope.exercises.slice($scope.threshold*($scope.round-1), $scope.threshold*$scope.round)
+                        exercises: $scope.exercises.slice($scope.threshold*($scope.round-1), $scope.threshold*$scope.round),
+                        subjectId: $scope.subject.id,
+                        subjectName: $scope.subject.name,
+                        subjectCode: $scope.subject.code
                     }
                 }).success(function (response) {
                     console.log(response)
@@ -941,7 +967,10 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 data: {
                     type: 'detailed',
                     fields: $scope.userFeedbackSendList,
-                    exercises: $scope.exercises.slice($scope.threshold*($scope.round-1), $scope.threshold*$scope.round)
+                    exercises: $scope.exercises.slice($scope.threshold*($scope.round-1), $scope.threshold*$scope.round),
+                    subjectId: $scope.subject.id,
+                    subjectName: $scope.subject.name,
+                    subjectCode: $scope.subject.code
                 }
             }).success(function (response) {
                 $scope.showSentDetailed = true;
