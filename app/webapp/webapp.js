@@ -1004,7 +1004,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.send = function() {
             $scope.isSending = true;
             var message = {
-                message: $scope.message,
+                message: $scope.userMail+": "+$scope.message,
                 device: 'web'
             };
 
