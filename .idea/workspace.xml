@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be6b0ff0-3550-440f-8dc2-5f9e0df6f113" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" afterPath="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mainApp.js" afterPath="$PROJECT_DIR$/app/mainApp.js" />
     </list>
     <ignored path="AceWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainApp.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainApp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mainApp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-379">
-              <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+            <state relative-caret-position="539">
+              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -141,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="option_buttons.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="option_buttons.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
@@ -230,7 +229,6 @@
         <option value="$PROJECT_DIR$/app/webapp/subjects.html" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/subjects.html" />
         <option value="$PROJECT_DIR$/app/webapp/math.html" />
-        <option value="$PROJECT_DIR$/app/mainApp.js" />
         <option value="$PROJECT_DIR$/app/webapp/exercise_view.html" />
         <option value="$PROJECT_DIR$/app/webapp/exerciseViewParts/buttons.html" />
         <option value="$PROJECT_DIR$/app/webapp/exerciseViewParts/mc.html" />
@@ -240,6 +238,7 @@
         <option value="$PROJECT_DIR$/app/webapp/mobile/exercise_view.html" />
         <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
         <option value="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" />
+        <option value="$PROJECT_DIR$/app/mainApp.js" />
       </list>
     </option>
   </component>
@@ -913,12 +912,12 @@
       <workItem from="1479939074309" duration="109000" />
       <workItem from="1479995239034" duration="78000" />
       <workItem from="1479995362421" duration="385000" />
-      <workItem from="1480099006836" duration="9140000" />
+      <workItem from="1480099006836" duration="9313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171125000" />
+    <option name="totallyTimeSpent" value="171298000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
@@ -1311,14 +1310,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/mainApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-379">
-          <caret line="36" column="37" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -1342,6 +1333,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/mainApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
           <folding />
         </state>
       </provider>

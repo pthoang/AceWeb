@@ -56,6 +56,10 @@ angular.module('mainApp', [
                 templateUrl: 'webapp/mobile/exercises.html',
                 controller: 'exercisesCtrl'
             })
+            .when('/mobile/:subjectId/:collectionId/exercises/:exerciseId', {
+                templateUrl: 'webapp/mobile/exercise_view.html',
+                controller: 'exerciseViewCtrl'
+            })
             .when('/about/mobile', {
                 templateUrl: 'info/mobile/about.html',
                 controller: 'aboutCtrl'
