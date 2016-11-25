@@ -281,6 +281,30 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
 
+    .controller('exerciseViewCtrl', function ($scope, $http, $routeParams) {
+        $scope.loading = true;
+        $scope.showAnswer = {};
+        $http({
+            method: 'GET',
+            url: "http://ace-dev.herokuapp.com" + "/exercises/" + $routeParams.exerciseId
+        })
+            .success(function (response) {
+                $scope.loading = false;
+                $scope.exercise = response
+            });
+
+        $scope.getImage = function (image) {
+            var imageUrlParts = image.url.split('/');
+            imageUrlParts[imageUrlParts.indexOf("upload") + 1] = "w_900";
+            imageUrlParts.splice(0, 2);
+            var newUrl = "https:/";
+            angular.forEach(imageUrlParts, function (part) {
+                newUrl = newUrl + "/" + part
+            });
+            return newUrl;
+        };
+    })
+
     .controller('quizCtrl', function ($scope, $http, $cookies, $location,$uibModal, $routeParams, $timeout, $window, $analytics,
                                       quizService, collectionsService, hotkeys) {
         $scope.pageClass = 'page-quiz';
@@ -487,6 +511,11 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
         $scope.getWrongStyle = function () {
             return quizService.getWrongStyle()
+        };
+
+        $scope.getExerciseUrl = function () {
+            return $location.host() + "/#/webapp/" + $routeParams.subjectId + "/" + $routeParams.collectionId + "/exercises/" +
+                    $scope.exercises[$scope.number].id
         };
 
         hotkeys.bindTo($scope).add({

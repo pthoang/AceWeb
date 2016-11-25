@@ -6,7 +6,7 @@
             <p>Rapporter</p>
         </div>
     </span>
-    <span ng-if="exercises[number].type=='math'">
+    <span>
         <div uib-popover-template="'shareMathPopover.html'" align="center" style="width: 100px; cursor: pointer; display: inline-block"
              popover-trigger="'outsideClick'">
             <span class="fa fa-share"></span>
@@ -25,10 +25,6 @@
 <script type="text/ng-template" id="shareMathPopover.html">
     <div><span style="font-weight: bold">Lenke til oppgaven:</span></div>
     <div style="margin-top: 6px; margin-bottom: 6px">
-        <input class="form-control" ng-model="exercises[number].content.question.image.url">
-    </div>
-    <div><span style="font-weight: bold">Lenke til fasit:</span></div>
-    <div style="margin-top: 6px">
-        <input class="form-control" ng-model="exercises[number].content.correct.image.url">
+        <input class="form-control" ng-model="getExerciseUrl()">
     </div>
 </script>

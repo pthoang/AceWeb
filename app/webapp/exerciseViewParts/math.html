@@ -1,0 +1,13 @@
+<div class="container-fluid" style="margin-bottom: 30px">
+    <h3 class="pre-wrap-text" align="left" style="margin-bottom: 20px">{{exercise.content.exam}}</h3>
+    <img ng-src="{{getImage(exercise.content.question.image)}}"
+         ng-style="{'width': '100%'}">
+    <div ng-show="showAnswer.value" style="margin-bottom: 20px" class="container-fluid">
+        <div class="row">
+            <hr>
+        </div>
+        <img ng-src="{{getImage(exercise.content.correct.image)}}"
+             ng-style="{'width': '100%'}">
+    </div>
+    <div ng-include="'webapp/exerciseViewParts/buttons.html'"></div>
+</div>

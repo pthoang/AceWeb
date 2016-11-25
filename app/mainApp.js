@@ -32,6 +32,10 @@ angular.module('mainApp', [
                 templateUrl: 'webapp/exercises.html',
                 controller: 'exercisesCtrl'
             })
+            .when('/webapp/:subjectId/:collectionId/exercises/:exerciseId', {
+                templateUrl: 'webapp/exercise_view.html',
+                controller: 'exerciseViewCtrl'
+            })
             .when('/preview/:subjectId/:hashCode', {
                 templateUrl: 'webapp/collections.html',
                 controller: 'collectionsCtrl'

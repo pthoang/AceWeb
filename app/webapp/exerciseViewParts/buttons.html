@@ -1,0 +1,7 @@
+<div class="container-fluid" align="center">
+    <button ng-show="!showAnswer.value" class="btn btn-default" ng-style="setColor(exercise.color)" style="color: white; font-size: 20px"
+            ng-click="showAnswer.value=true">Vis svar</button>
+    <button ng-show="showAnswer.value" class="btn btn-default" ng-style="setColor(exercise.color)" style="color: white; font-size: 20px"
+            ng-click="showAnswer.value=false">Skjul svar</button>
+</div>
+
