@@ -281,7 +281,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
 
     })
 
-    .controller('exerciseViewCtrl', function ($scope, $http, $routeParams) {
+    .controller('exerciseViewCtrl', function ($scope, $http, $location, $routeParams) {
         $scope.loading = true;
         $scope.showAnswer = {};
         $http({
@@ -302,6 +302,9 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                 newUrl = newUrl + "/" + part
             });
             return newUrl;
+        };
+        $scope.goBack = function () {
+            $location.path($location.path().replace($routeParams.collectionId + '/exercises/' + $routeParams.exerciseId, ''))
         };
     })
 

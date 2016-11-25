@@ -80,7 +80,7 @@ angular.module('mainApp', [
             if($location.path().indexOf('/mobile') > -1) {
                 $location.path($location.path())
             } else {
-                $location.path('/mobile' + $location.path())
+                $location.path('/mobile' + $location.path().replace('/webapp', ''))
             }
         }
         $http.post('/api', '')
