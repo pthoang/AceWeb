@@ -1,16 +1,34 @@
 <div style="margin-bottom: 10px;">
-        <span ng-click="openReport()">
-            <div align="center" style="width: 80px; cursor: pointer; display: inline-block">
-                <span class="fa fa-bullhorn"></span>
-                <span class="fa fa-exclamation"></span>
-                <p>Rapporter</p>
-            </div>
-        </span>
+    <span ng-click="openReport()">
+        <div align="center" style="width: 80px; cursor: pointer; display: inline-block">
+            <span class="fa fa-bullhorn"></span>
+            <span class="fa fa-exclamation"></span>
+            <p>Rapporter</p>
+        </div>
+    </span>
+    <span ng-if="exercises[number].type=='math'">
+        <div uib-popover-template="'shareMathPopover.html'" align="center" style="width: 100px; cursor: pointer; display: inline-block"
+             popover-trigger="'outsideClick'">
+            <span class="fa fa-share"></span>
+            <p>Del med andre</p>
+        </div>
+    </span>
     <span ng-show="exercises[number].content.explanation.text.length>0&&(nextBtn || number < maxNumber || userAnswered[number].show)" ng-click="openExplanation()">
-            <div align="center" style="cursor: pointer; display: inline-block"
-                 ng-style="exercises[number].content.explanation ? {'width': '70px'}:{'width': '120px'}">
-                <span class="fa fa-book"></span>
-                <p>Forklaring</p>
-            </div>
-        </span>
+        <div align="center" style="cursor: pointer; display: inline-block"
+             ng-style="exercises[number].content.explanation ? {'width': '70px'}:{'width': '120px'}">
+            <span class="fa fa-book"></span>
+            <p>Forklaring</p>
+        </div>
+    </span>
 </div>
+
+<script type="text/ng-template" id="shareMathPopover.html">
+    <div><span style="font-weight: bold">Lenke til oppgaven:</span></div>
+    <div style="margin-top: 6px; margin-bottom: 6px">
+        <input class="form-control" ng-model="exercises[number].content.question.image.url">
+    </div>
+    <div><span style="font-weight: bold">Lenke til fasit:</span></div>
+    <div style="margin-top: 6px">
+        <input class="form-control" ng-model="exercises[number].content.correct.image.url">
+    </div>
+</script>
