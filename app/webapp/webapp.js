@@ -286,7 +286,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.showAnswer = {};
         $http({
             method: 'GET',
-            url: "http://ace-dev.herokuapp.com" + "/exercises/" + $routeParams.exerciseId
+            url: $scope.url + "/exercises/" + $routeParams.exerciseId
         })
             .success(function (response) {
                 $scope.loading = false;
@@ -517,7 +517,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         };
 
         $scope.getExerciseUrl = function () {
-            return $location.host() + "/#/webapp/" + $routeParams.subjectId + "/" + $routeParams.collectionId + "/exercises/" +
+            return "http://" + $location.host() + "/#/webapp/" + $routeParams.subjectId + "/" + $routeParams.collectionId + "/exercises/" +
                     $scope.exercises[$scope.number].id
         };
 
