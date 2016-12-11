@@ -2,6 +2,45 @@
     <div ng-hide="hideHeader" ng-include="'navbar/navbar_collections.html'" style="width: 960px; margin-left: -15px"></div>
 
     <div class="container-fluid" ng-hide="loading" >
+        <div class="container-fluid" style="border: 1px solid; margin-top: -10px; margin-bottom: 10px; border-radius: 5px"
+        ng-style="{'border-color': subject.color}">
+            <div class="col-xs-5" style="margin-top: 10px; margin-bottom: 10px">
+                <div style="margin-top: 5px">
+                    <span class="fa fa-group" style="font-size: 25px;"></span>
+                    <span style="margin-left: 10px">
+                        <span style="font-size: 20px; font-weight: bold" ng-style="{'color': subject.color}">{{rankInfo.participants}}</span>
+                        person<span ng-if="rankInfo.participants!=1">er</span>
+                        har jobbet med faget i dag
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-4" align="center" style="margin-top: 10px; margin-bottom: 10px">
+                <div style="margin-top: 5px">
+                    <span class="fa fa-check-square-o" style="font-size: 25px;"></span>
+                    <span style="margin-left: 10px">
+                        Du har løst <span style="font-size: 20px; font-weight: bold" ng-style="{'color': subject.color}">{{rankInfo.answered_correct}}</span>
+                        oppgave<span ng-if="rankInfo.answered_correct!=1">r</span>
+                        i dag
+                    </span>
+                </div>
+            </div>
+            <div class="col-xs-3" align="center" style="margin-top: 10px; margin-bottom: 10px">
+                <button ng-if="!showRank" class="btn btn-default" ng-style="setColor(subject.color)" style="color: white; height: 35px" ng-click="updateRank()">
+                    <p class="opensans-text" style="font-size: 16px;">Sjekk din rangering</p>
+                </button>
+                <div ng-if="showRank && rankInfo.rank != 0" style="margin-top: 5px">
+                    <span class="fa fa-trophy" style="font-size: 25px;"></span>
+                    <span style="margin-left: 10px">
+                        Du er på  <span style="font-size: 20px; font-weight: bold" ng-style="{'color': subject.color}">{{rankInfo.rank}}</span>.
+                        plass
+                    </span>
+                </div>
+                <div ng-if="showRank && rankInfo.rank == 0" style="margin-top: 5px">
+                    Du må løse minst 1 oppgave for å se din rangering
+                </div>
+            </div>
+        </div>
+
         <div class="row" style="margin-bottom: 20px">
             <div class="col-xs-4">
                 <a href="#/webapp/{{subject.id}}/quizme">

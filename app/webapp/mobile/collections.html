@@ -15,6 +15,43 @@
 
 
     <div ng-hide="loading" class="container-fluid" align="center" style="width: 100%; margin-top: 10px; margin-bottom: 20px;">
+
+        <div class="container-fluid" style="border: 1px solid; margin-bottom: 10px; border-radius: 5px"
+             ng-style="{'border-color': subject.color}" align="left">
+            <div style="margin-top: 5px">
+                <span class="fa fa-group" style="font-size: 20px;"></span>
+                <span style="margin-left: 5px">
+                        <span style="font-size: 18px; font-weight: bold" ng-style="{'color': subject.color}">{{rankInfo.participants}}</span>
+                        person<span ng-if="rankInfo.participants!=1">er</span>
+                        har jobbet med faget i dag
+                    </span>
+            </div>
+            <div style="margin-top: 5px">
+                <span class="fa fa-check-square-o" style="font-size: 20px;"></span>
+                <span style="margin-left: 5px">
+                        Du har løst <span style="font-size: 18px; font-weight: bold" ng-style="{'color': subject.color}">{{rankInfo.answered_correct}}</span>
+                        oppgave<span ng-if="rankInfo.answered_correct!=1">r</span>
+                        i dag
+                    </span>
+            </div>
+            <div align="center" style="margin-top: 5px">
+                <button ng-if="!showRank" class="btn btn-default" ng-style="setColor(subject.color)" style="color: white; height: 35px; width: 100%" ng-click="updateRank()">
+                    <p class="opensans-text" style="font-size: 16px;">Sjekk din rangering</p>
+                </button>
+            </div>
+            <div ng-if="showRank && rankInfo.rank != 0" style="margin-top: 5px">
+                <span class="fa fa-trophy" style="font-size: 20px;"></span>
+                <span style="margin-left: 5px">
+                        Du er på  <span style="font-size: 20px; font-weight: bold" ng-style="{'color': subject.color}">{{rankInfo.rank}}</span>.
+                        plass
+                    </span>
+            </div>
+            <div ng-if="showRank && rankInfo.rank == 0" style="margin-top: 5px">
+                Du må løse minst 1 oppgave for å se din rangering
+            </div>
+            <div class="container-fluid" style="height: 5px"></div>
+        </div>
+
         <a href="#/mobile/{{subject.id}}/quizme">
             <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="setCollection(getAllCollection(), modeModel)"
                     style="height: 77px; width: 100%; color: white; margin-bottom: 10px">

@@ -114,7 +114,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             }
         })
             .success(function (response) {
-                console.log(response)
+                $scope.rankInfo = response
             })
             .error(function (response) {
                 console.log(response)
@@ -174,6 +174,23 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
                     allCollection.exercises = allCollection.exercises.concat(collection.exercises);
                 });
                 return allCollection
+            };
+
+            $scope.updateRank = function () {
+                $http({
+                    url: $scope.url + "/subjects/" + $routeParams.subjectId + "/rank",
+                    method: "GET",
+                    headers: {
+                        'client-id': $cookies.getObject('userId')
+                    }
+                })
+                    .success(function (response) {
+                        $scope.rankInfo = response;
+                        $scope.showRank = true
+                    })
+                    .error(function (response) {
+                        console.log(response)
+                    });
             };
 
             $scope.isMath = function () {
