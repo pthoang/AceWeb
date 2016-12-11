@@ -96,7 +96,7 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
         $scope.loading = true;
         if (! $cookies.getObject('targetSubject') || $scope.subject.id != subjectId) {
             $scope.hideHeader = true;
-        }
+        };
 
         var countSolvedExercises = function (collection) {
             var solved = 0;
@@ -105,6 +105,20 @@ angular.module('mainApp.webapp',['ngRoute', 'ngCookies', 'cfp.hotkeys'])
             });
             return solved
         };
+
+        $http({
+            url: $scope.url + "/subjects/" + $routeParams.subjectId + "/rank",
+            method: "GET",
+            headers: {
+                'client-id': $cookies.getObject('userId')
+            }
+        })
+            .success(function (response) {
+                console.log(response)
+            })
+            .error(function (response) {
+                console.log(response)
+            });
 
         var initCollections = function(collectionsInfo) {
             $scope.subject = {
