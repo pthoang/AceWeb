@@ -1,0 +1,35 @@
+
+<div class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
+    <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" height: 100px;width: 960px; margin-left: -15px" ng-style="setColor(subject.color)">
+        <div class="container-fluid">
+
+            <div class="container-fluid" style="position: absolute; top: 25px; left: 20px">
+                <a href="" ng-click="goBack()">
+                    <img src="img/x_white.png" style="width: 30px">
+                </a>
+            </div>
+            <div class="container-fluid" align="center" style="width: 90%">
+                <h1 class="h1-subjectName" style="color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{collection.name}}</h1>
+                <h4 style="color: white">{{collection.exercises.length}} oppgaver, {{collection.solved}} løst</h4>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" align="center" style="margin-bottom: 10px">
+        <button class="btn btn-default" style="color: white" ng-style="setColor(subject.color)" ng-click="openAll()">
+            <span style="font-size: 16px; font-weight: bold">Vis fasit til alle (O)</span>
+        </button>
+        <button class="btn btn-default" style="color: white" ng-style="setColor(subject.color)" ng-click="closeAll()">
+            <span style="font-size: 16px; font-weight: bold">Skjul fasit til alle (P)</span>
+        </button>
+    </div>
+    <div class="container-fluid" ng-repeat="exercise in exercises track by $index" style="margin-bottom: 5px; margin-top: 5px" align="center">
+        <div ng-if="exercise.type == 'mc'" ng-include="'quiz/exercisesType/mc.html'"></div>
+        <div ng-if="exercise.type == 'pd'" ng-include="'quiz/exercisesType/pd.html'"></div>
+        <div ng-if="exercise.type == 'tf'" ng-include="'quiz/exercisesType/tf.html'"></div>
+        <div ng-if="exercise.type == 'math'" ng-include="'quiz/exercisesType/math.html'"></div>
+    </div>
+
+    <div class="container-fluid" style="margin-top: 30px"></div>
+
+
+</div>

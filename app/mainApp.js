@@ -6,7 +6,12 @@ angular.module('mainApp', [
     'ui.bootstrap',
     'ngAnimate',
     'mainApp.about',
-    'mainApp.webapp',
+    'mainApp.quiz',
+    'mainApp.subjects',
+    'mainApp.collections',
+    'mainApp.exercises',
+    'mainApp.modalcontrollers',
+    'mainApp.services',
     'angulartics',
     'angulartics.mixpanel'
 ])
@@ -17,47 +22,47 @@ angular.module('mainApp', [
                 controller: 'aboutCtrl'
             })
             .when('/', {
-                templateUrl: 'webapp/subjects.html',
+                templateUrl: 'subjects/subjects.html',
                 controller: 'subjectsCtrl'
             })
             .when('/webapp/:subjectId', {
-                templateUrl: 'webapp/collections.html',
+                templateUrl: 'collections/collections.html',
                 controller: 'collectionsCtrl'
             })
             .when('/webapp/:subjectId/:collectionId', {
-                templateUrl: 'webapp/quiz.html',
+                templateUrl: 'quiz/quiz.html',
                 controller: 'quizCtrl'
             })
             .when('/webapp/:subjectId/:collectionId/exercises', {
-                templateUrl: 'webapp/exercises.html',
+                templateUrl: 'exercises/exercises.html',
                 controller: 'exercisesCtrl'
             })
             .when('/webapp/:subjectId/:collectionId/exercises/:exerciseId', {
-                templateUrl: 'webapp/exercise_view.html',
+                templateUrl: 'exercise_view/exercise_view.html',
                 controller: 'exerciseViewCtrl'
             })
             .when('/preview/:subjectId/:hashCode', {
-                templateUrl: 'webapp/collections.html',
+                templateUrl: 'collections/collections.html',
                 controller: 'collectionsCtrl'
             })
             .when('/mobile', {
-                templateUrl: 'webapp/mobile/subjects.html',
+                templateUrl: 'subjects/mobile/subjects.html',
                 controller: 'subjectsCtrl'
             })
             .when('/mobile/:subjectId', {
-                templateUrl: 'webapp/mobile/collections.html',
+                templateUrl: 'collections/mobile/collections.html',
                 controller: 'collectionsCtrl'
             })
             .when('/mobile/:subjectId/:collectionId', {
-                templateUrl: 'webapp/mobile/quiz.html',
+                templateUrl: 'quiz/mobile/quiz.html',
                 controller: 'quizCtrl'
             })
             .when('/mobile/:subjectId/:collectionId/exercises', {
-                templateUrl: 'webapp/mobile/exercises.html',
+                templateUrl: 'exercises/mobile/exercises.html',
                 controller: 'exercisesCtrl'
             })
             .when('/mobile/:subjectId/:collectionId/exercises/:exerciseId', {
-                templateUrl: 'webapp/mobile/exercise_view.html',
+                templateUrl: 'exercise_view/mobile/exercise_view.html',
                 controller: 'exerciseViewCtrl'
             })
             .when('/about/mobile', {

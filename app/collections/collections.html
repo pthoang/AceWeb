@@ -1,0 +1,98 @@
+<div class="container-fluid" style="width: 960px; background-color: white; margin-top: -15px;">
+    <div ng-hide="hideHeader" ng-include="'navbar/navbar_collections.html'" style="width: 960px; margin-left: -15px"></div>
+
+    <div class="container-fluid" ng-hide="loading" >
+        <div class="row" style="margin-bottom: 20px">
+            <div class="col-xs-4">
+                <a href="#/webapp/{{subject.id}}/quizme">
+                    <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="setCollection(getAllCollection(), modeModel)"
+                            style="height: 77px; width: 100%; color: white">
+                        <h4 class="opensans-text">Quiz me</h4>
+                        <p>
+                            Tilfeldig blanding av alt
+                        </p>
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-8" align="center">
+                <button type="button" class="btn btn-default" ng-click="collapse.description = !collapse.description" style="width: 100%; text-align: left">
+                    <span class="glyphicon glyphicon-info-sign">
+                    </span>
+                    Beskrivelse av faget
+                </button>
+                <div uib-collapse="collapse.description">
+                    <div class="well well-lg" align="left" style="margin-bottom: 0">
+                        <p>{{subject.description.split('\n')[0]}}</p>
+                        <p>{{subject.description.split('\n')[1]}}</p>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-default" ng-click="collapse.settings = !collapse.settings" style="width: 100%; text-align: left; margin-top: 10px">
+                    <span class="glyphicon glyphicon-cog">
+                    </span>
+                    Innstillinger
+                </button>
+                <div uib-collapse="collapse.settings">
+                    <div class="well well-lg" style="margin-bottom: 0">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h5>Quizmodus:</h5>
+                            </div>
+                            <div class="col-sm-7">
+                                <div ng-hide="isMath()" class="btn-group" style="width: 100%">
+                                    <label class="btn btn-default" uib-btn-radio="10" ng-model="modeModel" style="width: 33%;">
+                                        10
+                                    </label>
+                                    <label class="btn btn-default" uib-btn-radio="20" ng-model="modeModel" style="width: 33%;">
+                                        20
+                                    </label>
+                                    <label class="btn btn-default" uib-btn-radio="0" ng-model="modeModel" style="width: 33%;">
+                                        Alle
+                                    </label>
+                                </div>
+                                <div ng-show="isMath()" class="btn-group" style="width: 100%">
+                                    <label class="btn btn-default" uib-btn-radio="3" ng-model="modeModel" style="width: 50%;">
+                                        3
+                                    </label>
+                                    <label class="btn btn-default" uib-btn-radio="0" ng-model="modeModel" style="width: 50%;">
+                                        Alle
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid" style="width: 100%; margin-bottom: 30px">
+        <div class="row">
+            <div class="col-xs-4" ng-repeat="collection in collections | filter: collectionFilter">
+                <a href="#/webapp/{{subject.id}}/{{targetCollection}}">
+                    <button class="btn btn-default btn-collection" ng-click="setCollection(collection, modeModel)">
+                        <h4 class="opensans-text">{{collection.name}} <span ng-if="isMath()"> - Tilfeldige oppgaver</span></h4>
+                        <p>
+                            {{collection.exercises.length}}
+                            <span>oppgave<span ng-if="!(collection.exercises.length == 1)">r</span>, {{collection.solved}} løst</span>
+                        </p>
+                    </button>
+                </a>
+                <a href="#/webapp/{{subject.id}}/{{targetCollection}}/exercises">
+                    <label class="btn btn-default" style="margin-top: -13px; width: 100%" ng-click="setCollection(collection, modeModel)">
+                        <!--<img src="../img/definition-icon.png" style="height: 15px">-->
+                        Se alle oppgaver
+                    </label>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="cssload-container" ng-if="loading">
+        <div class="cssload-item cssload-moon"></div>
+    </div>
+</div>
+
+
+
+

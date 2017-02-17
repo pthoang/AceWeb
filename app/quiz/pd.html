@@ -1,0 +1,62 @@
+
+<div ng-app="mainApp.webapp" ng-controller="pdCtrl">
+    <div class="container-fluid" style="width: 960px; margin-left: -15px">
+        <div ng-style="getQHeight() > 100 ? {'height': (getQHeight()+30)+'px'}:{'height': 120+'px'}" class="container-fluid">
+            <div id="question">
+                <h3 class="pre-wrap-text" align="left">{{exercises[number].content.question.text}}</h3>
+                <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
+                    <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
+                         ng-style="showBigImage? {'width': '900px', 'cursor': 'pointer'}: {'width': '500px', 'cursor': 'pointer'}">
+                </div>
+            </div>
+        </div>
+
+        <!--<div ng-repeat="i in ordering track by $index" ng-class="'div-alternatives'" ng-style="{'width': (100/ordering.length-1)+'%'}">-->
+            <!--<button ng-mouseover="setButtonClassNum()" ng-class="getButtonClass($index, ordering.length)" class="btn-mcalternatives" ng-click="checkAnswer(i)" onclick="this.blur()" ng-style="getStyle(i)">-->
+                <!--{{getAlternative(i)}}-->
+            <!--</button>-->
+        <!--</div>-->
+
+        <div ng-if="number==maxNumber && !userAnswered[number].show" class="container-fluid">
+            <div class="row" ng-repeat="i in ordering track by $index" style="margin-bottom: 5px; cursor:pointer;" ng-click="checkAnswer(i)"
+            ng-mouseenter="showHoverAlt[$index]=true" ng-mouseleave="showHoverAlt[$index]=false">
+                <div class="col-xs-1">
+                    <label class="btn btn-round" style="width: 40px; height: 40px; background-color: white; border: 1px solid lightgrey" ng-style="getStyle(i)">
+                        <p ng-show="!showHoverAlt[$index] || nextBtn" style="margin-top: 3px">{{$index+1}}</p>
+                        <span ng-show="showHoverAlt[$index] && !nextBtn" class="glyphicon glyphicon-ok" style="display: inline-block; margin-top: 5px"></span>
+                    </label>
+                </div>
+                <div class="col-xs-11">
+                    <span class="unselectable pre-wrap-text" style="display: inline-block; font-size: 20px; margin-top: 5px">{{getAlternative(i)}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-if="number<maxNumber || userAnswered[number].show" class="container-fluid">
+            <div class="row">
+                <div class="col-xs-1">
+                    <label class="btn-round-alternatives" ng-style="getCorrectStyle()">
+                        <span class="glyphicon glyphicon-ok" style="display: inline-block;  margin-top: 11px; margin-left: 12px"></span>
+                    </label>
+                </div>
+                <div class="col-xs-11">
+                    <span class="unselectable pre-wrap-text" style="display: inline-block; font-size: 20px; margin-top: 5px">{{userAnswered[number][0].answer}}</span>
+                </div>
+            </div>
+            <div ng-if="userAnswered[number].length >1" class="row">
+                <div class="col-xs-1">
+                    <label class="btn-round-alternatives" ng-style="getWrongStyle()">
+                        <span class="glyphicon glyphicon-remove" style="display: inline-block; margin-top: 11px; margin-left: 12px"></span>
+                    </label>
+                </div>
+                <div class="col-xs-11">
+                    <span class="unselectable pre-wrap-text" style="display: inline-block; font-size: 20px; margin-top: 5px">{{userAnswered[number][1].answer}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div ng-include="'quiz/quiz_buttons.html'"></div>
+
+
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="container-fluid" style="margin-bottom: 30px">
+    <h3 class="pre-wrap-text" align="left" style="margin-bottom: 20px">{{exercise.content.question.text}}</h3>
+    <div ng-show="showAnswer.value" style="margin-bottom: 20px">
+        <div ng-repeat="correct in exercise.content.corrects" class="container-fluid">
+            <div class="row">
+                <hr>
+            </div>
+            <span class="unselectable pre-wrap-text" style="display: inline-block; font-size: 20px; margin-top: 5px">{{correct.answer}}</span>
+        </div>
+    </div>
+    <div ng-include="'exercise_view/parts/buttons.html'"></div>
+</div>

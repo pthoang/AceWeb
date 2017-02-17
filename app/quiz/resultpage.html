@@ -1,0 +1,72 @@
+<head>
+    <meta charset="utf-8">
+</head>
+
+<div ng-app="mainApp.webapp" ng-controller="resultCtrl">
+    <div class="row" align="center" ng-style="setColor(subject.color)" style="color: white; width: 960px;">
+        <h2 style="margin-bottom: 60px; margin-top: 30px">{{collectionName}}</h2>
+        <h1 style="font-size: 80px; font-weight: bold">{{feedbackText}}</h1>
+        <h2>{{score}} av {{threshold}}</h2>
+        <div class="container-fluid" style="width: 200px; margin-bottom: 20px;">
+            <button style="margin-left: -5px" class="btn btn-round" ng-click="goBack()"
+                    ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-remove" style="color: white; font-size: 30px;"></span>
+            </button>
+            <button ng-show="showContinueBtn()" style="margin-left: -5px" class="btn btn-round" ng-click="startQuiz()"
+                    ng-style="setColor(subject.color)">
+                <img src="img/more-quiz-icon-white.png" style="width: 40px">
+            </button>
+            <button ng-show="showAgainBtn()" style="margin-left: -5px" class="btn btn-round" ng-click="startQuiz()"
+                    ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-repeat" style="color: white; font-size: 30px;"></span>
+            </button>
+        </div>
+        <div class="container-fluid" style="width: 220px; margin-bottom: 10px">
+            <i ng-show="!(showPositiveFeedback || showNegativeFeedback)"><p>Hva synes du om quizzen?</p></i>
+            <i ng-show="(showPositiveFeedback || showNegativeFeedback)"><p>Takk for tilbakemelding!</p></i>
+            <button ng-disabled="showNegativeFeedback" ng-click="sendUserFeedback(true)"
+                    class="btn btn-round" ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-thumbs-up" style="color: white; font-size: 30px"></span>
+            </button>
+            <button ng-disabled="showPositiveFeedback" ng-click="sendUserFeedback(false)"
+                    class="btn btn-round" ng-style="setColor(subject.color)">
+                <span class="glyphicon glyphicon-thumbs-down flipped-h" style="color: white; font-size: 30px;"></span>
+            </button>
+        </div>
+        <div ng-show="showFeedback" class="container-fluid" style="width: 250px">
+            <i ng-hide="showFeedbackOptions"><p ng-click="showFeedbackOptions=true" style="cursor: pointer;">Klikk her for å gi en mer detaljert tilbakemelding</p></i>
+            <uib-accordion ng-show="showFeedbackOptions">
+                <div uib-accordion-group class="panel-feedback" style="margin-top: 5px"
+                     is-open="showFeedbackOptions" align="left">
+                    <div ng-repeat="option in userFeedbackOptions track by $index">
+                        <input type="checkbox" ng-model="userFeedbackSendList[option]"> {{option}}
+                    </div>
+                    <div style="margin-bottom: 2px">
+                        <input type="checkbox" ng-model="userFeedbackSendList.other"> Annet
+                        <input ng-show="userFeedbackSendList.other" ng-model="userFeedbackSendList.specified"
+                               class="form-control" placeholder="Spesifiser">
+                    </div>
+                    <div align="right">
+                        <button ng-click="sendDetailedUserFeedback()" class="btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </uib-accordion>
+        </div>
+        <div ng-show="showSentDetailed" class="container-fluid" style="width: 250px">
+            <i><p>Detaljert tilbakemelding sendt!</p></i>
+        </div>
+        <div style="height: 20px"></div>
+    </div>
+
+    <div ng-hide="score == threshold" class="container-fluid" style="margin-top: 10px; margin-bottom: 30px">
+        <h3>Fasit:</h3>
+        <div ng-repeat="wrong in wrongList track by $index">
+            <br>
+            <div ng-if="exercises[wrong].type == 'mc'" ng-include="'quiz/resultpageType/mc.html'"></div>
+            <div ng-if="exercises[wrong].type == 'pd'" ng-include="'quiz/resultpageType/pd.html'"></div>
+            <div ng-if="exercises[wrong].type == 'tf'" ng-include="'quiz/resultpageType/tf.html'"></div>
+            <div ng-if="exercises[wrong].type == 'math'" ng-include="'quiz/resultpageType/math.html'"></div>
+        </div>
+    </div>
+</div>
+

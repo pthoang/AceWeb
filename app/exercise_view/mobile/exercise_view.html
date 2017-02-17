@@ -1,0 +1,25 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div style="background-color: white">
+    <nav class="navbar navbar-default navbar-static-top"  role="navigation" style=" width: 100%; height: 70px;" ng-style="setColor(exercise.color)">
+        <div class="container-fluid">
+            <div class="container-fluid" style="position: absolute; top: 8px; left: 2px">
+                <a href="" ng-click="goBack()">
+                    <img src="img/x_white.png" style="width: 20px">
+                </a>
+            </div>
+            <div class="container-fluid" align="center" style="width: 90%">
+                <h4 class="h1-subjectName" style="color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{exercise.subject_name}}</h4>
+                <h4 class="h1-subjectName" style="color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{exercise.collection_name}}</h4>
+            </div>
+        </div>
+    </nav>
+
+    <div ng-if="exercise.type=='mc'" ng-include="'exercise_view/parts/mc.html'"></div>
+    <div ng-if="exercise.type=='tf'" ng-include="'exercise_view/parts/tf.html'"></div>
+    <div ng-if="exercise.type=='pd'" ng-include="'exercise_view/parts/pd.html'"></div>
+    <div ng-if="exercise.type=='math'" ng-include="'exercise_view/parts/math.html'"></div>
+    <div class="container-fluid" style="height: 1px"></div>
+    <div class="cssload-container" ng-if="loading">
+        <div class="cssload-item cssload-moon"></div>
+    </div>
+</div>

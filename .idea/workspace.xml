@@ -2,10 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be6b0ff0-3550-440f-8dc2-5f9e0df6f113" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/collections/collections.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/exercise_view/exerciseView.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/exercises/exercises.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/modal/controllers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/services/services.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/subjects/subjects.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/view1/view1.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/view1/view1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/view1/view1_test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/view2/view2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/view2/view2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/view2/view2_test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/webapp/collections.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/webapp/mtf.html" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/collections.html" afterPath="$PROJECT_DIR$/app/collections/collections.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exerciseViewParts/buttons.html" afterPath="$PROJECT_DIR$/app/exercise_view/parts/buttons.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exerciseViewParts/math.html" afterPath="$PROJECT_DIR$/app/exercise_view/parts/math.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exerciseViewParts/mc.html" afterPath="$PROJECT_DIR$/app/exercise_view/parts/mc.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exerciseViewParts/pd.html" afterPath="$PROJECT_DIR$/app/exercise_view/parts/pd.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exerciseViewParts/tf.html" afterPath="$PROJECT_DIR$/app/exercise_view/parts/tf.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exercise_view.html" afterPath="$PROJECT_DIR$/app/exercise_view/exercise_view.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exercises.html" afterPath="$PROJECT_DIR$/app/exercises/exercises.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exercisesType/math.html" afterPath="$PROJECT_DIR$/app/quiz/exercisesType/math.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exercisesType/mc.html" afterPath="$PROJECT_DIR$/app/quiz/exercisesType/mc.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exercisesType/pd.html" afterPath="$PROJECT_DIR$/app/quiz/exercisesType/pd.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/exercisesType/tf.html" afterPath="$PROJECT_DIR$/app/quiz/exercisesType/tf.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/math.html" afterPath="$PROJECT_DIR$/app/quiz/math.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mc.html" afterPath="$PROJECT_DIR$/app/quiz/mc.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/collections.html" afterPath="$PROJECT_DIR$/app/collections/mobile/collections.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/exercise_view.html" afterPath="$PROJECT_DIR$/app/exercise_view/mobile/exercise_view.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/exercises.html" afterPath="$PROJECT_DIR$/app/exercises/mobile/exercises.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/math.html" afterPath="$PROJECT_DIR$/app/quiz/mobile/math.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/mc.html" afterPath="$PROJECT_DIR$/app/quiz/mobile/mc.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/pd.html" afterPath="$PROJECT_DIR$/app/quiz/mobile/pd.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/quiz.html" afterPath="$PROJECT_DIR$/app/quiz/mobile/quiz.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" afterPath="$PROJECT_DIR$/app/quiz/mobile/resultpage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/subjects.html" afterPath="$PROJECT_DIR$/app/subjects/mobile/subjects.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/mobile/tf.html" afterPath="$PROJECT_DIR$/app/quiz/mobile/tf.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/pd.html" afterPath="$PROJECT_DIR$/app/quiz/pd.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/quiz.html" afterPath="$PROJECT_DIR$/app/quiz/quiz.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/quizButtonsParts/nav_buttons.html" afterPath="$PROJECT_DIR$/app/quiz/quizButtonsParts/nav_buttons.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" afterPath="$PROJECT_DIR$/app/quiz/quizButtonsParts/option_buttons.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/quiz_buttons.html" afterPath="$PROJECT_DIR$/app/quiz/quiz_buttons.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/resultpage.html" afterPath="$PROJECT_DIR$/app/quiz/resultpage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/resultpageType/math.html" afterPath="$PROJECT_DIR$/app/quiz/resultpageType/math.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/resultpageType/mc.html" afterPath="$PROJECT_DIR$/app/quiz/resultpageType/mc.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/resultpageType/pd.html" afterPath="$PROJECT_DIR$/app/quiz/resultpageType/pd.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/resultpageType/tf.html" afterPath="$PROJECT_DIR$/app/quiz/resultpageType/tf.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/subjects.html" afterPath="$PROJECT_DIR$/app/subjects/subjects.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/tf.html" afterPath="$PROJECT_DIR$/app/quiz/tf.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/webapp/webapp.js" afterPath="$PROJECT_DIR$/app/quiz/quiz.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/collections.html" afterPath="$PROJECT_DIR$/app/webapp/collections.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/mobile/collections.html" afterPath="$PROJECT_DIR$/app/webapp/mobile/collections.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/webapp/webapp.js" afterPath="$PROJECT_DIR$/app/webapp/webapp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/mainApp.js" afterPath="$PROJECT_DIR$/app/mainApp.js" />
     </list>
     <ignored path="AceWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,84 +77,13 @@
     <favorites_list name="AceWeb" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="webapp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="178" column="29" selection-start-line="178" selection-start-column="29" selection-end-line="178" selection-end-column="29" />
-              <folding>
-                <element signature="e#215#3393#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collections.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/webapp/collections.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="39" selection-end-column="22" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collections.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/webapp/mobile/collections.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="37" column="147" selection-start-line="37" selection-start-column="147" selection-end-line="37" selection-end-column="147" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#1;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#span#1;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -123,40 +103,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/webapp/resultpage.html" />
-        <option value="$PROJECT_DIR$/app/webapp/resultpageType/math.html" />
-        <option value="$PROJECT_DIR$/app/webapp/mobile/resultpage.html" />
-        <option value="$PROJECT_DIR$/app/webapp/resultpageType/mc.html" />
-        <option value="$PROJECT_DIR$/app/webapp/resultpageType/pd.html" />
-        <option value="$PROJECT_DIR$/app/webapp/resultpageType/tf.html" />
-        <option value="$PROJECT_DIR$/app/navbar/navbar_quiz.html" />
-        <option value="$PROJECT_DIR$/app/webapp/answeredExercises/tf.html" />
-        <option value="$PROJECT_DIR$/app/webapp/answeredExercises/pd.html" />
-        <option value="$PROJECT_DIR$/app/webapp/answeredExercises/math.html" />
-        <option value="$PROJECT_DIR$/app/webapp/answeredExercises/mc.html" />
-        <option value="$PROJECT_DIR$/app/css/custom.css" />
-        <option value="$PROJECT_DIR$/app/webapp/mc.html" />
-        <option value="$PROJECT_DIR$/app/webapp/tf.html" />
-        <option value="$PROJECT_DIR$/app/webapp/pd.html" />
-        <option value="$PROJECT_DIR$/app/webapp/mobile/mc.html" />
-        <option value="$PROJECT_DIR$/app/webapp/mobile/pd.html" />
-        <option value="$PROJECT_DIR$/app/webapp/mobile/tf.html" />
-        <option value="$PROJECT_DIR$/app/webapp/exercisesType/tf.html" />
-        <option value="$PROJECT_DIR$/app/webapp/exercisesType/pd.html" />
-        <option value="$PROJECT_DIR$/app/webapp/exercisesType/mc.html" />
-        <option value="$PROJECT_DIR$/app/webapp/exercisesType/math.html" />
-        <option value="$PROJECT_DIR$/app/webapp/exercises.html" />
-        <option value="$PROJECT_DIR$/routes/api.js" />
-        <option value="$PROJECT_DIR$/app/modal/reportModal.html" />
-        <option value="$PROJECT_DIR$/app/webapp/mobile/quiz.html" />
-        <option value="$PROJECT_DIR$/app/modal/explanationModal.html" />
-        <option value="$PROJECT_DIR$/app/webapp/quiz.html" />
-        <option value="$PROJECT_DIR$/app/webapp/quizButtonsParts/nav_buttons.html" />
-        <option value="$PROJECT_DIR$/app/webapp/quizButtonsParts/options_buttons.html" />
-        <option value="$PROJECT_DIR$/app/webapp/quiz_buttons.html" />
         <option value="$PROJECT_DIR$/app/info/mobile/about.html" />
         <option value="$PROJECT_DIR$/app/info/about.html" />
-        <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/math.html" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/exercises.html" />
         <option value="$PROJECT_DIR$/app/webapp/subjects.html" />
@@ -167,13 +115,45 @@
         <option value="$PROJECT_DIR$/app/webapp/exerciseViewParts/pd.html" />
         <option value="$PROJECT_DIR$/app/webapp/exerciseViewParts/math.html" />
         <option value="$PROJECT_DIR$/app/webapp/exerciseViewParts/tf.html" />
-        <option value="$PROJECT_DIR$/app/mainApp.js" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/exercise_view.html" />
         <option value="$PROJECT_DIR$/app/webapp/exercise_view.html" />
         <option value="$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html" />
-        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
         <option value="$PROJECT_DIR$/app/webapp/collections.html" />
         <option value="$PROJECT_DIR$/app/webapp/mobile/collections.html" />
+        <option value="$PROJECT_DIR$/app/services/services.js" />
+        <option value="$PROJECT_DIR$/app/webapp/webapp.js" />
+        <option value="$PROJECT_DIR$/app/quiz/webapp.js" />
+        <option value="$PROJECT_DIR$/app/modal/controllers.js" />
+        <option value="$PROJECT_DIR$/app/quiz/mc.html" />
+        <option value="$PROJECT_DIR$/app/quiz/pd.html" />
+        <option value="$PROJECT_DIR$/app/quiz/resultpage.html" />
+        <option value="$PROJECT_DIR$/app/quiz/tf.html" />
+        <option value="$PROJECT_DIR$/app/quiz/quiz_buttons.html" />
+        <option value="$PROJECT_DIR$/app/quiz/math.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/math.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/mc.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/pd.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/tf.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/resultpage.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/exercise_view.html" />
+        <option value="$PROJECT_DIR$/app/quiz/exercise_view.html" />
+        <option value="$PROJECT_DIR$/app/quiz/mobile/exercises.html" />
+        <option value="$PROJECT_DIR$/app/collections/collections.js" />
+        <option value="$PROJECT_DIR$/app/quiz/collections.js" />
+        <option value="$PROJECT_DIR$/app/subjects/subjects.js" />
+        <option value="$PROJECT_DIR$/app/subjects/subjects.html" />
+        <option value="$PROJECT_DIR$/app/quiz/exercises.html" />
+        <option value="$PROJECT_DIR$/app/exercises/exercises.js" />
+        <option value="$PROJECT_DIR$/app/quiz/quiz.js" />
+        <option value="$PROJECT_DIR$/app/mainApp.js" />
+        <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/exercise_view/exerciseView.js" />
+        <option value="$PROJECT_DIR$/app/exercise_view/exercise_view.html" />
+        <option value="$PROJECT_DIR$/app/exercise_view/mobile/exercise_view.html" />
+        <option value="$PROJECT_DIR$/app/exercise_view/parts/math.html" />
+        <option value="$PROJECT_DIR$/app/exercise_view/parts/mc.html" />
+        <option value="$PROJECT_DIR$/app/exercise_view/parts/pd.html" />
+        <option value="$PROJECT_DIR$/app/exercise_view/parts/tf.html" />
       </list>
     </option>
   </component>
@@ -189,10 +169,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -219,32 +199,32 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -254,11 +234,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
+              <option name="myItemId" value="AceWeb" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -266,36 +246,14 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="aceweb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mobile" />
+              <option name="myItemId" value="subjects" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -308,6 +266,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vicen\IdeaProjects\AceWeb\app\exercise_view\mobile" />
+      <recent name="C:\Users\vicen\IdeaProjects\AceWeb\app\exercise_view\parts" />
+      <recent name="C:\Users\vicen\IdeaProjects\AceWeb\app\exercise_view" />
+      <recent name="C:\Users\vicen\IdeaProjects\AceWeb\app\exercises" />
+      <recent name="C:\Users\vicen\IdeaProjects\AceWeb\app\exercises\mobile" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\vicen\IdeaProjects\AceWeb\app" />
     </key>
@@ -829,15 +794,26 @@
       <workItem from="1481193818075" duration="8066000" />
       <workItem from="1481461903037" duration="248000" />
       <workItem from="1481464514261" duration="6133000" />
+      <workItem from="1484300896189" duration="21000" />
+      <workItem from="1484907366223" duration="32000" />
+      <workItem from="1484907763605" duration="45000" />
+      <workItem from="1484908996732" duration="835000" />
+      <workItem from="1485431568720" duration="2949000" />
+      <workItem from="1486037995560" duration="32000" />
+      <workItem from="1486635413122" duration="618000" />
+      <workItem from="1486636145006" duration="1282000" />
+      <workItem from="1486813021134" duration="73000" />
+      <workItem from="1487238710357" duration="1094000" />
+      <workItem from="1487339399541" duration="5647000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188428000" />
+    <option name="totallyTimeSpent" value="201056000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -847,11 +823,11 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29913712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29784825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279003" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15031983" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14983888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -884,77 +860,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/webapp/resultpageType/pd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="75" selection-start-line="2" selection-start-column="75" selection-end-line="2" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/resultpageType/math.html" />
-    <entry file="file://$PROJECT_DIR$/app/webapp/answeredExercises/tf.html" />
-    <entry file="file://$PROJECT_DIR$/app/webapp/answeredExercises/pd.html" />
-    <entry file="file://$PROJECT_DIR$/app/webapp/answeredExercises/math.html" />
-    <entry file="file://$PROJECT_DIR$/app/webapp/answeredExercises/mc.html" />
-    <entry file="file://$PROJECT_DIR$/app/webapp/tf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/pd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/tf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/bower_components/angular-uuid/uuid.min.js" />
-    <entry file="file://$PROJECT_DIR$/app/bower_components/angular-uuid/uuid.js" />
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="617" column="6" selection-start-line="617" selection-start-column="1" selection-end-line="617" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/pd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-205">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exercisesType/pd.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/exercisesType/mc.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="85" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exercisesType/mc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="85" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exercisesType/math.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/exercisesType/math.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
@@ -982,7 +895,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/quizButtonsParts/nav_buttons.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/quizButtonsParts/nav_buttons.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
@@ -1003,41 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/mc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/math.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/subjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/subjects.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="802">
-          <caret line="57" column="36" selection-start-line="57" selection-start-column="36" selection-end-line="57" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/exercises.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -1049,105 +927,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/quiz_buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/quiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exercises.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="45" column="18" selection-start-line="36" selection-start-column="11" selection-end-line="45" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/math.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="43" selection-start-line="6" selection-start-column="8" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exercisesType/tf.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/exercisesType/tf.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="85" selection-start-line="3" selection-start-column="85" selection-end-line="3" selection-end-column="85" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exerciseViewParts/pd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exerciseViewParts/mc.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exerciseViewParts/math.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/quiz.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/mobile/quiz.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/exercise_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exercise_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exerciseViewParts/tf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/exerciseViewParts/buttons.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -1158,91 +951,326 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/quizButtonsParts/option_buttons.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="49" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
+        <state relative-caret-position="34">
+          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/WikipediaPagecountsMapReduce/PageCountReorg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/quizButtonsParts/option_buttons.html">
+    <entry file="file://$PROJECT_DIR$/app/collections/mobile/collections.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+        <state relative-caret-position="110">
+          <caret line="16" column="126" selection-start-line="16" selection-start-column="126" selection-end-line="16" selection-end-column="126" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/collections/collections.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="37" selection-start-line="1" selection-start-column="37" selection-end-line="1" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="123" column="7" selection-start-line="123" selection-start-column="7" selection-end-line="123" selection-end-column="7" />
+          <folding>
+            <element signature="e#93#2139#0" expanded="false" />
+            <element signature="e#2187#2479#0" expanded="false" />
+            <element signature="e#2524#3393#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/modal/controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+          <folding>
+            <element signature="e#170#1361#0" expanded="false" />
+            <element signature="e#1450#1588#0" expanded="false" />
+            <element signature="e#1676#2819#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/mc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="58" column="30" selection-start-line="58" selection-start-column="30" selection-end-line="58" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/pd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="57" column="30" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/quiz_buttons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/math.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/tf.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="53" column="30" selection-start-line="53" selection-start-column="30" selection-end-line="53" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/mobile/resultpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="69" column="6" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subjects/mobile/subjects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/mobile/tf.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/mobile/pd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/mobile/mc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/mobile/math.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/resultpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="67" column="74" selection-start-line="67" selection-start-column="74" selection-end-line="67" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/quiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/quiz/collections.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/collections/collections.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+          <folding>
+            <element signature="e#248#4605#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/parts/buttons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subjects/subjects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="23" column="81" selection-start-line="23" selection-start-column="81" selection-end-line="23" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/subjects/subjects.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="24" column="48" selection-start-line="24" selection-start-column="48" selection-end-line="24" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercises/mobile/exercises.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercises/exercises.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="85" column="7" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+          <folding>
+            <element signature="e#192#2789#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercises/exercises.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/mainApp.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="70" column="58" selection-start-line="70" selection-start-column="58" selection-end-line="70" selection-end-column="58" />
+        <state relative-caret-position="-352">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/webapp.js">
+    <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="178" column="29" selection-start-line="178" selection-start-column="29" selection-end-line="178" selection-end-column="29" />
+        <state relative-caret-position="295">
+          <caret line="74" column="50" selection-start-line="74" selection-start-column="50" selection-end-line="74" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/parts/tf.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/parts/pd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/parts/mc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/parts/math.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/mobile/exercise_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/exercise_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="19" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/exercise_view/exerciseView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
           <folding>
-            <element signature="e#215#3393#0" expanded="false" />
+            <element signature="e#144#1065#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/collections.html">
+    <entry file="file://$PROJECT_DIR$/app/quiz/quiz.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="39" selection-end-column="22" />
+        <state relative-caret-position="110">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/webapp/mobile/collections.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="37" column="147" selection-start-line="37" selection-start-column="147" selection-end-line="37" selection-end-column="147" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#1;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#button#0;n#div#2;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#span#1;n#div#3;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#174#1095#0" expanded="false" />
+            <element signature="e#1307#9831#0" expanded="false" />
+            <element signature="e#9899#13317#0" expanded="false" />
+            <element signature="e#13384#16432#0" expanded="false" />
+            <element signature="e#16499#19043#0" expanded="false" />
+            <element signature="e#19113#20484#0" expanded="false" />
+            <element signature="e#20584#27601#0" expanded="false" />
           </folding>
         </state>
       </provider>

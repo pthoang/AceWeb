@@ -1,0 +1,39 @@
+
+
+<div ng-app="mainApp.webapp" ng-controller="mcCtrl" style="width: 100%">
+    <div class="container-fluid">
+        <h4 class="pre-wrap-text" id="question" align="left">{{exercises[number].content.question.text}}</h4>
+        <div ng-if="exercises[number].content.question.image" style="margin-bottom: 10px" align="center">
+            <img ng-src="{{getImage(exercises[number].content.question.image)}}" ng-click="showBigImage=!showBigImage"
+                 ng-style="showBigImage? {'width': '95%', 'cursor': 'pointer'}: {'width': '70%', 'cursor': 'pointer'}">
+        </div>
+    </div>
+
+
+    <div ng-if="number==maxNumber && !userAnswered[number].show">
+        <div class="col-xs-12" ng-repeat="i in ordering track by $index" style="width: 100%;margin-top: 3px; margin-bottom: 3px">
+            <button ng-mouseover="setButtonClassNum()" class="btn-quizloaded btn-mcalternatives" ng-style="getStyle(i)" ng-click="checkAnswer(i)" onclick="this.blur()">
+                <span class="pre-wrap-text">{{alternatives[i].answer}}</span>
+            </button>
+        </div>
+    </div>
+
+    <div ng-if="number<maxNumber || userAnswered[number].show">
+        <div class="col-xs-12" style="width: 100%;margin-top: 3px; margin-bottom: 3px">
+            <button class="btn-quizloaded btn-mcalternatives" ng-style="getCorrectStyle()">
+                <span class="pre-wrap-text">{{userAnswered[number][0].answer}}</span>
+            </button>
+        </div>
+        <div ng-if="userAnswered[number].length>1" class="col-xs-12" style="width: 100%;margin-top: 3px; margin-bottom: 3px">
+            <button class="btn-quizloaded btn-mcalternatives" ng-style="getWrongStyle()">
+                <span class="pre-wrap-text">{{userAnswered[number][1].answer}}</span>
+            </button>
+        </div>
+    </div>
+
+
+
+    <div ng-include="'quiz/quiz_buttons.html'" style="margin-top: 0px"></div>
+
+</div>
+
