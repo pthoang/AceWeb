@@ -10,6 +10,7 @@ angular.module('mainApp', [
     'mainApp.subjects',
     'mainApp.collections',
     'mainApp.exercises',
+    'mainApp.exerciseView',
     'mainApp.modalcontrollers',
     'mainApp.services',
     'angulartics',
