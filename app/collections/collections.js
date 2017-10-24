@@ -4,6 +4,7 @@ angular.module('mainApp.collections', [])
     .controller('collectionsCtrl', function ($scope, $http, $cookies, $routeParams,
                                              $analytics, quizService, collectionsService, subjectsService) {
         $scope.pageClass = 'page-collections';
+        $scope.backUrl = "http://www.intoit.io";
         var subjectId = $routeParams.subjectId;
         $scope.subject = $cookies.getObject('targetSubject');
         $scope.modeModel = quizService.getModeModel() != undefined && quizService.getModeModel() != 3? quizService.getModeModel() : 10;
