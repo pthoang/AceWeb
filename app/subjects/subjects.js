@@ -6,7 +6,9 @@ angular.module('mainApp.subjects', [])
         var initSubjects = function(subjectsInfo) {
             $scope.subjects = subjectsInfo;
             $scope.subjectSearch = function(item) {
-                if(!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1) || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) {
+                if((!$scope.subjectFilter || (item.name.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)
+                    || (item.code.toLowerCase().indexOf($scope.subjectFilter.toLowerCase()) != -1)) &&
+                    item.code.indexOf("TMA") != -1) {
                     return true;
                 }
                 return false;

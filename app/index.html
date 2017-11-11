@@ -17,27 +17,44 @@
         b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
     mixpanel.init("88c1f7835742091ce51bd106fef2638e", { track_pageview: false });</script>
 </head>
-<!--<nav ng-hide="hideNavBar()" class="navbar navbar-default" style="background-color: white">-->
-    <!--<div class="container-fluid" ng-style="mobileNav()? {'width': '960px'}: {'width': '100%'}">-->
-        <!--<div class="navbar-header">-->
-            <!--<button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-                <!--<span class="icon-bar"></span>-->
-            <!--</button>-->
-            <!--<a class="navbar-brand" href="#{{appPath}}/"><img ng-click="resetMain()" src="img/ace.png" style="width: 100px;"></a>-->
-        <!--</div>-->
-        <!--<div uib-collapse="isCollapsed" class="navbar-collapse bs-js-navbar-collapse">-->
-            <!--<ul style="width: 80%" class="nav navbar-nav">-->
-                <!--<li><a href="#{{appPath}}/">Quizzer</a></li>-->
-                <!--&lt;!&ndash;<li ng-if="!mobile"><a href="#">Content editor</a></li>&ndash;&gt;-->
-                <!--<li><a href="#/about/{{appPath.substring(1)}}">Om oss</a></li>-->
-                <!--&lt;!&ndash;<li ng-style="mobileNav()? {'float':'right'}: {}"><a href="#">Min profil</a></li>&ndash;&gt;-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</nav>-->
-<body style="background-color: #F1F1F2">
+<nav ng-hide="hideNavBar()" class="navbar navbar-default" style="background-color: white">
+    <div class="container-fluid" ng-style="mobileNav()? {'width': '960px'}: {'width': '100%'}">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://www.intoit.io"><img ng-click="resetMain()" src="img/black_long_logo.png" style="width: 100px;"></a>
+        </div>
+        <div uib-collapse="isCollapsed" class="navbar-collapse bs-js-navbar-collapse">
+            <ul style="width: 80%;" class="nav navbar-nav">
+                <li ng-style="mobileNav() ? {'float': 'right'} : {}">
+                    <a href="http://www.intoit.io/about">
+                        <i style="font-size: 20px;" class="fa fa-info-circle">
+                        </i>
+                        OM INTOIT
+                    </a>
+                </li>
+                <li ng-style="mobileNav() ? {'float': 'right'} : {}">
+                    <a href="http://www.intoit.io/privileges">
+                        <i style="font-size: 20px;" class="fa fa-signal">
+                        </i>
+                        NIVÅER
+                    </a>
+                </li>
+                <li ng-style="mobileNav() ? {'float': 'right'} : {}">
+                    <a href="http://www.intoit.io">
+                        <i style="font-size: 20px;" class="fa fa-home">
+                        </i>
+                        HJEM
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body style="background-color: #168ca5">
 <div ng-if="showAll" ng-view autoscroll="true"></div>
 
 <div ng-if="!hideCookiesInfo" class="container-fluid" style="position: fixed; bottom: 10px; right: 20px; height: 25px; background-color: black">

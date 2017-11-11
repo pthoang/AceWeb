@@ -1,7 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div style="background-color: white;">
-    <div ng-hide="hideHeader" class="container-fluid" style="width: 100%; height: 70px;" ng-style="setColor(subject.color)">
+    <div ng-hide="hideHeader" class="container-fluid" style="width: 100%; height: 70px;" ng-style="setColor('#283845')">
         <div class="container-fluid" style="position: absolute; top: 8px; left: 2px">
             <a ng-href="{{backUrl}}">
                 <span class="glyphicon glyphicon-chevron-left" style="font-size: 20px; color: white"></span>
@@ -16,8 +16,8 @@
 
     <div ng-hide="loading" class="container-fluid" align="center" style="width: 100%; margin-top: 10px; margin-bottom: 20px;">
         <a href="#/mobile/{{subject.id}}/quizme">
-            <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="setCollection(getAllCollection(), modeModel)"
-                    style="height: 77px; width: 100%; color: white; margin-bottom: 10px">
+            <button class="btn btn-default" ng-click="setCollection(getAllCollection(), modeModel)"
+                    style="height: 77px; width: 100%; margin-bottom: 10px; background-color: #F7A072">
                 <h4 class="opensans-text">Quiz me</h4>
                 <p>
                     Tilfeldig blanding av alt
@@ -87,7 +87,7 @@
                     </button>
                 </a>
                 <a href="#/mobile/{{subject.id}}/{{targetCollection}}/exercises">
-                    <label class="btn btn-default" style="margin-top: -13px; width: 100%" ng-click="setCollection(collection, modeModel)">
+                    <label class="btn btn-default" style="margin-top: -13px; width: 100%; background-color: #F7A072" ng-click="setCollection(collection, modeModel)">
                         <!--<img src="../img/definition-icon.png" style="height: 15px">-->
                         Se alle oppgaver
                     </label>

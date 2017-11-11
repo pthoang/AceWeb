@@ -140,7 +140,7 @@ angular.module('mainApp', [
             if(!color) {
                 color = '#336E7B';
             }
-            return {"background-color": color};
+            return {"background-color": '#283845'};
         };
         $scope.hideNavBar = function () {
             return (window.mobilecheck() && $location.path() != '/mobile')

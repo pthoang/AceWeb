@@ -6,11 +6,11 @@
         <img ng-src="{{getImage(exercises[number].content.question.image)}}"
              ng-style="{'width': '100%'}">
 
-        <button ng-show="!showAnswer" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showAnswer=true">
-            <span style="font-size: 20px; color: white;">Vis fasit</span>
+        <button ng-show="!showAnswer" class="btn btn-default" style="background-color: #F7A072;" ng-click="showAnswer=true">
+            <span style="font-size: 20px;">Vis fasit</span>
         </button>
-        <button ng-show="showAnswer" class="btn btn-default" ng-style="setColor(subject.color)" ng-click="showAnswer=false">
-            <span style="font-size: 20px; color: white;">Skjul fasit</span>
+        <button ng-show="showAnswer" class="btn btn-default" style="background-color: #F7A072;" ng-click="showAnswer=false">
+            <span style="font-size: 20px;">Skjul fasit</span>
         </button>
         <p ng-show="showAnswer">(Fasit ligger under knappene)</p>
         <div ng-show="showAnswer">

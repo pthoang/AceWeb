@@ -5,8 +5,8 @@
         <div class="row" style="margin-bottom: 20px">
             <div class="col-xs-4">
                 <a href="#/webapp/{{subject.id}}/quizme">
-                    <button class="btn btn-default" ng-style="setColor(subject.color)" ng-click="setCollection(getAllCollection(), modeModel)"
-                            style="height: 77px; width: 100%; color: white">
+                    <button class="btn btn-default" ng-click="setCollection(getAllCollection(), modeModel)"
+                            style="height: 77px; width: 100%; background-color: #F7A072">
                         <h4 class="opensans-text">Quiz me</h4>
                         <p>
                             Tilfeldig blanding av alt
@@ -80,7 +80,7 @@
                     </button>
                 </a>
                 <a href="#/webapp/{{subject.id}}/{{targetCollection}}/exercises">
-                    <label class="btn btn-default" style="margin-top: -13px; width: 100%" ng-click="setCollection(collection, modeModel)">
+                    <label class="btn btn-default" style="margin-top: -13px; width: 100%; background-color: #F7A072" ng-click="setCollection(collection, modeModel)">
                         <!--<img src="../img/definition-icon.png" style="height: 15px">-->
                         Se alle oppgaver
                     </label>
